@@ -1,0 +1,38 @@
+﻿<header></header>
+<title>Craft Beer Me</title>
+<h1>
+    Welcome to Beer City!
+</h1>
+<body>
+    <h3>What sort of beer do you like?</h3>
+    <form action="Recommended" method="post">
+        @*<input type="number" min="1" max="15" step=".1" name="ABV" /> <p>1-15</p> @*low 1-5, med 6-9, high 9+ *@
+        @*<input type="text" placeholder="IBU" name="IBU" /> <p>1-100</p> @*low = under 30, med = 31 - 60, high 60+ *@
+        @*<input type="text" placeholder="SRM" name="SRM"/> <p>1-40</p> @*low = 1 - 10, med 11 -21, high 21+*@
+
+        <p>Alcohol</p>
+        <select name="ABV">
+            <option value="1">I like to keep it light</option>
+            <option value="2">A happy medium</option>
+            <option value="3">I wanna get drizzity drunk</option>
+        </select>
+        <br /><br />
+        <p>IBU</p>
+        <select name="IBU">
+            <option value="1">No</option>
+            <option value="2">Somewhere in the middle</option>
+            <option value="3">the hoppier the better</option>
+        </select>
+        <br /><br />
+        <p>SRM</p>
+        <select name="SRM">
+            <option value="1">Light</option>
+            <option value="2">Medium</option>
+            <option value="3">Dark</option>
+        </select>
+
+        <input type="submit" value="Craft Beer Me!" />
+    </form>
+    @*<button>Just Get me Something Good</button>*@
+</body>
+<footer></footer>

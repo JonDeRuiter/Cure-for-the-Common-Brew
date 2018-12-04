@@ -1,0 +1,53 @@
+﻿@*@model IEnumerable<Craft_Beer_Me.Models.Beer>*@
+@model IEnumerable <Craft_Beer_Me.Models.Brewery>
+<header>
+    <title>We Recommend: </title>
+</header>
+
+<body>
+
+    @foreach (var brewery in ViewBag.Breweries)
+    {
+        <table>
+
+            <tr>
+                <th>
+                    <img src="@brewery.PictureUrl" alt="No Picture" width="150" />
+                </th>
+                <th>
+                    @brewery.Name
+                </th>
+                <th>
+                    <a href="@brewery.Url">Website</a>
+                </th>
+                <th>
+                    Menu Description
+                </th>
+
+            </tr>
+            @foreach (var beer in brewery.Menu)
+            {
+                <tr>
+                    <td>
+                        <img src="@beer.Picture" alt="No Picture" />
+                    </td>
+                    <td>
+                        @beer.BeerName
+                    </td>
+                    <td>
+                        @beer.CategoryName
+                    </td>
+                    <td>
+                        @beer.Description
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <br /><br />
+    }
+</body>
+
+<footer>
+
+</footer>
