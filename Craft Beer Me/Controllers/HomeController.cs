@@ -37,21 +37,21 @@ namespace Craft_Beer_Me.Controllers
             return View();
         }
 
-        public ActionResult Recommended(string ABV, string IBU, string SRM)
+        public ActionResult Recommended(string ABV, string IBU, string SRM, string flavor)
         {
             double abv, ibu, srm;
             abv = double.Parse(ABV);
             ibu = double.Parse(IBU);
             srm = double.Parse(SRM);
 
-            List<Brewery> breweries = GetBreweries(abv, ibu, srm);
+            List<Brewery> breweries = GetBreweries(abv, ibu, srm, flavor);
             
             ViewBag.Breweries = breweries;
             return View();
             
         }
 
-        public List<Brewery> GetBreweries(double abv, double ibu, double srm)
+        public List<Brewery> GetBreweries(double abv, double ibu, double srm, string flavor)
         {
             List<Brewery> breweries = new List<Brewery>();
 
@@ -63,7 +63,7 @@ namespace Craft_Beer_Me.Controllers
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    breweries = LocalBrewery(abv, ibu, srm);
+                    breweries = LocalBrewery(abv, ibu, srm, flavor);
                 }
             }
             else
@@ -159,7 +159,7 @@ namespace Craft_Beer_Me.Controllers
         }
 
         //builds brewery objects using local json data
-        public List<Brewery> LocalBrewery(double abv, double ibu, double srm)
+        public List<Brewery> LocalBrewery(double abv, double ibu, double srm, string flavor)
         {
             List<Brewery> localBrews = new List<Brewery>();
 
@@ -168,7 +168,7 @@ namespace Craft_Beer_Me.Controllers
             string beerData = rd.ReadToEnd();
             JObject SchmozJson = JObject.Parse(beerData);
 
-            Brewery schmoz = MakeABrewery(SchmozJson, 1, abv, ibu, srm);
+            Brewery schmoz = MakeABrewery(SchmozJson, 1, abv, ibu, srm, flavor);
             if (schmoz != null)
             {
                 localBrews.Add(schmoz);
@@ -180,7 +180,7 @@ namespace Craft_Beer_Me.Controllers
             string JollyData = rd2.ReadToEnd();
             JObject JollyJson = JObject.Parse(JollyData);
 
-            Brewery jolly = MakeABrewery(JollyJson, 2, abv, ibu, srm);
+            Brewery jolly = MakeABrewery(JollyJson, 2, abv, ibu, srm, flavor);
             if (jolly != null)
             {
                 localBrews.Add(jolly);
@@ -191,7 +191,7 @@ namespace Craft_Beer_Me.Controllers
             string AtwaterData = rd3.ReadToEnd();
             JObject AtwaterJson = JObject.Parse(AtwaterData);
 
-            Brewery atwater = MakeABrewery(AtwaterJson, 3, abv, ibu, srm);
+            Brewery atwater = MakeABrewery(AtwaterJson, 3, abv, ibu, srm, flavor);
             if (atwater != null)
             {
                 localBrews.Add(atwater);
@@ -202,7 +202,7 @@ namespace Craft_Beer_Me.Controllers
             string NewData = rd4.ReadToEnd();
             JObject NewJson = JObject.Parse(NewData);
 
-            Brewery holland = (MakeABrewery(NewJson, 4, abv, ibu, srm));
+            Brewery holland = (MakeABrewery(NewJson, 4, abv, ibu, srm, flavor));
             if (holland != null)
             {
                 localBrews.Add(holland);
@@ -212,13 +212,10 @@ namespace Craft_Beer_Me.Controllers
         }
 
         //makes each new brewery object from JSON
-        public Brewery MakeABrewery(JObject beerJson, int x, double abv, double ibu, double srm)
+        public Brewery MakeABrewery(JObject beerJson, int x, double abv, double ibu, double srm, string flavor)
         {
             Brewery GrandCircus = new Brewery();
-
             
-            //GrandCircus.BreweryID = beerJson[];
-
             switch (x)
             {
                 case 1:
@@ -244,26 +241,8 @@ namespace Craft_Beer_Me.Controllers
                 default:
                     break;
             }
-
-            List<Beer> menu = new List<Beer>();
-
-            Array beerArray = beerJson["data"].ToArray();
-
-            //beerArray.Length
-            for (int i = 0; i < beerArray.Length; i++)
-            {
-                //Evaluate here
-                Beer newBeer = new Beer();
-                newBeer = MakeABeer(beerJson, i);
-                if (LimitBeer(newBeer, abv, ibu, srm))
-                {
-                    menu.Add(newBeer);
-                }
-                
-                
-            }
             
-            GrandCircus.Menu = menu;
+            GrandCircus.Menu = FillaMenu(beerJson, abv, ibu, srm, flavor);
 
             //Only display breweries that have at least one beer in their menu
             if (GrandCircus.Menu.Count > 0)
@@ -274,6 +253,34 @@ namespace Craft_Beer_Me.Controllers
             {
                 return null;
             }
+        }
+
+        //makes a menu of beer objects that conform to search parameters
+        public List<Beer> FillaMenu(JObject beerJson, double abv, double ibu, double srm, string flavor)
+        {
+            List<Beer> menu = new List<Beer>();
+
+            //if the user doesn't put anything flavor is set to a space so that every result is true
+            if (flavor == null)
+            {
+                flavor = "e";
+            }
+
+            //this array is created for the sole purpose of finding the lenght of the data object
+            Array beerArray = beerJson["data"].ToArray();
+            for (int i = 0; i < beerArray.Length; i++)
+            {
+                //Evaluate here
+                Beer newBeer = new Beer();
+                newBeer = MakeABeer(beerJson, i);
+                if (LimitBeer(newBeer, abv, ibu, srm, flavor))
+                {
+                    menu.Add(newBeer);
+                }
+
+
+            }
+            return menu;
         }
 
         //fills the menu with valid beers based on user parameters
@@ -371,8 +378,8 @@ namespace Craft_Beer_Me.Controllers
         }
 
         //only adds beers into the menu based on user input
-        //Beer is valid if it passes three tests based on switch statments
-        public bool LimitBeer(Beer beer, double abv, double ibu, double srm)
+        //Beer is valid if it passes four tests based on switch statments
+        public bool LimitBeer(Beer beer, double abv, double ibu, double srm, string flavor)
         {
             int counter = 0;
             switch (abv)
@@ -447,7 +454,14 @@ namespace Craft_Beer_Me.Controllers
                     break;
             }
 
-            if (counter == 3)
+            //description search for flavor
+            
+            if (beer.Description.Contains(flavor))
+            {
+                counter++;
+            }
+
+            if (counter == 4)
             {
                 return true;
             }
