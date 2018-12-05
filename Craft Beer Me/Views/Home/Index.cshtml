@@ -5,7 +5,7 @@
 </h1>
 <body>
     <h3>What sort of beer do you like?</h3>
-    <form action="Recommended" method="post">
+    <form action="BeerNums" method="post">
         @*<input type="number" min="1" max="15" step=".1" name="ABV" /> <p>1-15</p> @*low 1-5, med 6-9, high 9+ *@
         @*<input type="text" placeholder="IBU" name="IBU" /> <p>1-100</p> @*low = under 30, med = 31 - 60, high 60+ *@
         @*<input type="text" placeholder="SRM" name="SRM"/> <p>1-40</p> @*low = 1 - 10, med 11 -21, high 21+*@
@@ -30,11 +30,30 @@
             <option value="2">Medium</option>
             <option value="3">Dark</option>
         </select>
-        <br />
+        <br /><br />
+           
         <p>Flavors</p>
         <input type="text" placeholder="Optional" name="flavor"/>
 
         <input type="submit" value="Craft Beer Me!" />
+    </form>
+    <br />
+    <form action="styleSearch" method="post">
+        <p>Search by Style</p>
+        <select name="style">
+            <option value="1">Optional</option>
+            <option value="Ale">Pale Ale/IPA</option>
+            <option value="Belgian">Belgian</option>
+            <option value="Cider">Cider</option>
+            @*<option value="IPA">IPA</option>*@
+            <option value="Pilsner">Pilsner</option>
+            <option value="Porter">Porter</option>
+            <option value="Sours">Sours</option>
+            <option value="Stout">Stout</option>
+            <option value="Wheat">Wheat</option>
+        </select>
+        <br />
+        <input type="submit" value="Style Search" />
     </form>
     @*<button>Just Get me Something Good</button>*@
 </body>
