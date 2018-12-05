@@ -323,9 +323,20 @@ namespace Craft_Beer_Me.Controllers
 
 
             }
+<<<<<<< HEAD
 
+=======
+            if (menu != null)
+            {
+
+
+            }
+            menu = RandoSort(menu);
+>>>>>>> 7ec304c419c2d66665279d8ddacf232bd7709576
             return menu;
         }
+
+        
 
         //fills the menu with valid beers based on user parameters
         public Beer MakeABeer(JObject beerJson, int x)
@@ -370,11 +381,13 @@ namespace Craft_Beer_Me.Controllers
             {
                 craftBeer.IBU = (double)beerJson["data"][x]["ibu"];
             }
-            else if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["style"]["ibuMin"] != null)
+            else if (beerJson["data"][x]["style"] != null 
+                && beerJson["data"][x]["style"]["ibuMin"] != null)
             {
                 craftBeer.IBU = (double)beerJson["data"][x]["style"]["ibuMin"];
             }
-            else if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["style"]["ibuMax"] != null)
+            else if (beerJson["data"][x]["style"] != null 
+                && beerJson["data"][x]["style"]["ibuMax"] != null)
             {
                 craftBeer.IBU = (double)beerJson["data"][x]["style"]["ibuMax"];
             }
@@ -385,7 +398,8 @@ namespace Craft_Beer_Me.Controllers
             }
 
             //SRM
-            if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["style"]["srmMin"] != null)
+            if (beerJson["data"][x]["style"] != null 
+                && beerJson["data"][x]["style"]["srmMin"] != null)
             {
                 craftBeer.SRM = (double)beerJson["data"][x]["style"]["srmMin"];
             }
@@ -394,9 +408,10 @@ namespace Craft_Beer_Me.Controllers
                 craftBeer.SRM = 0;
             }
 
-            if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["style"]["shortName"] != null)
+            if (beerJson["data"][x]["style"] != null 
+                && beerJson["data"][x]["style"]["name"] != null)
             {
-                craftBeer.CategoryName = beerJson["data"][x]["style"]["shortName"].ToString();
+                craftBeer.CategoryName = beerJson["data"][x]["style"]["name"].ToString();
             }
             else
             {
@@ -603,11 +618,27 @@ namespace Craft_Beer_Me.Controllers
 
         public bool LimitBeer(Beer beer, string style)
         {
-            if (beer.Description.Contains(style))
+            if (beer.CategoryName.Contains(style))
             {
                 return true;
             }
             return false;
+        }
+
+        public static List<Beer> RandoSort(List<Beer> beers)
+        {
+            Random r = new Random();
+            int n = beers.Count;
+
+            for (int i = beers.Count - 1; i > 1; i--)
+            {
+                int rnd = r.Next(i + 1);
+
+                Beer value = beers[rnd];
+                beers[rnd] = beers[i];
+                beers[i] = value;
+            }
+            return beers;
         }
     }
 }
