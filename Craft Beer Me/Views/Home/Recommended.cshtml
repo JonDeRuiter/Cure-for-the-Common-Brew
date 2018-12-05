@@ -19,55 +19,57 @@
 </header>
 
 <body>
- 
-    @foreach (var brewery in (List<Craft_Beer_Me.Models.Brewery>)Session["breweries"])
-    {
-        <table>
-
-            <tr>
-                <th>
-                    <img src="@brewery.PictureUrl" alt="No Picture" width="250" />
-                </th>
-                <th>
-                    @brewery.Name
-                </th>
-                <th>
-                    <a href="@brewery.Url">Website</a>
-                </th>
-                <th>
-                    Menu Description
-                </th>
-
-            </tr>
-            @foreach (var beer in brewery.Menu)
-            {
+    <form action="https://www.google.com/maps/dir//">
+        @foreach (var brewery in (List<Craft_Beer_Me.Models.Brewery>)Session["breweries"])
+        {
+            <table>
                 <tr>
-                    <td>
-                        @if (@beer.Picture != null)
-                        {
-                            <img src="@beer.Picture" alt="No Picture" width="200" />
-                        }
-                        else
-                        {
-                            <img src="~/Content/Gen_Beer.png" alt="No Picture" width="100" />
-                        }
-                    </td>
-                    <td>
-                        @beer.BeerName
-                    </td>
-                    <td>
-                        @beer.CategoryName
-                    </td>
-                    <td>
-                        @beer.Description
-                    </td>
-                </tr>
-            }
+                    <th>
+                        <img src="@brewery.PictureUrl" alt="No Picture" width="250" />
+                    </th>
+                    <th>
+                        @brewery.Name
+                    </th>
+                    <th>
+                        <a href="@brewery.Url">Website</a>
+                    </th>
+                    <th>
+                        Menu Description
+                    </th>
 
-        </table>
-        <br /><br />
-       
-    }
+                </tr>
+                @foreach (var beer in brewery.Menu)
+                {
+                    <tr>
+                        <td>
+                            @if (@beer.Picture != null)
+                            {
+                                <img src="@beer.Picture" alt="No Picture" width="200" />
+                            }
+                            else
+                            {
+                                <img src="~/Content/Gen_Beer.png" alt="No Picture" width="100" />
+                            }
+                        </td>
+                        <td>
+                            @beer.BeerName
+                        </td>
+                        <td>
+                            @beer.CategoryName
+                        </td>
+                        <td>
+                            @beer.Description
+                        </td>
+                    </tr>
+                }
+
+            </table>
+            <p><input type="checkbox" value="@brewery.Name"/> @brewery.Name looks awesome! Lets go there!</p>
+            <br /><br />
+
+        }
+        <button type="submit">I'm ready for my Tour!</button>
+    </form>
 </body>
 
 <footer>
