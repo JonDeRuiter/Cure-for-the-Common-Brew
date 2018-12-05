@@ -192,8 +192,8 @@ namespace Craft_Beer_Me.Controllers
         public List<Brewery> LocalBrewery(double abv, double ibu, double srm, string flavor)
         {
             List<Brewery> localBrews = new List<Brewery>();
-            string SchmozPath = System.IO.Path.GetFullPath("Schmoz.json");
-            
+
+
             StreamReader rd = new StreamReader(SchmozPath);
             string beerData = rd.ReadToEnd();
             JObject SchmozJson = JObject.Parse(beerData);
@@ -205,7 +205,7 @@ namespace Craft_Beer_Me.Controllers
             }
                         
 
-            string JollyPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\JollyPumpkin.json";
+            string JollyPath = @"C:\Users\GC Student\Source\Repos\Craft Beer Me\Craft Beer Me\Controllers\JollyPumpkin.json";
             StreamReader rd2 = new StreamReader(JollyPath);
             string JollyData = rd2.ReadToEnd();
             JObject JollyJson = JObject.Parse(JollyData);
@@ -216,7 +216,7 @@ namespace Craft_Beer_Me.Controllers
                 localBrews.Add(jolly);
             }
 
-            string AtwaterPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\Atwater.json";
+            string AtwaterPath = @"C:\Users\GC Student\Source\Repos\Craft Beer Me\Craft Beer Me\Controllers\Atwater.json";
             StreamReader rd3 = new StreamReader(AtwaterPath);
             string AtwaterData = rd3.ReadToEnd();
             JObject AtwaterJson = JObject.Parse(AtwaterData);
@@ -227,7 +227,7 @@ namespace Craft_Beer_Me.Controllers
                 localBrews.Add(atwater);
             }
 
-            string NewPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\NewHolland2.json";
+            string NewPath = @"C:\Users\GC Student\Source\Repos\Craft Beer Me\Craft Beer Me\Controllers\NewHolland2.json";
             StreamReader rd4 = new StreamReader(NewPath);
             string NewData = rd4.ReadToEnd();
             JObject NewJson = JObject.Parse(NewData);
@@ -464,12 +464,15 @@ namespace Craft_Beer_Me.Controllers
 
 
             }
-            if (menu != null)
+
+
+          if (menu != null)
             {
 
 
             }
             menu = RandoSort(menu);
+
             return menu;
         }
 

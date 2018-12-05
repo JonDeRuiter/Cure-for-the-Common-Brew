@@ -1,35 +1,63 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
+﻿<header>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            text-align: center;
+        }
+    </style>
+</header>
+
 <h2>@ViewBag.Title</h2>
 <h3>Meet the Dev Team:</h3>
 
-<img src="https://www.grandcircus.co/wp-content/uploads/2018/11/Andrew-Hatch.jpg" alt="Sean Keckler" width="100" />
-<address>
-    Andrew Hatch<br />
-    <email>hatcha144@gmail.com</email><br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100 <br />
-    <a href="">LinkedIn</a><br />
-    <a href="https://github.com/hatcha144">GitHub</a>
-</address>
-
-<img src="https://www.grandcircus.co/wp-content/uploads/2018/11/Jonathan-DeRuiter.jpg" alt="Sean Keckler" width="100" />
-<address>
-    Jonathan DeRuiter<br />
-    <email>jonathanhderuiter@gmail.com</email><br />
-    <abbr title="Phone">P:</abbr>
-    616.229.0460<br />
-    <a href="https://www.linkedin.com/in/jonathan-deruiter/">LinkedIn</a><br />
-    <a href="https://github.com/JonDeRuiter">GitHub</a>
-</address>
-
-<img src="https://www.grandcircus.co/wp-content/uploads/2018/11/Sean-Kessler.jpg" alt="Sean Keckler" width="100"/>
-<address>
-    Sean Keckler<br />
-    <email>seankeckler@gmail.com</email><br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100<br />
-    <a href="">LinkedIn</a><br />
-    <a href="https://github.com/Seankeckler">GitHub</a>
-</address>  
+<table>
+    <tr>
+        <th><img src="https://www.grandcircus.co/wp-content/uploads/2018/11/Andrew-Hatch.jpg" alt="Sean Keckler" width="100" /></th>
+        <th><img src="https://www.grandcircus.co/wp-content/uploads/2018/11/Jonathan-DeRuiter.jpg" alt="Sean Keckler" width="100" /></th>
+        <th><img src="https://www.grandcircus.co/wp-content/uploads/2018/11/Sean-Kessler.jpg" alt="Sean Keckler" width="100" /></th>
+    </tr>
+    <tr>
+        <td>Andrew Hatch</td>
+        <td>Jonathan DeRuiter</td>
+        <td>Sean Keckler</td>
+    </tr>
+    <tr>
+        <td><email>hatcha144@gmail.com</email></td>
+        <td><email>jonathanhderuiter@gmail.com</email></td>
+        <td><email>seankeckler@gmail.com</email></td>
+    </tr>
+    <tr>
+        <td>
+            <abbr title="Phone">P:</abbr>
+            425.555.0100
+        </td>
+        <td>
+            <abbr title="Phone">P:</abbr>
+            616.229.0460
+        </td>
+        <td>
+            <abbr title="Phone">P:</abbr>
+            425.555.0100
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="">LinkedIn</a><br />
+            <a href="https://github.com/hatcha144">GitHub</a>
+        </td>
+        <td>
+            <a href="https://www.linkedin.com/in/jonathan-deruiter/">LinkedIn</a><br />
+            <a href="https://github.com/JonDeRuiter">GitHub</a>
+        </td>
+        <td>
+            <a href="">LinkedIn</a><br />
+            <a href="https://github.com/Seankeckler">GitHub</a>
+        </td>
+    </tr>
+    <tr></tr>
+</table>
