@@ -2,6 +2,20 @@
 @model IEnumerable <Craft_Beer_Me.Models.Brewery>
 <header>
     <title>We Recommend: </title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 2px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+    </style>
 </header>
 
 <body>
@@ -12,7 +26,7 @@
 
             <tr>
                 <th>
-                    <img src="@brewery.PictureUrl" alt="No Picture" width="150" />
+                    <img src="@brewery.PictureUrl" alt="No Picture" width="250" />
                 </th>
                 <th>
                     @brewery.Name
@@ -29,7 +43,14 @@
             {
                 <tr>
                     <td>
-                        <img src="@beer.Picture" alt="No Picture" />
+                        @if (@beer.Picture != null)
+                        {
+                            <img src="@beer.Picture" alt="No Picture" width="200" />
+                        }
+                        else
+                        {
+                            <img src="~/Content/Gen_Beer.png" alt="No Picture" width="100" />
+                        }
                     </td>
                     <td>
                         @beer.BeerName
@@ -45,6 +66,7 @@
 
         </table>
         <br /><br />
+       
     }
 </body>
 
