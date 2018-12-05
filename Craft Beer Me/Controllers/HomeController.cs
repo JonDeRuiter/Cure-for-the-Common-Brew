@@ -323,16 +323,14 @@ namespace Craft_Beer_Me.Controllers
 
 
             }
-<<<<<<< HEAD
 
-=======
             if (menu != null)
             {
 
 
             }
             menu = RandoSort(menu);
->>>>>>> 7ec304c419c2d66665279d8ddacf232bd7709576
+
             return menu;
         }
 
