@@ -1,0 +1,323 @@
+{
+message: "READ ONLY MODE: Request Successful",
+data: [
+{
+id: "DS92w7",
+name: "Aphrodisiale",
+nameDisplay: "Aphrodisiale",
+abv: "7.1",
+styleId: 19,
+isRetired: "N",
+status: "verified",
+statusDisplay: "Verified",
+createDate: "2015-07-13 16:36:14",
+updateDate: "2015-07-13 16:36:15",
+style: {
+id: 19,
+categoryId: 1,
+category: {
+id: 1,
+name: "British Origin Ales",
+createDate: "2012-03-21 20:06:45"
+},
+name: "Robust Porter",
+shortName: "Robust Porter",
+description: "Robust porters are black in color and have a roast malt flavor, often reminiscent of cocoa, but no roast barley flavor. These porters have a sharp bitterness of black malt without a highly burnt/charcoal flavor. Caramel and other malt sweetness should be present and in harmony with other distinguishing porter characters. Robust porters range from medium to full in body and have a malty sweetness. Hop bitterness is medium to high, with hop aroma and flavor ranging from negligible to medium. Diacetyl is acceptable at very low levels. Fruity esters should be evident, balanced with roast malt and hop bitterness.",
+ibuMin: "25",
+ibuMax: "40",
+abvMin: "5",
+abvMax: "6.5",
+srmMin: "30",
+srmMax: "30",
+ogMin: "1.045",
+fgMin: "1.008",
+fgMax: "1.016",
+createDate: "2012-03-21 20:06:45",
+updateDate: "2015-04-07 15:21:45"
+}
+},
+{
+id: "plrr5Y",
+name: "Brownson",
+nameDisplay: "Brownson",
+abv: "6.9",
+styleId: 37,
+isRetired: "N",
+status: "verified",
+statusDisplay: "Verified",
+createDate: "2015-07-13 16:36:29",
+updateDate: "2015-07-13 16:36:29",
+style: {
+id: 37,
+categoryId: 3,
+category: {
+id: 3,
+name: "North American Origin Ales",
+createDate: "2012-03-21 20:06:45"
+},
+name: "American-Style Brown Ale",
+shortName: "American Brown",
+description: "American brown ales range from deep copper to brown in color. Roasted malt caramel-like and chocolate-like characters should be of medium intensity in both flavor and aroma. American brown ales have evident low to medium hop flavor and aroma, medium to high hop bitterness, and a medium body. Estery and fruity-ester characters should be subdued. Diacetyl should not be perceived. Chill haze is allowable at cold temperatures.",
+ibuMin: "25",
+ibuMax: "45",
+abvMin: "4",
+abvMax: "6.4",
+srmMin: "15",
+srmMax: "26",
+ogMin: "1.04",
+fgMin: "1.01",
+fgMax: "1.018",
+createDate: "2012-03-21 20:06:46",
+updateDate: "2015-04-07 15:27:35"
+}
+},
+{
+id: "b8QEmg",
+name: "Crossroads",
+nameDisplay: "Crossroads",
+styleId: 117,
+isRetired: "N",
+status: "verified",
+statusDisplay: "Verified",
+createDate: "2015-07-13 16:35:51",
+updateDate: "2015-07-13 16:35:51",
+style: {
+id: 117,
+categoryId: 11,
+category: {
+id: 11,
+name: "Hybrid/mixed Beer",
+createDate: "2012-03-21 20:06:46"
+},
+name: "Rye Ale or Lager with or without Yeast",
+shortName: "Rye Ale",
+description: "Rye beers can be made using either ale or lager yeast. It should be brewed with at least 20 percent rye malt, and low to medium perception of hop bitterness. Hop aroma and flavor can be low to medium-high. These are often versions of classic styles that contain noticeable rye character in balance with other qualities of the beer. A spicy, fruity-estery aroma and flavor are typical but at low levels; however, phenolic, clove-like characteristics should not be perceived. Color is straw to amber, and the body should be light to medium in character. Diacetyl should not be perceived. If this style is packaged and served without yeast, no yeast characters should be evident in mouthfeel, flavor, or aroma. A low level of tannin derived astringency may be perceived. If this style is served with yeast, the character should portray a full yeasty mouthfeel and appear hazy to very cloudy. Yeast flavor and aroma should be low to medium but not overpowering the balance and character of rye and barley malt and hops. Darker versions of this style will be dark amber to dark brown, and the body should be light to medium in character. Roasted malts are optionally evident in aroma and flavor with a low level of roast malt astringency acceptable when appropriately balanced with malt sweetness. Roast malts may be evident as a cocoa/chocolate or caramel character. Aromatic toffee-like, caramel, or biscuit-like characters may be part of the overall flavor/aroma profile. As in the lighter colored versions, diacetyl should not be perceived. Competition directors may create specific styles of rye beer, such as Rye Pale Ale or Rye Brown Ale. A statement by the brewer indicating if the beer is based on a classic style is essential for accurate judging.",
+createDate: "2012-03-21 20:06:46",
+updateDate: "2015-04-07 15:44:12"
+}
+},
+{
+id: "gj2HXr",
+name: "Daydream Believer",
+nameDisplay: "Daydream Believer",
+abv: "7",
+styleId: 42,
+isRetired: "N",
+status: "verified",
+statusDisplay: "Verified",
+createDate: "2015-07-13 16:37:41",
+updateDate: "2015-07-13 16:37:41",
+style: {
+id: 42,
+categoryId: 3,
+category: {
+id: 3,
+name: "North American Origin Ales",
+createDate: "2012-03-21 20:06:45"
+},
+name: "American-Style Stout",
+shortName: "American Stout",
+description: "Initial low to medium malt sweetness with a degree of caramel, chocolate and/or roasted coffee flavor with a distinctive dryroasted bitterness in the finish. Coffee-like roasted barley and roasted malt aromas are prominent. Some slight roasted malt acidity is permissible and a medium- to full-bodied mouthfeel is appropriate. Hop bitterness may be moderate to high. Hop aroma and flavor is moderate to high, often with American citrus-type and/or resiny hop character. The perception of fruity esters is low. Roasted malt/barley astringency may be low but not excessive. Diacetyl (butterscotch) should be negligible or not perceived. Head retention is excellent.",
+ibuMin: "35",
+ibuMax: "60",
+abvMin: "5.7",
+abvMax: "8.8",
+srmMin: "40",
+srmMax: "40",
+ogMin: "1.05",
+fgMin: "1.01",
+fgMax: "1.022",
+createDate: "2012-03-21 20:06:46",
+updateDate: "2015-04-07 15:28:43"
+}
+},
+{
+id: "GHiad7",
+name: "Fiddlestix",
+nameDisplay: "Fiddlestix",
+abv: "6.4",
+styleId: 30,
+isRetired: "N",
+status: "verified",
+statusDisplay: "Verified",
+createDate: "2015-07-10 23:42:06",
+updateDate: "2015-07-13 16:34:53",
+style: {
+id: 30,
+categoryId: 3,
+category: {
+id: 3,
+name: "North American Origin Ales",
+createDate: "2012-03-21 20:06:45"
+},
+name: "American-Style India Pale Ale",
+shortName: "American IPA",
+description: "American-style India pale ales are perceived to have medium-high to intense hop bitterness, flavor and aroma with medium-high alcohol content. The style is further characterized by floral, fruity, citrus-like, piney, resinous, or sulfur-like American-variety hop character. Note that one or more of these American-variety hop characters is the perceived end, but the hop characters may be a result of the skillful use of hops of other national origins. The use of water with high mineral content results in a crisp, dry beer. This pale gold to deep copper-colored ale has a full, flowery hop aroma and may have a strong hop flavor (in addition to the perception of hop bitterness). India pale ales possess medium maltiness which contributes to a medium body. Fruity-ester flavors and aromas are moderate to very strong. Diacetyl can be absent or may be perceived at very low levels. Chill and/or hop haze is allowable at cold temperatures. (English and citrus-like American hops are considered enough of a distinction justifying separate American-style IPA and English-style IPA categories or subcategories. Hops of other origins may be used for bitterness or approximating traditional American or English character. See English-style India Pale Ale",
+ibuMin: "50",
+ibuMax: "70",
+abvMin: "6.3",
+abvMax: "7.5",
+srmMin: "6",
+srmMax: "14",
+ogMin: "1.06",
+fgMin: "1.012",
+fgMax: "1.018",
+createDate: "2012-03-21 20:06:45",
+updateDate: "2015-04-07 15:26:37"
+}
+},
+{
+id: "S5afEz",
+name: "Golden Lion Tamarin",
+nameDisplay: "Golden Lion Tamarin",
+abv: "6.6",
+styleId: 10,
+isRetired: "N",
+status: "verified",
+statusDisplay: "Verified",
+createDate: "2015-07-13 16:37:04",
+updateDate: "2015-07-13 16:37:04",
+style: {
+id: 10,
+categoryId: 1,
+category: {
+id: 1,
+name: "British Origin Ales",
+createDate: "2012-03-21 20:06:45"
+},
+name: "English-Style Pale Mild Ale",
+shortName: "English Pale Mild",
+description: "English pale mild ales range from golden to amber in color. Malt flavor dominates the flavor profile with little hop bitterness or flavor. Hop aroma can be light. Very low diacetyl flavors may be appropriate in this low-alcohol beer. Fruity-ester level is very low. Chill haze is allowable at cold temperatures.",
+ibuMin: "10",
+ibuMax: "20",
+abvMin: "3.2",
+abvMax: "4",
+srmMin: "8",
+srmMax: "17",
+ogMin: "1.03",
+fgMin: "1.004",
+fgMax: "1.008",
+createDate: "2012-03-21 20:06:45",
+updateDate: "2015-04-07 15:20:35"
+}
+},
+{
+id: "qUHHDa",
+name: "Grand Pumpkin",
+nameDisplay: "Grand Pumpkin",
+availableId: 3,
+styleId: 121,
+isRetired: "Y",
+labels: {
+icon: "https://brewerydb-images.s3.amazonaws.com/beer/qUHHDa/upload_Je9Lhk-icon.png",
+medium: "https://brewerydb-images.s3.amazonaws.com/beer/qUHHDa/upload_Je9Lhk-medium.png",
+large: "https://brewerydb-images.s3.amazonaws.com/beer/qUHHDa/upload_Je9Lhk-large.png",
+contentAwareIcon: "https://brewerydb-images.s3.amazonaws.com/beer/qUHHDa/upload_Je9Lhk-contentAwareIcon.png",
+contentAwareMedium: "https://brewerydb-images.s3.amazonaws.com/beer/qUHHDa/upload_Je9Lhk-contentAwareMedium.png",
+contentAwareLarge: "https://brewerydb-images.s3.amazonaws.com/beer/qUHHDa/upload_Je9Lhk-contentAwareLarge.png"
+},
+status: "verified",
+statusDisplay: "Verified",
+createDate: "2012-10-24 13:54:18",
+updateDate: "2018-11-02 02:13:07",
+available: {
+id: 3,
+name: "Not Available",
+description: "Beer is not currently available."
+},
+style: {
+id: 121,
+categoryId: 11,
+category: {
+id: 11,
+name: "Hybrid/mixed Beer",
+createDate: "2012-03-21 20:06:46"
+},
+name: "Pumpkin Beer",
+shortName: "Pumpkin Beer",
+description: "Pumpkin beers are any beers using pumpkins (Cucurbito pepo) as an adjunct in either mash, kettle, primary or secondary fermentation, providing obvious (ranging from subtle to intense), yet harmonious, qualities. Pumpkin qualities should not be overpowered by hop character. These may or may not be spiced or flavored with other things. A statement by the brewer explaining the nature of the beer is essential for fair assessment in competitions. If this beer is a classic style with pumpkin, the brewer should also specify the classic style.",
+ibuMin: "5",
+ibuMax: "70",
+abvMin: "2.5",
+abvMax: "12",
+srmMin: "5",
+srmMax: "50",
+ogMin: "1.03",
+fgMin: "1.006",
+fgMax: "1.03",
+createDate: "2012-03-21 20:06:46",
+updateDate: "2015-04-07 15:44:28"
+}
+},
+{
+id: "yohQdF",
+name: "Grapefruit Moon",
+nameDisplay: "Grapefruit Moon",
+abv: "6.2",
+styleId: 30,
+isRetired: "N",
+status: "verified",
+statusDisplay: "Verified",
+createDate: "2015-07-13 16:35:37",
+updateDate: "2015-07-13 16:35:37",
+style: {
+id: 30,
+categoryId: 3,
+category: {
+id: 3,
+name: "North American Origin Ales",
+createDate: "2012-03-21 20:06:45"
+},
+name: "American-Style India Pale Ale",
+shortName: "American IPA",
+description: "American-style India pale ales are perceived to have medium-high to intense hop bitterness, flavor and aroma with medium-high alcohol content. The style is further characterized by floral, fruity, citrus-like, piney, resinous, or sulfur-like American-variety hop character. Note that one or more of these American-variety hop characters is the perceived end, but the hop characters may be a result of the skillful use of hops of other national origins. The use of water with high mineral content results in a crisp, dry beer. This pale gold to deep copper-colored ale has a full, flowery hop aroma and may have a strong hop flavor (in addition to the perception of hop bitterness). India pale ales possess medium maltiness which contributes to a medium body. Fruity-ester flavors and aromas are moderate to very strong. Diacetyl can be absent or may be perceived at very low levels. Chill and/or hop haze is allowable at cold temperatures. (English and citrus-like American hops are considered enough of a distinction justifying separate American-style IPA and English-style IPA categories or subcategories. Hops of other origins may be used for bitterness or approximating traditional American or English character. See English-style India Pale Ale",
+ibuMin: "50",
+ibuMax: "70",
+abvMin: "6.3",
+abvMax: "7.5",
+srmMin: "6",
+srmMax: "14",
+ogMin: "1.06",
+fgMin: "1.012",
+fgMax: "1.018",
+createDate: "2012-03-21 20:06:45",
+updateDate: "2015-04-07 15:26:37"
+}
+},
+{
+id: "4PJTOQ",
+name: "Tupelo Honey",
+nameDisplay: "Tupelo Honey",
+abv: "5.9",
+styleId: 126,
+isRetired: "N",
+status: "verified",
+statusDisplay: "Verified",
+createDate: "2015-07-13 16:37:23",
+updateDate: "2015-07-13 16:37:23",
+style: {
+id: 126,
+categoryId: 11,
+category: {
+id: 11,
+name: "Hybrid/mixed Beer",
+createDate: "2012-03-21 20:06:46"
+},
+name: "Specialty Honey Lager or Ale",
+shortName: "Honey Beer",
+description: "These beers are brewed using honey in addition to malted barley. Beers may be brewed to a traditional style or may be experimental. Character of honey should be evident in flavor and aroma and balanced with the other components without overpowering them. A statement by the brewer explaining the classic or other style of the beer, and the type of honey used is essential in order for fair assessment in competitions.",
+ibuMax: "100",
+abvMin: "2.5",
+abvMax: "12",
+srmMin: "1",
+srmMax: "100",
+ogMin: "1.03",
+fgMin: "1.006",
+fgMax: "1.03",
+createDate: "2012-03-21 20:06:46",
+updateDate: "2015-04-07 15:45:03"
+}
+}
+],
+status: "success"
+}
