@@ -3,6 +3,7 @@
 <header>
     <title>We Recommend: </title>
     <style>
+
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
@@ -22,25 +23,29 @@
  
     @foreach (var brewery in (List<Craft_Beer_Me.Models.Brewery>)Session["breweries"])
     {
-        <table>
 
-            <tr>
-                <th>
-                    <img src="@brewery.PictureUrl" alt="No Picture" width="250" />
-                </th>
-                <th>
-                    @brewery.Name
-                </th>
-                <th>
-                    <a href="@brewery.Url">Website</a>
-                </th>
-                <th>
-                    Menu Description
-                </th>
 
-            </tr>
-            @foreach (var beer in brewery.Menu)
+        <tr>
+            <th>
+                <img src="@brewery.PictureUrl" alt="No Picture" width="150" />
+            </th>
+            <th>
+                @brewery.Name
+            </th>
+            <th>
+                <a href="@brewery.Url">Website</a>
+            </th>
+            <th>
+                Menu Description
+            </th>
+            @{ int counter = 0;}
+        </tr>
+        @foreach (var beer in brewery.Menu)
+        {
+            if (counter == 6)
             {
+                break;
+            }
                 <tr>
                     <td>
                         @if (@beer.Picture != null)
@@ -62,9 +67,10 @@
                         @beer.Description
                     </td>
                 </tr>
-            }
+            counter++;
+        }
 
-        </table>
+    </table>
         <br /><br />
        
     }
