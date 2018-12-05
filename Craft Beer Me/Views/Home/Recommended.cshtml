@@ -2,31 +2,49 @@
 @model IEnumerable <Craft_Beer_Me.Models.Brewery>
 <header>
     <title>We Recommend: </title>
+    <style>
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 2px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
 </header>
 
 <body>
  
     @foreach (var brewery in (List<Craft_Beer_Me.Models.Brewery>)Session["breweries"])
     {
-        <table>
+    <table>
 
-            <tr>
-                <th>
-                    <img src="@brewery.PictureUrl" alt="No Picture" width="150" />
-                </th>
-                <th>
-                    @brewery.Name
-                </th>
-                <th>
-                    <a href="@brewery.Url">Website</a>
-                </th>
-                <th>
-                    Menu Description
-                </th>
-
-            </tr>
-            @foreach (var beer in brewery.Menu)
+        <tr>
+            <th>
+                <img src="@brewery.PictureUrl" alt="No Picture" width="150" />
+            </th>
+            <th>
+                @brewery.Name
+            </th>
+            <th>
+                <a href="@brewery.Url">Website</a>
+            </th>
+            <th>
+                Menu Description
+            </th>
+            @{ int counter = 0;}
+        </tr>
+        @foreach (var beer in brewery.Menu)
+        {
+            if (counter == 6)
             {
+                break;
+            }
                 <tr>
                     <td>
                         <img src="@beer.Picture" alt="No Picture" />
@@ -41,9 +59,10 @@
                         @beer.Description
                     </td>
                 </tr>
-            }
+            counter++;
+        }
 
-        </table>
+    </table>
         <br /><br />
     }
 </body>
