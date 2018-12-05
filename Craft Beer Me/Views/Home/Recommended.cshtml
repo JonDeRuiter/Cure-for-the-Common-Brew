@@ -19,8 +19,8 @@
 </header>
 
 <body>
-
-    @foreach (var brewery in ViewBag.Breweries)
+ 
+    @foreach (var brewery in (List<Craft_Beer_Me.Models.Brewery>)Session["breweries"])
     {
         <table>
 

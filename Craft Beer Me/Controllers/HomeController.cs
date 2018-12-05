@@ -32,12 +32,21 @@ namespace Craft_Beer_Me.Controllers
             return View();
         }
 
+      
+
         public ActionResult results(string ABV, string IBU, string SRM)
         {
             return View();
         }
 
-        public ActionResult Recommended(string ABV, string IBU, string SRM, string flavor)
+        public ActionResult Recommended()
+        {
+         
+            return View();
+            
+        }
+
+        public ActionResult BeerNums(string ABV, string IBU, string SRM, string flavor)
         {
             double abv, ibu, srm;
             abv = double.Parse(ABV);
@@ -45,9 +54,30 @@ namespace Craft_Beer_Me.Controllers
             srm = double.Parse(SRM);
 
             List<Brewery> breweries = GetBreweries(abv, ibu, srm, flavor);
-            
-            ViewBag.Breweries = breweries;
-            return View();
+
+            Session["breweries"] = breweries;
+            return RedirectToAction("Recommended");
+
+        }
+
+        public ActionResult styleSearch(string style)
+        {
+            if(style != "1")
+            {
+                double abv = 0;
+                double ibu = 0;
+                double srm = 0;
+                string flavor = style;
+
+                List<Brewery> breweries = GetBreweries(abv, ibu, srm, flavor);
+
+                Session["breweries"] = breweries;
+                return RedirectToAction("Recommended");
+            }
+            else
+            {
+               return RedirectToAction("/Index");
+            }
             
         }
 
@@ -163,7 +193,7 @@ namespace Craft_Beer_Me.Controllers
         {
             List<Brewery> localBrews = new List<Brewery>();
 
-            string SchmozPath = @"C:\Users\GC Student\Source\Repos\Craft Beer Me\Craft Beer Me\Controllers\Schmoz.json";
+            string SchmozPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\Schmoz.json";
             StreamReader rd = new StreamReader(SchmozPath);
             string beerData = rd.ReadToEnd();
             JObject SchmozJson = JObject.Parse(beerData);
@@ -175,7 +205,7 @@ namespace Craft_Beer_Me.Controllers
             }
                         
 
-            string JollyPath = @"C:\Users\GC Student\Source\Repos\Craft Beer Me\Craft Beer Me\Controllers\JollyPumpkin.json";
+            string JollyPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\JollyPumpkin.json";
             StreamReader rd2 = new StreamReader(JollyPath);
             string JollyData = rd2.ReadToEnd();
             JObject JollyJson = JObject.Parse(JollyData);
@@ -186,7 +216,7 @@ namespace Craft_Beer_Me.Controllers
                 localBrews.Add(jolly);
             }
 
-            string AtwaterPath =  @"C:\Users\GC Student\Source\Repos\Craft Beer Me\Craft Beer Me\Controllers\Atwater.json";
+            string AtwaterPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\Atwater.json";
             StreamReader rd3 = new StreamReader(AtwaterPath);
             string AtwaterData = rd3.ReadToEnd();
             JObject AtwaterJson = JObject.Parse(AtwaterData);
@@ -197,7 +227,7 @@ namespace Craft_Beer_Me.Controllers
                 localBrews.Add(atwater);
             }
 
-            string NewPath = @"C:\Users\GC Student\Source\Repos\Craft Beer Me\Craft Beer Me\Controllers\NewHolland2.json";
+            string NewPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\NewHolland2.json";
             StreamReader rd4 = new StreamReader(NewPath);
             string NewData = rd4.ReadToEnd();
             JObject NewJson = JObject.Parse(NewData);
@@ -261,10 +291,7 @@ namespace Craft_Beer_Me.Controllers
             List<Beer> menu = new List<Beer>();
 
             //if the user doesn't put anything flavor is set to a space so that every result is true
-            if (flavor == null)
-            {
-                flavor = "e";
-            }
+          
 
             //this array is created for the sole purpose of finding the lenght of the data object
             Array beerArray = beerJson["data"].ToArray();
@@ -273,7 +300,23 @@ namespace Craft_Beer_Me.Controllers
                 //Evaluate here
                 Beer newBeer = new Beer();
                 newBeer = MakeABeer(beerJson, i);
-                if (LimitBeer(newBeer, abv, ibu, srm, flavor))
+                if (flavor == null)
+                {
+                    if(LimitBeer(newBeer, abv, ibu, srm))
+                    {
+                        menu.Add(newBeer);
+                    }
+                    
+                }
+                else if (abv == 0 )
+                {
+                    if (LimitBeer(newBeer, flavor))
+                    {
+                        menu.Add(newBeer);
+                    }
+                    
+                }
+               else if (LimitBeer(newBeer, abv, ibu, srm, flavor))
                 {
                     menu.Add(newBeer);
                 }
@@ -471,5 +514,99 @@ namespace Craft_Beer_Me.Controllers
             }
         }
 
+
+        public bool LimitBeer(Beer beer, double abv, double ibu, double srm)
+        {
+            int counter = 0;
+            switch (abv)
+            {
+                case 1:
+                    if (beer.ABV >= 1 && beer.ABV <= 5.1)
+                    {
+                        counter++;
+                    }
+                    break;
+                case 2:
+                    if (beer.ABV >= 5.1 && beer.ABV <= 9.1)
+                    {
+                        counter++;
+                    }
+                    break;
+                case 3:
+                    if (beer.ABV >= 9.1)
+                    {
+                        counter++;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            switch (ibu)
+            {
+                case 1:
+                    if (beer.IBU <= 30 && beer.IBU > 0)
+                    {
+                        counter++;
+                    }
+                    break;
+                case 2:
+                    if (beer.IBU <= 60 && beer.IBU >= 30)
+                    {
+                        counter++;
+                    }
+                    break;
+                case 3:
+                    if (beer.IBU >= 60)
+                    {
+                        counter++;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            switch (srm)
+            {
+                case 1:
+                    if (beer.SRM <= 10 && beer.SRM > 0)
+                    {
+                        counter++;
+                    }
+                    break;
+                case 2:
+                    if (beer.SRM <= 21 && beer.IBU >= 10)
+                    {
+                        counter++;
+                    }
+                    break;
+                case 3:
+                    if (beer.SRM >= 21)
+                    {
+                        counter++;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            if (counter == 3)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool LimitBeer(Beer beer, string style)
+        {
+            if (beer.Description.Contains(style))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
