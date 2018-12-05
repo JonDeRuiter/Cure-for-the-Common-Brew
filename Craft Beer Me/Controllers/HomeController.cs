@@ -192,8 +192,8 @@ namespace Craft_Beer_Me.Controllers
         public List<Brewery> LocalBrewery(double abv, double ibu, double srm, string flavor)
         {
             List<Brewery> localBrews = new List<Brewery>();
-
-            string SchmozPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\Schmoz.json";
+            //need to fix file paths for all ***
+            string SchmozPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\Schmohz JSON.json";
             StreamReader rd = new StreamReader(SchmozPath);
             string beerData = rd.ReadToEnd();
             JObject SchmozJson = JObject.Parse(beerData);
@@ -238,6 +238,116 @@ namespace Craft_Beer_Me.Controllers
                 localBrews.Add(holland);
             }
 
+            string VivantPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\NewHolland2.json";
+            StreamReader rd5 = new StreamReader(VivantPath);
+            string VivantData = rd5.ReadToEnd();
+            JObject VivantJson = JObject.Parse(VivantData);
+
+            Brewery vivant = (MakeABrewery(VivantJson, 5, abv, ibu, srm, flavor));
+            if (vivant != null)
+            {
+                localBrews.Add(vivant);
+            }
+
+            string ElkPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\NewHolland2.json";
+            StreamReader rd6 = new StreamReader(ElkPath);
+            string ElkData = rd6.ReadToEnd();
+            JObject ElkJson = JObject.Parse(ElkData);
+
+            Brewery elk = (MakeABrewery(ElkJson, 6, abv, ibu, srm, flavor));
+            if (elk != null)
+            {
+                localBrews.Add(elk);
+            }
+
+            string FoundersPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\NewHolland2.json";
+            StreamReader rd7 = new StreamReader(FoundersPath);
+            string FoundersData = rd7.ReadToEnd();
+            JObject FoundersJson = JObject.Parse(FoundersData);
+
+            Brewery founders = (MakeABrewery(FoundersJson, 7, abv, ibu, srm, flavor));
+            if (founders != null)
+            {
+                localBrews.Add(founders);
+            }
+
+            string HarmonyPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\NewHolland2.json";
+            StreamReader rd8 = new StreamReader(HarmonyPath);
+            string HarmonyData = rd8.ReadToEnd();
+            JObject HarmonyJson = JObject.Parse(HarmonyData);
+
+            Brewery harmony = (MakeABrewery(HarmonyJson, 8, abv, ibu, srm, flavor));
+            if (harmony != null)
+            {
+                localBrews.Add(harmony);
+            }
+
+            string HideoutPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\NewHolland2.json";
+            StreamReader rd9 = new StreamReader(HideoutPath);
+            string HideoutData = rd9.ReadToEnd();
+            JObject HideoutJson = JObject.Parse(HideoutData);
+
+            Brewery hideout = (MakeABrewery(HideoutJson, 9, abv, ibu, srm, flavor));
+            if (hideout != null)
+            {
+                localBrews.Add(hideout);
+            }
+
+            string PeoplesPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\NewHolland2.json";
+            StreamReader rd10 = new StreamReader(PeoplesPath);
+            string PeoplesData = rd10.ReadToEnd();
+            JObject PeoplesJson = JObject.Parse(PeoplesData);
+
+            Brewery peoples = (MakeABrewery(PeoplesJson, 10, abv, ibu, srm, flavor));
+            if (peoples != null)
+            {
+                localBrews.Add(peoples);
+            }
+            
+            string PerrinPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\NewHolland2.json";
+            StreamReader rd11 = new StreamReader(PerrinPath);
+            string PerrinData = rd11.ReadToEnd();
+            JObject PerrinJson = JObject.Parse(PerrinData);
+
+            Brewery perrin = (MakeABrewery(PerrinJson, 11, abv, ibu, srm, flavor));
+            if (perrin != null)
+            {
+                localBrews.Add(perrin);
+            }
+
+            string RockPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\NewHolland2.json";
+            StreamReader rd12 = new StreamReader(RockPath);
+            string RockData = rd12.ReadToEnd();
+            JObject RockJson = JObject.Parse(RockData);
+
+            Brewery rock = (MakeABrewery(RockJson, 12, abv, ibu, srm, flavor));
+            if (rock != null)
+            {
+                localBrews.Add(rock);
+            }
+
+            string MittenPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\NewHolland2.json";
+            StreamReader rd13 = new StreamReader(MittenPath);
+            string MittenData = rd13.ReadToEnd();
+            JObject MittenJson = JObject.Parse(MittenData);
+
+            Brewery mitten = (MakeABrewery(MittenJson, 13, abv, ibu, srm, flavor));
+            if (mitten != null)
+            {
+                localBrews.Add(mitten);
+            }
+
+            string HopcatPath = @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\NewHolland2.json";
+            StreamReader rd14 = new StreamReader(HopcatPath);
+            string HopcatData = rd14.ReadToEnd();
+            JObject HopcatJson = JObject.Parse(HopcatData);
+
+            Brewery hopcat = (MakeABrewery(HopcatJson, 14, abv, ibu, srm, flavor));
+            if (hopcat != null)
+            {
+                localBrews.Add(hopcat);
+            }
+
             return localBrews;
         }
 
@@ -268,8 +378,59 @@ namespace Craft_Beer_Me.Controllers
                     GrandCircus.Url = "http://newhollandbrew.com/";
                     GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/AqEUBQ/upload_0xEGxj-squareLarge.png";
                     break;
+                case 5:
+                    GrandCircus.Name = "Brewery Vivant";
+                    GrandCircus.Url = "http://www.breweryvivant.com/";
+                    GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/LFkVMc/upload_GhuNYz-squareLarge.png";
+                    break;
+                case 6:
+                    GrandCircus.Name = "Elk Brewing";
+                    GrandCircus.Url = "http://elkbrewing.com/";
+                    GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/sjblac/upload_2QxSy3-squareLarge.png";
+                    break;
+                case 7:
+                    GrandCircus.Name = "Founders";
+                    GrandCircus.Url = "http://www.foundersbrewing.com/";
+                    GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/Idm5Y5/upload_O8MoRg-squareLarge.png";
+                    break;
+                case 8:
+                    GrandCircus.Name = "Harmony";
+                    GrandCircus.Url = "https://harmonybeer.com/";
+                    GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/P0oEwB/upload_5Ngoxq-squareLarge.png";
+                    break;
+                case 9:
+                    GrandCircus.Name = "Hideout";
+                    GrandCircus.Url = "http://hideoutbrewing.com/";
+                    GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/35YJeP/upload_eNle75-squareLarge.png";
+                    break;
+                case 10:
+                    GrandCircus.Name = "The People's Cider";
+                    GrandCircus.Url = "http://www.thepeoplescider.com/";
+                    GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/iebYze/upload_bv6mpy-squareLarge.png";
+                    break;
+                case 11:
+                    GrandCircus.Name = "Perrin Brewing Company";
+                    GrandCircus.Url = "http://www.perrinbrewing.com/";
+                    GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/Boa6td/upload_6ADB1F-squareLarge.png";
+                    break;
+                case 12:
+                    GrandCircus.Name = "Rockford Brewing Company";
+                    GrandCircus.Url = "https://www.rockfordbrewing.com/";
+                    GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/U92Ctx/upload_6NaOBl-squareLarge.png";
+                    break;
+                case 13:
+                    GrandCircus.Name = "The Mitten";
+                    GrandCircus.Url = "http://www.mittenbrewing.com/";
+                    GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/bdFoir/upload_NNuOnt-squareLarge.png";
+                    break;
+                case 14:
+                    GrandCircus.Name = "HopCat";
+                    GrandCircus.Url = "http://hopcat.com/";
+                    GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/HizvxH/upload_oqijUs-squareLarge.png";
+                    break;
                 default:
                     break;
+
             }
             
             GrandCircus.Menu = FillaMenu(beerJson, abv, ibu, srm, flavor);
@@ -425,7 +586,7 @@ namespace Craft_Beer_Me.Controllers
         }
 
         //only adds beers into the menu based on user input
-        //Beer is valid if it passes four tests based on switch statments
+        //Beer is valid if it passes all four tests based on switch statments
         public bool LimitBeer(Beer beer, double abv, double ibu, double srm, string flavor)
         {
             int counter = 0;
@@ -507,7 +668,7 @@ namespace Craft_Beer_Me.Controllers
             {
                 counter++;
             }
-
+            
             if (counter == 4)
             {
                 return true;

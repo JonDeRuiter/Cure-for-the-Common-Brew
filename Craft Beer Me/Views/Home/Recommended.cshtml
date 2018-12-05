@@ -1,7 +1,8 @@
 ﻿@*@model IEnumerable<Craft_Beer_Me.Models.Beer>*@
 @model IEnumerable <Craft_Beer_Me.Models.Brewery>
+
+<title>We Recommend: </title>
 <header>
-    <title>We Recommend: </title>
     <style>
 
         table {
@@ -23,8 +24,7 @@
  
     @foreach (var brewery in (List<Craft_Beer_Me.Models.Brewery>)Session["breweries"])
     {
-
-
+     <table>
         <tr>
             <th>
                 <img src="@brewery.PictureUrl" alt="No Picture" width="150" />
