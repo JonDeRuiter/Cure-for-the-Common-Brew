@@ -193,7 +193,7 @@ namespace Craft_Beer_Me.Controllers
         {
             List<Brewery> localBrews = new List<Brewery>();
 
-
+            string SchmozPath = @"";
             StreamReader rd = new StreamReader(SchmozPath);
             string beerData = rd.ReadToEnd();
             JObject SchmozJson = JObject.Parse(beerData);
