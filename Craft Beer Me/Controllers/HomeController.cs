@@ -323,8 +323,16 @@ namespace Craft_Beer_Me.Controllers
 
 
             }
+            if (menu != null)
+            {
+
+
+            }
+            menu = RandoSort(menu);
             return menu;
         }
+
+        
 
         //fills the menu with valid beers based on user parameters
         public Beer MakeABeer(JObject beerJson, int x)
@@ -611,6 +619,22 @@ namespace Craft_Beer_Me.Controllers
                 return true;
             }
             return false;
+        }
+
+        public static List<Beer> RandoSort(List<Beer> beers)
+        {
+            Random r = new Random();
+            int n = beers.Count;
+
+            for (int i = beers.Count - 1; i > 1; i--)
+            {
+                int rnd = r.Next(i + 1);
+
+                Beer value = beers[rnd];
+                beers[rnd] = beers[i];
+                beers[i] = value;
+            }
+            return beers;
         }
     }
 }
