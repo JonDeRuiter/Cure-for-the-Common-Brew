@@ -86,7 +86,7 @@ namespace Craft_Beer_Me.Controllers
             List<Brewery> breweries = new List<Brewery>();
 
             //This bool is to quickly switch between live db and local data
-            bool isdbDown = false;
+            bool isdbDown = true;
 
             //gets results for each of out 14 craft brewries
             if (isdbDown)
@@ -98,10 +98,10 @@ namespace Craft_Beer_Me.Controllers
             }
             else
             {
-                for (int i = 1; i < 2; i++)
+                for (int i = 1; i < 15; i++)
                 {
 
-                    //string urlString = "https://sandbox-api.brewerydb.com/v2/" + "brewery/" + BreweryId(i) +  "/beers?key=5049b9309015a193f513d52c4d9c0003";
+                    
 
                     //test url
                     string urlString = "https://api.brewerydb.com/v2/" + "brewery/" + "pzWq1r" + "/beers?key=";
@@ -112,12 +112,12 @@ namespace Craft_Beer_Me.Controllers
                     string beerData = rd.ReadToEnd();
 
                     JObject beerJson = JObject.Parse(beerData);
+
                     Brewery apiBrewery = MakeABrewery(beerJson, 2, abv, ibu, srm, flavor);
                     if (apiBrewery != null)
                     {
                        breweries.Add(apiBrewery);
                     }
-                   
                    
                                        
                     //api limits to 10 requests a second, this *should* solve that
@@ -200,8 +200,13 @@ namespace Craft_Beer_Me.Controllers
         {
             List<Brewery> localBrews = new List<Brewery>();
 
-            
-            string SchmozPath = @"C:\Users\mfilice\source\repos\Cure for the Common Brew\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\Schmohz JSON.json";
+           
+            string localPath = LocalFilePath(3);
+
+            //need to fix file paths for all ***
+     
+           string SchmozPath = localPath + @"\Schmohz JSON.json";
+
 
             StreamReader rd = new StreamReader(SchmozPath);
             string beerData = rd.ReadToEnd();
@@ -214,7 +219,9 @@ namespace Craft_Beer_Me.Controllers
             }
 
 
-            string JollyPath = @"C:\Users\mfilice\source\repos\Cure for the Common Brew\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\Jolly Pumpkin JSON.json";
+            string JollyPath = localPath + @"\Jolly Pumpkin JSON.json";
+
+
             StreamReader rd2 = new StreamReader(JollyPath);
             string JollyData = rd2.ReadToEnd();
             JObject JollyJson = JObject.Parse(JollyData);
@@ -225,7 +232,10 @@ namespace Craft_Beer_Me.Controllers
                 localBrews.Add(jolly);
             }
 
-            string AtwaterPath = @"C:\Users\mfilice\source\repos\Cure for the Common Brew\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\Atwater JSON.json";
+
+            string AtwaterPath = localPath + @"\Atwater JSON.json";
+
+
             StreamReader rd3 = new StreamReader(AtwaterPath);
             string AtwaterData = rd3.ReadToEnd();
             JObject AtwaterJson = JObject.Parse(AtwaterData);
@@ -236,7 +246,8 @@ namespace Craft_Beer_Me.Controllers
                 localBrews.Add(atwater);
             }
 
-            string NewPath = @"C:\Users\mfilice\source\repos\Cure for the Common Brew\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\New Holland JSON.json";
+            string NewPath = localPath + @"\New Holland JSON.json";
+
             StreamReader rd4 = new StreamReader(NewPath);
             string NewData = rd4.ReadToEnd();
             JObject NewJson = JObject.Parse(NewData);
@@ -246,7 +257,8 @@ namespace Craft_Beer_Me.Controllers
             {
                 localBrews.Add(holland);
             }
-            string VivantPath = @"C:\Users\mfilice\source\repos\Cure for the Common Brew\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\Brewery Vivant JSON.json";
+            string VivantPath = localPath + @"\Brewery Vivant JSON.json";
+
             StreamReader rd5 = new StreamReader(VivantPath);
             string VivantData = rd5.ReadToEnd();
             JObject VivantJson = JObject.Parse(VivantData);
@@ -255,7 +267,9 @@ namespace Craft_Beer_Me.Controllers
             {
                 localBrews.Add(vivant);
             }
-            string ElkPath = @"C:\Users\mfilice\source\repos\Cure for the Common Brew\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\Elk Brewing JSON.json";
+
+            string ElkPath = localPath + @"\Elk Brewing JSON.json";
+
             StreamReader rd6 = new StreamReader(ElkPath);
             string ElkData = rd6.ReadToEnd();
             JObject ElkJson = JObject.Parse(ElkData);
@@ -264,7 +278,9 @@ namespace Craft_Beer_Me.Controllers
             {
                 localBrews.Add(elk);
             }
-            string FoundersPath = @"C:\Users\mfilice\source\repos\Cure for the Common Brew\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\Founders JSON.json";
+
+            string FoundersPath = localPath + @"\Founders JSON.json";
+
             StreamReader rd7 = new StreamReader(FoundersPath);
             string FoundersData = rd7.ReadToEnd();
             JObject FoundersJson = JObject.Parse(FoundersData);
@@ -273,7 +289,9 @@ namespace Craft_Beer_Me.Controllers
             {
                 localBrews.Add(founders);
             }
-            string HarmonyPath = @"C:\Users\mfilice\source\repos\Cure for the Common Brew\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\Harmony JSON.json";
+
+            string HarmonyPath = localPath + @"\Harmony JSON.json";
+
             StreamReader rd8 = new StreamReader(HarmonyPath);
             string HarmonyData = rd8.ReadToEnd();
             JObject HarmonyJson = JObject.Parse(HarmonyData);
@@ -282,7 +300,9 @@ namespace Craft_Beer_Me.Controllers
             {
                 localBrews.Add(harmony);
             }
-            string HideoutPath = @"C:\Users\mfilice\source\repos\Cure for the Common Brew\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\Hideout JSON.json";
+
+            string HideoutPath = localPath + @"\Hideout JSON.json";
+
             StreamReader rd9 = new StreamReader(HideoutPath);
             string HideoutData = rd9.ReadToEnd();
             JObject HideoutJson = JObject.Parse(HideoutData);
@@ -291,7 +311,9 @@ namespace Craft_Beer_Me.Controllers
             {
                 localBrews.Add(hideout);
             }
-            string PeoplesPath = @"C:\Users\mfilice\source\repos\Cure for the Common Brew\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\Peoples Cider JSON.json";
+
+            string PeoplesPath = localPath + @"\Peoples Cider JSON.json";
+
             StreamReader rd10 = new StreamReader(PeoplesPath);
             string PeoplesData = rd10.ReadToEnd();
             JObject PeoplesJson = JObject.Parse(PeoplesData);
@@ -301,7 +323,8 @@ namespace Craft_Beer_Me.Controllers
                 localBrews.Add(peoples);
             }
 
-            string PerrinPath = @"C:\Users\mfilice\source\repos\Cure for the Common Brew\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\Perrin JSON.json";
+            string PerrinPath = localPath + @"\Perrin JSON.json";
+
             StreamReader rd11 = new StreamReader(PerrinPath);
             string PerrinData = rd11.ReadToEnd();
             JObject PerrinJson = JObject.Parse(PerrinData);
@@ -310,7 +333,9 @@ namespace Craft_Beer_Me.Controllers
             {
                 localBrews.Add(perrin);
             }
-            string RockPath = @"C:\Users\mfilice\source\repos\Cure for the Common Brew\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\Rockford Brewing JSON.json";
+
+            string RockPath = localPath + @"\Rockford Brewing JSON.json";
+
             StreamReader rd12 = new StreamReader(RockPath);
             string RockData = rd12.ReadToEnd();
             JObject RockJson = JObject.Parse(RockData);
@@ -319,7 +344,9 @@ namespace Craft_Beer_Me.Controllers
             {
                 localBrews.Add(rock);
             }
-            string MittenPath = @"C:\Users\mfilice\source\repos\Cure for the Common Brew\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\The Mitten JSON.json";
+
+            string MittenPath = localPath + @"\The Mitten JSON.json";
+
             StreamReader rd13 = new StreamReader(MittenPath);
             string MittenData = rd13.ReadToEnd();
             JObject MittenJson = JObject.Parse(MittenData);
@@ -328,7 +355,9 @@ namespace Craft_Beer_Me.Controllers
             {
                 localBrews.Add(mitten);
             }
-            string HopcatPath = @"C:\Users\mfilice\source\repos\Cure for the Common Brew\Cure-for-the-Common-Brew\Craft Beer Me\Controllers\hopcat json.json";
+
+            string HopcatPath = localPath + @"\hopcat json.json";
+
             StreamReader rd14 = new StreamReader(HopcatPath);
             string HopcatData = rd14.ReadToEnd();
             JObject HopcatJson = JObject.Parse(HopcatData);
@@ -339,7 +368,29 @@ namespace Craft_Beer_Me.Controllers
             }
 
 
+
             return localBrews;
+        }
+
+        //switches json filepaths because this 
+        public static string LocalFilePath(int x)
+        {
+            if (x == 1)
+            {
+                return @"C:\Users\katea\Source\Repos\Final\Cure-for-the-Common-Brew\Craft Beer Me\Controllers";
+            }
+            else if (x == 2)
+            {
+                return @"C:\Users\GC Student\Source\Repos\Craft Beer Me\Craft Beer Me\Controllers\";
+            }
+            else if (x ==3) 
+            {
+                return @"C:\Users\mfilice\source\repos\Cure for the Common Brew\Cure-for-the-Common-Brew\Craft Beer Me\Controllers";
+            }
+            else
+            {
+                return "x";
+            }
         }
 
         //makes each new brewery object from JSON
@@ -472,11 +523,9 @@ namespace Craft_Beer_Me.Controllers
                 {
                     menu.Add(newBeer);
                 }
-
-
+                
             }
-
-
+            
           if (menu != null)
             {
 
@@ -486,9 +535,7 @@ namespace Craft_Beer_Me.Controllers
 
             return menu;
         }
-
         
-
         //fills the menu with valid beers based on user parameters
         public Beer MakeABeer(JObject beerJson, int x)
         {
@@ -510,17 +557,17 @@ namespace Craft_Beer_Me.Controllers
             }
 
             //ABV
-            if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["style"]["abvMin"] != null)
+            if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["abv"] != null)
+            {
+                craftBeer.ABV = (double)beerJson["data"][x]["abv"];
+            }
+            else if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["style"]["abvMin"] != null)
             {
                 craftBeer.ABV = (double)beerJson["data"][x]["style"]["abvMin"];
             }
             else if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["style"]["abvMax"] != null)
             {
                 craftBeer.ABV = (double)beerJson["data"][x]["style"]["abvMax"];
-            }
-            else if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["abv"] != null)
-            {
-                craftBeer.ABV = (double)beerJson["data"][x]["abv"];
             }
             else
             {
@@ -665,12 +712,15 @@ namespace Craft_Beer_Me.Controllers
             }
 
             //description search for flavor
-            
-            if (beer.Description.Contains(flavor))
+
+            if (beer.Description != null)
             {
-                counter++;
+                if (beer.Description.Contains(flavor))
+                {
+                    counter++;
+                }
             }
-            
+
             if (counter == 4)
             {
                 return true;

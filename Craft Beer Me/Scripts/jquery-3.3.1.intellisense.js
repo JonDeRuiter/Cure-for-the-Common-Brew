@@ -293,7 +293,7 @@ intellisense.annotate(jQuery, {
     /// <signature>
     ///   <summary>Create a serialized representation of an array or object, suitable for use in a URL query string or Ajax request.</summary>
     ///   <param name="obj" type="">An array or object to serialize.</param>
-    ///   <param name="traditional" type="Boolean">A Boolean indicating whether to perform a traditional "shallow" serialization.</param>
+    ///   <param name='traditional' type="Boolean">A Boolean indicating whether to perform a traditional "shallow" serialization.</param>
     ///   <returns type="String" />
     /// </signature>
   },
