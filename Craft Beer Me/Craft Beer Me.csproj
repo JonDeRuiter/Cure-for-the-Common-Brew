@@ -132,6 +132,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BreweriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -193,6 +194,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Recommended.cshtml" />
     <Content Include="Views\Home\results.cshtml" />
+    <Content Include="Views\Breweries\Create.cshtml" />
+    <Content Include="Views\Breweries\Delete.cshtml" />
+    <Content Include="Views\Breweries\Details.cshtml" />
+    <Content Include="Views\Breweries\Edit.cshtml" />
+    <Content Include="Views\Breweries\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
