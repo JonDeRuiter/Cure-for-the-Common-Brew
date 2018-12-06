@@ -98,22 +98,24 @@ namespace Craft_Beer_Me.Controllers
             }
             else
             {
-                for (int i = 1; i < 15; i++)
+                for (int i = 1; i < 2; i++)
                 {
                     //string urlString = "https://sandbox-api.brewerydb.com/v2/" + "brewery/" + BreweryId(i) +  "/beers?key=5049b9309015a193f513d52c4d9c0003";
-
                     //test url
-                    string urlString = "https://sandbox-api.brewerydb.com/v2/" + "brewery/" + "AqEUBQ" + "/beers?key=5049b9309015a193f513d52c4d9c0003";
-
+                    string urlString = "https://api.brewerydb.com/v2/" + "brewery/" + "pzWq1r" + "/beers?key=";
                     HttpWebRequest request = WebRequest.CreateHttp(urlString);
                     HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                     StreamReader rd = new StreamReader(response.GetResponseStream());
                     string beerData = rd.ReadToEnd();
-
                     JObject beerJson = JObject.Parse(beerData);
+                    Brewery apiBrewery = MakeABrewery(beerJson, 2, abv, ibu, srm, flavor);
+                    if (apiBrewery != null)
+                    {
+                        breweries.Add(apiBrewery);
+                    }
                     //Valid beers get added
-                    
-                                       
+
+
                     //api limits to 10 requests a second, this *should* solve that
                     Thread.Sleep(150);
                 }
@@ -271,7 +273,7 @@ namespace Craft_Beer_Me.Controllers
                 localBrews.Add(elk);
             }
 
-            string FoundersPath = localPath + @"Founders JSON.json";
+            string FoundersPath = localPath + @"\Founders JSON.json";
 
             StreamReader rd7 = new StreamReader(FoundersPath);
             string FoundersData = rd7.ReadToEnd();
@@ -488,7 +490,7 @@ namespace Craft_Beer_Me.Controllers
             //if the user doesn't put anything flavor is set to a space so that every result is true
           
 
-            //this array is created for the sole purpose of finding the lenght of the data object
+            //this array is created for the sole purpose of finding the length of the data object
             Array beerArray = beerJson["data"].ToArray();
             for (int i = 0; i < beerArray.Length; i++)
             {
@@ -549,17 +551,17 @@ namespace Craft_Beer_Me.Controllers
             }
 
             //ABV
-            if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["style"]["abvMin"] != null)
+            if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["abv"] != null)
+            {
+                craftBeer.ABV = (double)beerJson["data"][x]["abv"];
+            }
+            else if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["style"]["abvMin"] != null)
             {
                 craftBeer.ABV = (double)beerJson["data"][x]["style"]["abvMin"];
             }
             else if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["style"]["abvMax"] != null)
             {
                 craftBeer.ABV = (double)beerJson["data"][x]["style"]["abvMax"];
-            }
-            else if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["abv"] != null)
-            {
-                craftBeer.ABV = (double)beerJson["data"][x]["abv"];
             }
             else
             {
@@ -682,19 +684,31 @@ namespace Craft_Beer_Me.Controllers
             switch (srm)
             {
                 case 1:
-                    if (beer.SRM <= 10 && beer.SRM > 0)
+                    if (beer.SRM <= 8 && beer.SRM > 1)
                     {
                         counter++;
                     }
                     break;
                 case 2:
-                    if (beer.SRM <= 21 && beer.IBU >= 10)
+                    if (beer.SRM <= 8 && beer.IBU >= 16)
                     {
                         counter++;
                     }
                     break;
                 case 3:
-                    if (beer.SRM >= 21)
+                    if (beer.SRM >= 16 && beer.IBU >= 24)
+                    {
+                        counter++;
+                    }
+                    break;
+                case 4:
+                    if (beer.SRM >= 24 && beer.IBU >= 32)
+                    {
+                        counter++;
+                    }
+                    break;
+                case 5:
+                    if (beer.SRM >= 32 && beer.IBU >= 40)
                     {
                         counter++;
                     }
@@ -704,10 +718,12 @@ namespace Craft_Beer_Me.Controllers
             }
 
             //description search for flavor
-            
-            if (beer.Description.Contains(flavor))
+            if (beer.Description != null)
             {
-                counter++;
+                if (beer.Description.Contains(flavor))
+                {
+                    counter++;
+                }
             }
             
             if (counter == 4)
@@ -775,19 +791,31 @@ namespace Craft_Beer_Me.Controllers
             switch (srm)
             {
                 case 1:
-                    if (beer.SRM <= 10 && beer.SRM > 0)
+                    if (beer.SRM <= 8 && beer.SRM > 1)
                     {
                         counter++;
                     }
                     break;
                 case 2:
-                    if (beer.SRM <= 21 && beer.IBU >= 10)
+                    if (beer.SRM <= 8 && beer.IBU >= 16)
                     {
                         counter++;
                     }
                     break;
                 case 3:
-                    if (beer.SRM >= 21)
+                    if (beer.SRM >= 16 && beer.IBU >= 24)
+                    {
+                        counter++;
+                    }
+                    break;
+                case 4:
+                    if (beer.SRM >= 24 && beer.IBU >= 32)
+                    {
+                        counter++;
+                    }
+                    break;
+                case 5:
+                    if (beer.SRM >= 32 && beer.IBU >= 40)
                     {
                         counter++;
                     }
