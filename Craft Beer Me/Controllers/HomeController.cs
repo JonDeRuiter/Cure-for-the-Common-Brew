@@ -177,7 +177,7 @@ namespace Craft_Beer_Me.Controllers
             }
             else
             {
-                for (int i = 1; i < 15; i++)
+                for (int i = 1; i < 2; i++)
                 {
                     //string urlString = "https://sandbox-api.brewerydb.com/v2/" + "brewery/" + BreweryId(i) +  "/beers?key=5049b9309015a193f513d52c4d9c0003";
                     //test url
@@ -192,6 +192,9 @@ namespace Craft_Beer_Me.Controllers
                     {
                         breweries.Add(apiBrewery);
                     }
+
+                    //Valid beers get added
+
                     //api limits to 10 requests a second, this *should* solve that
                     Thread.Sleep(150);
                 }
@@ -273,7 +276,7 @@ namespace Craft_Beer_Me.Controllers
             List<Brewery> localBrews = new List<Brewery>();
 
 
-            string localPath = LocalFilePath(2);
+            string localPath = LocalFilePath(1);
 
             //need to fix file paths for all ***
      
@@ -349,7 +352,7 @@ namespace Craft_Beer_Me.Controllers
                 localBrews.Add(elk);
             }
 
-            string FoundersPath = localPath + @"Founders JSON.json";
+            string FoundersPath = localPath + @"\Founders JSON.json";
 
             StreamReader rd7 = new StreamReader(FoundersPath);
             string FoundersData = rd7.ReadToEnd();
@@ -566,7 +569,7 @@ namespace Craft_Beer_Me.Controllers
             //if the user doesn't put anything flavor is set to a space so that every result is true
           
 
-            //this array is created for the sole purpose of finding the lenght of the data object
+            //this array is created for the sole purpose of finding the length of the data object
             Array beerArray = beerJson["data"].ToArray();
             for (int i = 0; i < beerArray.Length; i++)
             {
@@ -638,7 +641,9 @@ namespace Craft_Beer_Me.Controllers
             else if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["style"]["abvMax"] != null)
             {
                 craftBeer.ABV = (double)beerJson["data"][x]["style"]["abvMax"];
-            }           
+
+            }
+
             else
             {
                 craftBeer.ABV = 0;
@@ -760,19 +765,31 @@ namespace Craft_Beer_Me.Controllers
             switch (srm)
             {
                 case 1:
-                    if (beer.SRM <= 10 && beer.SRM > 0)
+                    if (beer.SRM <= 8 && beer.SRM > 1)
                     {
                         counter++;
                     }
                     break;
                 case 2:
-                    if (beer.SRM <= 21 && beer.IBU >= 10)
+                    if (beer.SRM <= 8 && beer.IBU >= 16)
                     {
                         counter++;
                     }
                     break;
                 case 3:
-                    if (beer.SRM >= 21)
+                    if (beer.SRM >= 16 && beer.IBU >= 24)
+                    {
+                        counter++;
+                    }
+                    break;
+                case 4:
+                    if (beer.SRM >= 24 && beer.IBU >= 32)
+                    {
+                        counter++;
+                    }
+                    break;
+                case 5:
+                    if (beer.SRM >= 32 && beer.IBU >= 40)
                     {
                         counter++;
                     }
@@ -856,19 +873,31 @@ namespace Craft_Beer_Me.Controllers
             switch (srm)
             {
                 case 1:
-                    if (beer.SRM <= 10 && beer.SRM > 0)
+                    if (beer.SRM <= 8 && beer.SRM > 1)
                     {
                         counter++;
                     }
                     break;
                 case 2:
-                    if (beer.SRM <= 21 && beer.IBU >= 10)
+                    if (beer.SRM <= 8 && beer.IBU >= 16)
                     {
                         counter++;
                     }
                     break;
                 case 3:
-                    if (beer.SRM >= 21)
+                    if (beer.SRM >= 16 && beer.IBU >= 24)
+                    {
+                        counter++;
+                    }
+                    break;
+                case 4:
+                    if (beer.SRM >= 24 && beer.IBU >= 32)
+                    {
+                        counter++;
+                    }
+                    break;
+                case 5:
+                    if (beer.SRM >= 32 && beer.IBU >= 40)
                     {
                         counter++;
                     }
