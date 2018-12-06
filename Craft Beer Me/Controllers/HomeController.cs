@@ -195,7 +195,7 @@ namespace Craft_Beer_Me.Controllers
             List<Brewery> localBrews = new List<Brewery>();
 
 
-            string localPath = LocalFilePath(2);
+            string localPath = LocalFilePath(1);
 
             //need to fix file paths for all ***
      
