@@ -21,72 +21,80 @@
 </header>
 
 <body>
-   
-    <form action="results">
-        @foreach (var brewery in (List<Craft_Beer_Me.Models.Brewery>)Session["breweries"])
-        {
-            <table>
+    @foreach (var brewery in (List<Craft_Beer_Me.Models.Brewery>)Session["breweries"])
+    {
+        <table>
 
-                <tr>
-                    <th>
-                        <img src="@brewery.PictureUrl" alt="No Picture" width="150" />
-                    </th>
-                    <th>
-                        @brewery.Name
-                    </th>
-                    <th>
-                        <a href="@brewery.Url">Website</a>
-                    </th>
-                    <th>
-                        Menu Description
-                    </th>
-                    @{ int counter = 0;}
-                </tr>
-                @foreach (var beer in brewery.Menu)
-                {
-                    if (counter == 6)
-                    {
-                        break;
-                    }
-                    <tr>
-                        <td>
-                            @if (@beer.Picture != null)
-                            {
-                                <img src="@beer.Picture" alt="No Picture" width="200" />
-                            }
-                            else
-                            {
-                                <img src="~/Content/Gen_Beer.png" alt="No Picture" width="100" />
-                            }
-                        </td>
-                        <td>
-                            @beer.BeerName
-                        </td>
-                        <td>
-                            @beer.CategoryName
-                        </td>
-                        <td>
-                            @beer.Description
-                        </td>
-                    </tr>
-                    counter++;
-                }
-
-            </table>
-
-            <p><input type="checkbox" name="" /> @brewery.Name looks awesome! Lets go there!</p>
-            <br /><br />
-
-        }
-        @{
-            if (Session["breweries"] != null)
+            <tr>
+                <th>
+                    <img src="@brewery.PictureUrl" alt="No Picture" width="150" />
+                </th>
+                <th>
+                    @brewery.Name
+                </th>
+                <th>
+                    <a href="@brewery.Url">Website</a>
+                </th>
+                <th>
+                    Menu Description
+                </th>
+                @{ int counter = 0;}
+            </tr>
+            @foreach (var beer in brewery.Menu)
             {
-                <button type="submit">I'm ready for my Tour!</button>
+                if (counter == 6)
+                {
+                    break;
+                }
+                <tr>
+                    <td>
+                        @if (@beer.Picture != null)
+                        {
+                            <img src="@beer.Picture" alt="No Picture" width="100" />
+                        }
+                        else
+                        {
+                            <img src="~/Content/Gen_Beer.png" alt="No Picture" width="100" />
+                        }
+                    </td>
+                    <td>
+                        @beer.BeerName
+                    </td>
+                    <td>
+                        @beer.CategoryName
+                    </td>
+                    <td>
+                        @beer.Description
+                    </td>
+                </tr>
+                counter++;
             }
-        }
 
+        </table>
+
+        
+        <br /><br />
+
+    }
+    @*Could we make this form float at the bottom of the page so that people could add *@
+    <p>Which awesome Brewery do you want to visit?</p>
+    <form action="results" target="_blank">
+        <input type="checkbox" name="Atwater" />Atwater Brewery
+        <input type="checkbox" name="Vivant" />Brewery Vivant
+        <input type="checkbox" name="Elk" />Elk Brewery
+        <input type="checkbox" name="Founders" />Foudners Brewing
+        <input type="checkbox" name="Harmony" />Harmony Brewery
+        <input type="checkbox" name="Hideout" />Hideout Brewery
+        <input type="checkbox" name="Hopcat" />Hopcat Brewery
+        <input type="checkbox" name="Jolly" />Jolly Pumpkin Brewery
+        <input type="checkbox" name="Holland" />New Holland Brewery
+        <input type="checkbox" name="Peoples" />Peoples Cider
+        <input type="checkbox" name="Perrin" /> Perrin Brewery
+        <input type="checkbox" name="Rockford" />Rockford Brewery
+        <input type="checkbox" name="Schmohz" />Schmohz Brewery
+        <input type="checkbox" name="Mitten" />The Mitten Brewery
+        <button type="submit">I'm ready for my Tour!</button>
     </form>
-
 </body>
 
 <footer>
