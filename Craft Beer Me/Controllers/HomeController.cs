@@ -39,7 +39,7 @@ namespace Craft_Beer_Me.Controllers
 
             string breweries = SelfGuidedTour(Atwater, Vivant, Elk, Founders, Harmony, Hideout, Hopcat, Jolly, Holland, Peoples, Perrin, Rockford, Schmohz, Mitten);
                         
-            string mapsGoogle = "https://www.google.com/maps/dir/" + breweries;
+            string mapsGoogle = "https://www.google.com/maps/dir//" + breweries;
             
             return Redirect(mapsGoogle);
             
@@ -208,13 +208,9 @@ namespace Craft_Beer_Me.Controllers
         public List<Brewery> LocalBrewery(double abv, double ibu, double srm, string flavor)
         {
             List<Brewery> localBrews = new List<Brewery>();
-
-
+            
+            string localPath = LocalFilePath(2);
            
-            string localPath = LocalFilePath(3);
-
-
-
      
            string SchmozPath = localPath + @"\Schmohz JSON.json";
 
@@ -404,6 +400,8 @@ namespace Craft_Beer_Me.Controllers
             }
         }
 
+
+
         //makes each new brewery object from JSON
         public Brewery MakeABrewery(JObject beerJson, int x, double abv, double ibu, double srm, string flavor)
         {
@@ -412,8 +410,8 @@ namespace Craft_Beer_Me.Controllers
             switch (x)
             {
                 case 1:
-                    GrandCircus.Name = "Schmoz";
-                    GrandCircus.Url = "http://www.schmoz.com";
+                    GrandCircus.Name = "Schmozh";
+                    GrandCircus.Url = "https://schmohz.com/";
                     GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/AVEsqU/upload_uRmLOu-squareLarge.png";
                     break;
                 case 2:
