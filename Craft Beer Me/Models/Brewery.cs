@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -7,7 +8,7 @@ namespace Craft_Beer_Me.Models
 {
     public class Brewery
     {
-
+        public int ID { get; set; }
         public List<Beer> Menu { get; set; }
         public string Url { get; set; }
         public string PictureUrl { get; set; }
@@ -24,8 +25,14 @@ namespace Craft_Beer_Me.Models
             this.Url = Url;
             this.PictureUrl = PictureUrl;
             this.Name = Name;
-            this.BreweryID = "Hi";
+            this.BreweryID = BreweryId;
         }
+        
+    }
 
+    public class BreweryContext : DbContext
+    {
+        public DbSet<Brewery> Breweries { get; set; }
     }
 }
+
