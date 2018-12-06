@@ -717,7 +717,7 @@ namespace Craft_Beer_Me.Controllers
             switch (abv)
             {
                 case 1:
-                    if (beer.ABV >= 1 && beer.ABV <= 5.1)
+                    if (beer.ABV >= 0 && beer.ABV <= 5.1)
                     {
                         counter++;
                     }
