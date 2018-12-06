@@ -34,84 +34,15 @@ namespace Craft_Beer_Me.Controllers
 
       
 
-        public ActionResult results(bool Atwater, bool Brewery, bool Elk, bool Founders, bool Harmony, bool Hideout, bool Hopcat, bool Jolly, bool New, bool Peoples, bool Perrin, bool Rockford, bool Schmohz, bool The)
+        public ActionResult results(string Atwater, string Vivant, string Elk, string Founders, string Harmony, string Hideout, string Hopcat, string Jolly, string Holland, string Peoples, string Perrin, string Rockford, string Schmohz, string Mitten)
         {
 
-            string breweries = "";
-
-            if (Atwater == true)
-            {
-                breweries += "Atwater Brewery/";
-            }
-
-            if (Brewery == true)
-            {
-                breweries += "Brewery Vivant/";
-            }
-
-            if (Elk == true)
-            {
-                breweries += "Elk Brewing/";
-            }
-
-            if (Founders == true)
-            {
-                breweries += "Founders Brewery/";
-            }
-
-            if (Harmony == true)
-            {
-                breweries += "Harmony Brewing/";
-            }
-
-            if (Hideout == true)
-            {
-                breweries += "Hideout Brewing/";
-            }
-
-            if (Hopcat == true)
-            {
-                breweries += "Hopcate Brewing/";
-            }
-
-            if (Jolly == true)
-            {
-                breweries += "Jolly Pumpkin Brewing/";
-            }
-
-            if (New == true)
-            {
-                breweries += "New Holland Knickerbocker/";
-            }
-
-            if (Peoples == true)
-            {
-                breweries += "Peoples Cider/";
-            }
-
-            if (Perrin == true)
-            {
-                breweries += "Perrin Brewery/";
-            }
-
-            if (Rockford == true)
-            {
-                breweries += "Rockfrod Brewing/";
-            }
-
-            if (Schmohz == true)
-            {
-                breweries += "Schmohz Brewing/";
-            }
-
-            if (The)
-            {
-                breweries += "The Mitten Brewing/";
-            }
-            ViewBag.ToVisit = breweries;
-
-            //return RedirectToAction("https://www.google.com/maps/dir//");
-            return View();
+            string breweries = SelfGuidedTour(Atwater, Vivant, Elk, Founders, Harmony, Hideout, Hopcat, Jolly, Holland, Peoples, Perrin, Rockford, Schmohz, Mitten);
+                        
+            string mapsGoogle = "https://www.google.com/maps/dir/" + breweries;
+            
+            return Redirect(mapsGoogle);
+            
         }
 
         public ActionResult Recommended()
@@ -717,7 +648,7 @@ namespace Craft_Beer_Me.Controllers
             switch (abv)
             {
                 case 1:
-                    if (beer.ABV >= 1 && beer.ABV <= 5.1)
+                    if (beer.ABV >= 0 && beer.ABV <= 5.1)
                     {
                         counter++;
                     }
@@ -941,6 +872,82 @@ namespace Craft_Beer_Me.Controllers
                 beers[i] = value;
             }
             return beers;
+        }
+
+        //Concatonates a string for the guided tour
+        public static string SelfGuidedTour(string Atwater, string Vivant, string Elk, string Founders, string Harmony, string Hideout, string Hopcat, string Jolly, string Holland, string Peoples, string Perrin, string Rockford, string Schmohz, string Mitten)
+        {
+            string breweries = "";
+            if (Atwater == "on")
+            {
+                breweries += "Atwater Brewery/";
+            }
+
+            if (Vivant == "on")
+            {
+                breweries += "Brewery Vivant/";
+            }
+
+            if (Elk == "on")
+            {
+                breweries += "Elk Brewing/";
+            }
+
+            if (Founders == "on")
+            {
+                breweries += "Founders Brewery/";
+            }
+
+            if (Harmony == "on")
+            {
+                breweries += "Harmony Brewing/";
+            }
+
+            if (Hideout == "on")
+            {
+                breweries += "Hideout Brewing/";
+            }
+
+            if (Hopcat == "on")
+            {
+                breweries += "Hopcate Brewing/";
+            }
+
+            if (Jolly == "on")
+            {
+                breweries += "Jolly Pumpkin Brewing/";
+            }
+
+            if (Holland == "on")
+            {
+                breweries += "New Holland Knickerbocker/";
+            }
+
+            if (Peoples == "on")
+            {
+                breweries += "Peoples Cider/";
+            }
+
+            if (Perrin == "on")
+            {
+                breweries += "Perrin Brewery/";
+            }
+
+            if (Rockford == "on")
+            {
+                breweries += "Rockfrod Brewing/";
+            }
+
+            if (Schmohz == "on")
+            {
+                breweries += "Schmohz Brewing/";
+            }
+
+            if (Mitten == "on")
+            {
+                breweries += "The Mitten Brewing/";
+            }
+            return breweries;
         }
     }
 }
