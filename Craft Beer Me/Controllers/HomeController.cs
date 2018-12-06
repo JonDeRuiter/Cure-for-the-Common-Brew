@@ -34,8 +34,83 @@ namespace Craft_Beer_Me.Controllers
 
       
 
-        public ActionResult results(string ABV, string IBU, string SRM)
+        public ActionResult results(bool Atwater, bool Brewery, bool Elk, bool Founders, bool Harmony, bool Hideout, bool Hopcat, bool Jolly, bool New, bool Peoples, bool Perrin, bool Rockford, bool Schmohz, bool The)
         {
+
+            string breweries = "";
+
+            if (Atwater == true)
+            {
+                breweries += "Atwater Brewery/";
+            }
+
+            if (Brewery == true)
+            {
+                breweries += "Brewery Vivant/";
+            }
+
+            if (Elk == true)
+            {
+                breweries += "Elk Brewing/";
+            }
+
+            if (Founders == true)
+            {
+                breweries += "Founders Brewery/";
+            }
+
+            if (Harmony == true)
+            {
+                breweries += "Harmony Brewing/";
+            }
+
+            if (Hideout == true)
+            {
+                breweries += "Hideout Brewing/";
+            }
+
+            if (Hopcat == true)
+            {
+                breweries += "Hopcate Brewing/";
+            }
+
+            if (Jolly == true)
+            {
+                breweries += "Jolly Pumpkin Brewing/";
+            }
+
+            if (New == true)
+            {
+                breweries += "New Holland Knickerbocker/";
+            }
+
+            if (Peoples == true)
+            {
+                breweries += "Peoples Cider/";
+            }
+
+            if (Perrin == true)
+            {
+                breweries += "Perrin Brewery/";
+            }
+
+            if (Rockford == true)
+            {
+                breweries += "Rockfrod Brewing/";
+            }
+
+            if (Schmohz == true)
+            {
+                breweries += "Schmohz Brewing/";
+            }
+
+            if (The)
+            {
+                breweries += "The Mitten Brewing/";
+            }
+            ViewBag.ToVisit = breweries;
+
+            //return RedirectToAction("https://www.google.com/maps/dir//");
             return View();
         }
 
@@ -54,7 +129,10 @@ namespace Craft_Beer_Me.Controllers
             srm = double.Parse(SRM);
 
             List<Brewery> breweries = GetBreweries(abv, ibu, srm, flavor);
+            if (breweries.Count() > 0)
+            {
 
+            }
             Session["breweries"] = breweries;
             return RedirectToAction("Recommended");
 
@@ -81,6 +159,7 @@ namespace Craft_Beer_Me.Controllers
             
         }
 
+        //Begins the process of creating brewery objects and directs it to either local data or live data
         public List<Brewery> GetBreweries(double abv, double ibu, double srm, string flavor)
         {
             List<Brewery> breweries = new List<Brewery>();
@@ -101,19 +180,18 @@ namespace Craft_Beer_Me.Controllers
                 for (int i = 1; i < 15; i++)
                 {
                     //string urlString = "https://sandbox-api.brewerydb.com/v2/" + "brewery/" + BreweryId(i) +  "/beers?key=5049b9309015a193f513d52c4d9c0003";
-
                     //test url
-                    string urlString = "https://sandbox-api.brewerydb.com/v2/" + "brewery/" + "AqEUBQ" + "/beers?key=5049b9309015a193f513d52c4d9c0003";
-
+                    string urlString = "https://api.brewerydb.com/v2/" + "brewery/" + "pzWq1r" + "/beers?key=";
                     HttpWebRequest request = WebRequest.CreateHttp(urlString);
                     HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                     StreamReader rd = new StreamReader(response.GetResponseStream());
                     string beerData = rd.ReadToEnd();
-
                     JObject beerJson = JObject.Parse(beerData);
-                    //Valid beers get added
-                    
-                                       
+                    Brewery apiBrewery = MakeABrewery(beerJson, 2, abv, ibu, srm, flavor);
+                    if (apiBrewery != null)
+                    {
+                        breweries.Add(apiBrewery);
+                    }
                     //api limits to 10 requests a second, this *should* solve that
                     Thread.Sleep(150);
                 }
@@ -549,18 +627,18 @@ namespace Craft_Beer_Me.Controllers
             }
 
             //ABV
-            if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["style"]["abvMin"] != null)
+            if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["abv"] != null)
+            {
+                craftBeer.ABV = (double)beerJson["data"][x]["abv"];
+            }
+            else if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["style"]["abvMin"] != null)
             {
                 craftBeer.ABV = (double)beerJson["data"][x]["style"]["abvMin"];
             }
             else if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["style"]["abvMax"] != null)
             {
                 craftBeer.ABV = (double)beerJson["data"][x]["style"]["abvMax"];
-            }
-            else if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["abv"] != null)
-            {
-                craftBeer.ABV = (double)beerJson["data"][x]["abv"];
-            }
+            }           
             else
             {
                 craftBeer.ABV = 0;
@@ -704,11 +782,14 @@ namespace Craft_Beer_Me.Controllers
             }
 
             //description search for flavor
-            
-            if (beer.Description.Contains(flavor))
+            if (beer.Description != null)
             {
-                counter++;
+                if (beer.Description.Contains(flavor))
+                {
+                    counter++;
+                }
             }
+            
             
             if (counter == 4)
             {
@@ -720,7 +801,7 @@ namespace Craft_Beer_Me.Controllers
             }
         }
 
-
+        //Overload for adding only valid beers this one does not use flavor as a parameter
         public bool LimitBeer(Beer beer, double abv, double ibu, double srm)
         {
             int counter = 0;
@@ -806,6 +887,7 @@ namespace Craft_Beer_Me.Controllers
             }
         }
 
+        //Overload for adding only valid beers this one by style
         public bool LimitBeer(Beer beer, string style)
         {
             if (beer.CategoryName.Contains(style))
@@ -815,6 +897,7 @@ namespace Craft_Beer_Me.Controllers
             return false;
         }
 
+        //randomly sorts the beer list so that the top six results are not the same every time
         public static List<Beer> RandoSort(List<Beer> beers)
         {
             Random r = new Random();
