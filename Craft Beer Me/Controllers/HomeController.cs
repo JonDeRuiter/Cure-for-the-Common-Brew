@@ -204,6 +204,7 @@ namespace Craft_Beer_Me.Controllers
             return null;
         }
 
+        //Does the stream reading and converting to JSON
         public JObject GetJSONFromLocal(string path)
         {
             StreamReader rd = new StreamReader(path);
