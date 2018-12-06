@@ -21,34 +21,33 @@
 </header>
 
 <body>
-
-
-    <form action="https://www.google.com/maps/dir//">
+   
+    <form action="results">
         @foreach (var brewery in (List<Craft_Beer_Me.Models.Brewery>)Session["breweries"])
         {
             <table>
 
-        <tr>
-            <th>
-                <img src="@brewery.PictureUrl" alt="No Picture" width="150" />
-            </th>
-            <th>
-                @brewery.Name
-            </th>
-            <th>
-                <a href="@brewery.Url">Website</a>
-            </th>
-            <th>
-                Menu Description
-            </th>
-            @{ int counter = 0;}
-        </tr>
-        @foreach (var beer in brewery.Menu)
-        {
-            if (counter == 6)
-            {
-                break;
-            }
+                <tr>
+                    <th>
+                        <img src="@brewery.PictureUrl" alt="No Picture" width="150" />
+                    </th>
+                    <th>
+                        @brewery.Name
+                    </th>
+                    <th>
+                        <a href="@brewery.Url">Website</a>
+                    </th>
+                    <th>
+                        Menu Description
+                    </th>
+                    @{ int counter = 0;}
+                </tr>
+                @foreach (var beer in brewery.Menu)
+                {
+                    if (counter == 6)
+                    {
+                        break;
+                    }
                     <tr>
                         <td>
                             @if (@beer.Picture != null)
@@ -70,15 +69,22 @@
                             @beer.Description
                         </td>
                     </tr>
-            counter++;
-        }
+                    counter++;
+                }
 
             </table>
-            <p><input type="checkbox" value="@brewery.Name"/> @brewery.Name looks awesome! Lets go there!</p>
+
+            <p><input type="checkbox" name="" /> @brewery.Name looks awesome! Lets go there!</p>
             <br /><br />
 
         }
-        <button type="submit">I'm ready for my Tour!</button>
+        @{
+            if (Session["breweries"] != null)
+            {
+                <button type="submit">I'm ready for my Tour!</button>
+            }
+        }
+
     </form>
 
 </body>
