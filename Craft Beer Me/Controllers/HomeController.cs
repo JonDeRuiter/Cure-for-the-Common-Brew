@@ -110,24 +110,27 @@ namespace Craft_Beer_Me.Controllers
             {
                 for (int i = 1; i < 2; i++)
                 {
-                    //string urlString = "https://sandbox-api.brewerydb.com/v2/" + "brewery/" + BreweryId(i) +  "/beers?key=5049b9309015a193f513d52c4d9c0003";
+
                     //test url
                     string urlString = "https://api.brewerydb.com/v2/" + "brewery/" + "pzWq1r" + "/beers?key=";
+
+
                     HttpWebRequest request = WebRequest.CreateHttp(urlString);
                     HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                     StreamReader rd = new StreamReader(response.GetResponseStream());
                     string beerData = rd.ReadToEnd();
                     JObject beerJson = JObject.Parse(beerData);
+
+
                     Brewery apiBrewery = MakeABrewery(beerJson, 2, abv, ibu, srm, flavor);
                     if (apiBrewery != null)
                     {
-                        breweries.Add(apiBrewery);
+                       breweries.Add(apiBrewery);
                     }
 
-                    //Valid beers get added
 
                     //api limits to 10 requests a second, this *should* solve that
-                    Thread.Sleep(150);
+                    //Thread.Sleep(150);
                 }
             }
             
@@ -207,11 +210,14 @@ namespace Craft_Beer_Me.Controllers
             List<Brewery> localBrews = new List<Brewery>();
 
 
-            string localPath = LocalFilePath(1);
+           
+            string localPath = LocalFilePath(3);
 
-            //need to fix file paths for all ***
+
+
      
            string SchmozPath = localPath + @"\Schmohz JSON.json";
+
 
             StreamReader rd = new StreamReader(SchmozPath);
             string beerData = rd.ReadToEnd();
@@ -222,10 +228,10 @@ namespace Craft_Beer_Me.Controllers
             {
                 localBrews.Add(schmoz);
             }
-                        
 
 
             string JollyPath = localPath + @"\Jolly Pumpkin JSON.json";
+
 
             StreamReader rd2 = new StreamReader(JollyPath);
             string JollyData = rd2.ReadToEnd();
@@ -239,6 +245,7 @@ namespace Craft_Beer_Me.Controllers
 
 
             string AtwaterPath = localPath + @"\Atwater JSON.json";
+
 
             StreamReader rd3 = new StreamReader(AtwaterPath);
             string AtwaterData = rd3.ReadToEnd();
@@ -387,9 +394,9 @@ namespace Craft_Beer_Me.Controllers
             {
                 return @"C:\Users\GC Student\Source\Repos\Craft Beer Me\Craft Beer Me\Controllers\";
             }
-            else if (x == 3)
+            else if (x ==3) 
             {
-                return "x";
+                return @"C:\Users\mfilice\source\repos\Cure for the Common Brew\Cure-for-the-Common-Brew\Craft Beer Me\Controllers";
             }
             else
             {
@@ -729,7 +736,6 @@ namespace Craft_Beer_Me.Controllers
                     break;
             }
 
-            //description search for flavor
             if (beer.Description != null)
             {
                 if (beer.Description.Contains(flavor))
@@ -737,8 +743,7 @@ namespace Craft_Beer_Me.Controllers
                     counter++;
                 }
             }
-            
-            
+
             if (counter == 4)
             {
                 return true;
