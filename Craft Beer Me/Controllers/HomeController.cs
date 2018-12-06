@@ -215,7 +215,6 @@ namespace Craft_Beer_Me.Controllers
             return Json;
         }
 
-
         //builds brewery objects using local json data
         public List<Brewery> LocalBrewery(double abv, double ibu, double srm, string flavor)
         {
@@ -940,5 +939,6 @@ namespace Craft_Beer_Me.Controllers
             }
             return breweries;
         }
+
     }
 }
