@@ -19,6 +19,7 @@ namespace Craft_Beer_Me.Controllers
 
         public ActionResult Index()
         {
+            //PopulateDB();
             string currentUrl = Request.Url.AbsoluteUri;
             if (currentUrl.Contains("/index"))
             {
@@ -948,7 +949,9 @@ namespace Craft_Beer_Me.Controllers
             }
             return breweries;
         }
-        public Brewery PopulateDB()
+
+        //Use this to populate the DB the first time this program runs. Not after.
+        public void PopulateDB()
         {
             Brewery GrandCircus = new Brewery();
             
@@ -961,85 +964,93 @@ namespace Craft_Beer_Me.Controllers
                         GrandCircus.Name = "Schmozh";
                         GrandCircus.Url = "https://schmohz.com/";
                         GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/AVEsqU/upload_uRmLOu-squareLarge.png";
-                        
+                        GrandCircus.BreweryID = "AVEsqU";
                         break;
                     case 2:
                         GrandCircus.Name = "Jolly Pumpkin";
                         GrandCircus.Url = "http://brewery.jollypumpkin.com/";
                         GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/pzWq1r/upload_2YHJS9-squareLarge.png";
+                        GrandCircus.BreweryID = "pzWq1r";
                         break;
                     case 3:
                         GrandCircus.Name = "Atwater";
                         GrandCircus.Url = "https://www.atwaterbeer.com/";
                         GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/boTIWO/upload_qHbhaE-squareLarge.png";
+                        GrandCircus.BreweryID = "boTIWO";
                         break;
                     case 4:
                         GrandCircus.Name = "New Holland";
                         GrandCircus.Url = "http://newhollandbrew.com/";
                         GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/AqEUBQ/upload_0xEGxj-squareLarge.png";
+                        GrandCircus.BreweryID = "AqEUBQ";
                         break;
                     case 5:
                         GrandCircus.Name = "Brewery Vivant";
                         GrandCircus.Url = "http://www.breweryvivant.com/";
                         GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/LFkVMc/upload_GhuNYz-squareLarge.png";
+                        GrandCircus.BreweryID = "LFkVMc";
                         break;
                     case 6:
                         GrandCircus.Name = "Elk Brewing";
                         GrandCircus.Url = "http://elkbrewing.com/";
                         GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/sjblac/upload_2QxSy3-squareLarge.png";
+                        GrandCircus.BreweryID = "sjblac";
                         break;
                     case 7:
                         GrandCircus.Name = "Founders";
                         GrandCircus.Url = "http://www.foundersbrewing.com/";
                         GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/Idm5Y5/upload_O8MoRg-squareLarge.png";
+                        GrandCircus.BreweryID = "Idm5Y5";
                         break;
                     case 8:
                         GrandCircus.Name = "Harmony";
                         GrandCircus.Url = "https://harmonybeer.com/";
                         GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/P0oEwB/upload_5Ngoxq-squareLarge.png";
+                        GrandCircus.BreweryID = "P0oEwB";
                         break;
                     case 9:
                         GrandCircus.Name = "Hideout";
                         GrandCircus.Url = "http://hideoutbrewing.com/";
                         GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/35YJeP/upload_eNle75-squareLarge.png";
+                        GrandCircus.BreweryID = "35YJeP";
                         break;
                     case 10:
                         GrandCircus.Name = "The People's Cider";
                         GrandCircus.Url = "http://www.thepeoplescider.com/";
                         GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/iebYze/upload_bv6mpy-squareLarge.png";
+                        GrandCircus.BreweryID = "iebYze";
                         break;
                     case 11:
                         GrandCircus.Name = "Perrin Brewing Company";
                         GrandCircus.Url = "http://www.perrinbrewing.com/";
                         GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/Boa6td/upload_6ADB1F-squareLarge.png";
+                        GrandCircus.BreweryID = "Boa6td";
                         break;
                     case 12:
                         GrandCircus.Name = "Rockford Brewing Company";
                         GrandCircus.Url = "https://www.rockfordbrewing.com/";
                         GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/U92Ctx/upload_6NaOBl-squareLarge.png";
+                        GrandCircus.BreweryID = "U92Ctx";
                         break;
                     case 13:
                         GrandCircus.Name = "The Mitten";
                         GrandCircus.Url = "http://www.mittenbrewing.com/";
                         GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/bdFoir/upload_NNuOnt-squareLarge.png";
+                        GrandCircus.BreweryID = "bdFoir";
                         break;
                     case 14:
                         GrandCircus.Name = "HopCat";
                         GrandCircus.Url = "http://hopcat.com/";
                         GrandCircus.PictureUrl = "https://brewerydb-images.s3.amazonaws.com/brewery/HizvxH/upload_oqijUs-squareLarge.png";
+                        GrandCircus.BreweryID = "HizvxH";
                         break;
                     default:
-                        break;
-                        
-                        
+                        break;                       
                 }
 
                 db.Breweries.Add(GrandCircus);
                 db.SaveChanges();
             }
-            
-            return GrandCircus;
-            
         }
     }
 }
