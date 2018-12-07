@@ -47,7 +47,8 @@
     </style>
     
 </header>
-
+<br />
+<br />
 <body>
     @foreach (var brewery in (List<Craft_Beer_Me.Models.Brewery>)Session["breweries"])
     {
@@ -58,13 +59,13 @@
                     <img src="@brewery.PictureUrl" alt="No Picture" width="150" />
                 </th>
                 <th>
-                    @brewery.Name
+                    <a href="@brewery.Url">@brewery.Name</a>
                 </th>
                 <th>
-                    <a href="@brewery.Url">Website</a>
+                    ABV
                 </th>
                 <th>
-                    Menu Description
+                    Style Name
                 </th>
                 @{ int counter = 0;}
             </tr>
@@ -78,39 +79,36 @@
                     <td>
                         @if (@beer.Picture != null)
                         {
-                            <img src="@beer.Picture" alt="No Picture" width="100" />
+                            <img src="@beer.Picture" alt="No Picture" width="50" />
                         }
                         else
                         {
-                            <img src="~/Content/Gen_Beer.png" alt="No Picture" width="100" />
+                            <img src="@brewery.PictureUrl" alt="No Picture" width="100" />
                         }
                     </td>
                     <td class="BeerColor">
                         <p title="@beer.Description">@beer.CategoryName</p> 
                     </td>
                     <td>
-                        @beer.CategoryName
+                        @beer.ABV%
                     </td>
                     <td>
-                        @beer.Description
+
+                        @beer.CategoryName
                     </td>
                 </tr>
                 counter++;
             }
 
         </table>
-
-        
         <br /><br />
 
     }
-    
-    
-</body>
+ </body>
 
 <footer class="tourbar">
     <p>Which awesome Brewery do you want to visit?</p>
-    <form action="results" target="_blank" >
+    <form action="googleTour" target="_blank" >
         <input type="checkbox" name="Atwater" />Atwater Brewery
         <input type="checkbox" name="Vivant" />Brewery Vivant
         <input type="checkbox" name="Elk" />Elk Brewery
