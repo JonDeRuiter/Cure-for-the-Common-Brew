@@ -16,10 +16,15 @@ namespace Craft_Beer_Me.Controllers
 
     {
         private BreweryContext db = new BreweryContext();
+
         public ActionResult Index()
         {
-            //PopulateDB();
-            return View();
+            string currentUrl = Request.Url.AbsoluteUri;
+            if (currentUrl.Contains("/index"))
+            {
+                return View(); ;
+            }
+            return RedirectToAction("/index");
         }
 
         public ActionResult About()
