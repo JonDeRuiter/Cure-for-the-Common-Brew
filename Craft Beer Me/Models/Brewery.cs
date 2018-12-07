@@ -27,7 +27,7 @@ namespace Craft_Beer_Me.Models
             this.Url = Url;
             this.PictureUrl = PictureUrl;
             this.Name = Name;
-            this.BreweryID = BreweryId;
+            
 
         }
         
