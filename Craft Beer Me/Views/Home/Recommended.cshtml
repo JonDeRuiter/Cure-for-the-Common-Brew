@@ -4,8 +4,7 @@
 <title>We Recommend: </title>
 <header>
     <style>
-
-        table {
+                table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 100%;
@@ -15,6 +14,10 @@
             border: 2px solid #dddddd;
             text-align: left;
             padding: 8px;
+        }
+
+        .BeerColor{
+            color: goldenrod
         }
 
         .tourbar {
@@ -44,7 +47,8 @@
     </style>
     
 </header>
-
+<br />
+<br />
 <body>
     @foreach (var brewery in (List<Craft_Beer_Me.Models.Brewery>)Session["breweries"])
     {
@@ -55,19 +59,19 @@
                     <img src="@brewery.PictureUrl" alt="No Picture" width="150" />
                 </th>
                 <th>
-                    @brewery.Name
+                    <a href="@brewery.Url">@brewery.Name</a>
                 </th>
                 <th>
-                    <a href="@brewery.Url">Website</a>
+                    ABV
                 </th>
                 <th>
-                    Menu Description
+                    Style Name
                 </th>
                 @{ int counter = 0;}
             </tr>
             @foreach (var beer in brewery.Menu)
             {
-                if (counter == 6)
+                if (counter == 3)
                 {
                     break;
                 }
@@ -75,39 +79,36 @@
                     <td>
                         @if (@beer.Picture != null)
                         {
-                            <img src="@beer.Picture" alt="No Picture" width="100" />
+                            <img src="@beer.Picture" alt="No Picture" width="50" />
                         }
                         else
                         {
-                            <img src="~/Content/Gen_Beer.png" alt="No Picture" width="100" />
+                            <img src="@brewery.PictureUrl" alt="No Picture" width="100" />
                         }
                     </td>
-                    <td>
-                        @beer.BeerName
+                    <td class="BeerColor">
+                        <p title="@beer.Description">@beer.CategoryName</p> 
                     </td>
                     <td>
+                        @beer.ABV%
+                    </td>
+                    <td>
+
                         @beer.CategoryName
-                    </td>
-                    <td>
-                        @beer.Description
                     </td>
                 </tr>
                 counter++;
             }
 
         </table>
-
-        
         <br /><br />
 
     }
-    
-    
-</body>
+ </body>
 
 <footer class="tourbar">
     <p>Which awesome Brewery do you want to visit?</p>
-    <form action="results" target="_blank" >
+    <form action="googleTour" target="_blank" >
         <input type="checkbox" name="Atwater" />Atwater Brewery
         <input type="checkbox" name="Vivant" />Brewery Vivant
         <input type="checkbox" name="Elk" />Elk Brewery
