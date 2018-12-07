@@ -16,10 +16,17 @@ namespace Craft_Beer_Me.Controllers
 
     {
         private BreweryContext db = new BreweryContext();
+        //this makes the app load correctly from either HomeController or the Index
         public ActionResult Index()
         {
-            //PopulateDB();
-            return View();
+            //obtains the url and sets it to currentUrl
+            string currentUrl = Request.Url.AbsoluteUri;
+            //if the url is set to localhost:#####/home/index it shows the view, if not it redirects there.
+            if (currentUrl.Contains("/index"))
+            {
+                return View(); ;
+            }
+            return RedirectToAction("/index");
         }
 
         public ActionResult About()
@@ -37,27 +44,30 @@ namespace Craft_Beer_Me.Controllers
         }
 
       
-
+        //test view for multiple different tests.
         public ActionResult results(string Atwater, string Vivant, string Elk, string Founders, string Harmony, string Hideout, string Hopcat, string Jolly, string Holland, string Peoples, string Perrin, string Rockford, string Schmohz, string Mitten)
         {
 
             string breweries = SelfGuidedTour(Atwater, Vivant, Elk, Founders, Harmony, Hideout, Hopcat, Jolly, Holland, Peoples, Perrin, Rockford, Schmohz, Mitten);
                         
-            string mapsGoogle = "https://www.google.com/maps/dir//" + breweries;
+            string mapsGoogle = "https://www.google.com/maps/dir/my+location/" + breweries;
             
             return Redirect(mapsGoogle);
             
         }
 
+        //the view where we show the list of breweries with the list of beers also has links to 
         public ActionResult Recommended()
         {
-         
+
+          
             return View();
             
         }
 
         public ActionResult BeerNums(string ABV, string IBU, string SRM, string flavor)
         {
+
             double abv, ibu, srm;
             abv = double.Parse(ABV);
             ibu = double.Parse(IBU);
@@ -224,7 +234,7 @@ namespace Craft_Beer_Me.Controllers
         {
             List<Brewery> localBrews = new List<Brewery>();
             
-            string localPath = LocalFilePath(2);
+            string localPath = LocalFilePath(1);
            
      
            string SchmozPath = localPath + @"\Schmohz JSON.json";
