@@ -13,12 +13,8 @@ using System.Web.Mvc;
 namespace Craft_Beer_Me.Controllers
 {
     public class HomeController : Controller
-
     {
         private BreweryContext db = new BreweryContext();
-
-        
-
 
         public ActionResult Index()
         {
@@ -47,8 +43,8 @@ namespace Craft_Beer_Me.Controllers
             return View();
         }
 
-      
         //test view for multiple different tests.
+        //right now its google maps
         public ActionResult results(string Atwater, string Vivant, string Elk, string Founders, string Harmony, string Hideout, string Hopcat, string Jolly, string Holland, string Peoples, string Perrin, string Rockford, string Schmohz, string Mitten)
         {
 
@@ -145,14 +141,12 @@ namespace Craft_Beer_Me.Controllers
             return jObjects;
         }
 
-
         //Does the stream reading and converting to JSON
         public JObject GetJSONFromLocal(string path)
         {
             StreamReader rd = new StreamReader(path);
             string beerData = rd.ReadToEnd();
             JObject Json = JObject.Parse(beerData);
-
 
             return Json;
         }
@@ -258,7 +252,6 @@ namespace Craft_Beer_Me.Controllers
             }
         }
         
-
         // Creates list of breweries that give returns on beer search parameters
         public List<Brewery> MakeBreweryList( double abv, double ibu, double srm, string flavor)
         {
@@ -281,7 +274,6 @@ namespace Craft_Beer_Me.Controllers
             return breweries;
             
         }
-        
 
         //makes a menu of beer objects that conform to search parameters
         public List<Beer> FillaMenu(int x, double abv, double ibu, double srm, string flavor)
@@ -334,12 +326,6 @@ namespace Craft_Beer_Me.Controllers
                 return menu;
             }
             
-
-            
-            
-          
-        
-        
         //fills the menu with valid beers based on user parameters
         public Beer MakeABeer(JObject beerJson, int x)
         {
