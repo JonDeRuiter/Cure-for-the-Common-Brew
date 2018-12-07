@@ -3,8 +3,7 @@
 <title>We Recommend: </title>
 <header>
     <style>
-
-        table {
+                table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 100%;
@@ -14,6 +13,10 @@
             border: 2px solid #dddddd;
             text-align: left;
             padding: 8px;
+        }
+
+        .BeerColor{
+            color: goldenrod
         }
 
         .tourbar {
@@ -69,7 +72,7 @@
             </tr>
             @foreach (var beer in brewery.Menu)
             {
-                if (counter == 6)
+                if (counter == 3)
                 {
                     break;
                 }
@@ -84,8 +87,8 @@
                             <img src="@brewery.PictureUrl" alt="No Picture" width="100" />
                         }
                     </td>
-                    <td>
-                        @beer.BeerName
+                    <td class="BeerColor">
+                        <p title="@beer.Description">@beer.CategoryName</p> 
                     </td>
                     <td>
                         @beer.ABV%
