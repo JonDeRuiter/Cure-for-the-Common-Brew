@@ -21,7 +21,7 @@ namespace Craft_Beer_Me.Models
         {
 
         }
-        public Brewery(List<Beer> Menu, string Url, string PictureUrl, string Name)
+        public Brewery(List<Beer> Menu, string Url, string PictureUrl, string Name, string BreweryId)
         {
             this.Menu = Menu;
             this.Url = Url;
