@@ -17,7 +17,7 @@
         }
 
         .BeerColor{
-            color: goldenrod
+            color: burlywood
         }
 
         .tourbar {
@@ -86,15 +86,15 @@
                             <img src="@brewery.PictureUrl" alt="No Picture" width="100" />
                         }
                     </td>
-                    <td class="BeerColor">
-                        <p title="@beer.Description">@beer.CategoryName</p> 
+                    <td >
+                        @beer.BeerName
                     </td>
                     <td>
                         @beer.ABV%
                     </td>
-                    <td>
+                    <td class="BeerColor">
 
-                        @beer.CategoryName
+                        <p title="@beer.Description">@beer.CategoryName</p> 
                     </td>
                 </tr>
                 counter++;
