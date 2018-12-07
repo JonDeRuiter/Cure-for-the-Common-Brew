@@ -13,7 +13,6 @@ using System.Web.Mvc;
 namespace Craft_Beer_Me.Controllers
 {
     public class HomeController : Controller
-
     {
         private BreweryContext db = new BreweryContext();
 
@@ -396,8 +395,6 @@ namespace Craft_Beer_Me.Controllers
                 return "x";
             }
         }
-
-
 
         //makes each new brewery object from JSON
         public Brewery MakeABrewery(JObject beerJson, int x, double abv, double ibu, double srm, string flavor)
