@@ -11,9 +11,9 @@
     Welcome to Beer City!
 </h1>
 <body>
-    <form action="popularSearch" method="post">
+    <form action="styleSearch" method="post">
         <h3>Search by Popular Beers</h3>
-        <select name="popular">
+        <select name="style">
             <option value="Optional">Optional</option>
             <option value="Pils">Miller Lite</option>
             <option value="Stout">Guinness</option>
@@ -30,14 +30,7 @@
         <input type="submit" value="Popular Search" />
     </form>
     <br />
-    <h3>What sort of beer do you like?</h3>
-    <form>
-        <select>
-            <option>Bud/Coors/Miller Lite</option>
-            <option></option>
-        </select>
-        <input type="submit" value="What's like this?" />
-    </form>
+    
 
     <h3>Have a Brewery in mind but don't know what style you'll like?</h3>
     <form method="post" action="FlightExplorer">
@@ -85,18 +78,7 @@
             <option id="p4" value="4">Medium Dark</option>
             <option id="p5" value="5">Dark</option>
         </select>
-<<<<<<< HEAD
-        <br /><br />
 
-        <p>Flavors</p>
-        <input type="text" placeholder="Optional" name="flavor" />
-
-        <input type="submit" value="Craft Beer Me!" />
-    </form>
-    <br />
-    <br />
-
-=======
         <br /><br />           
         <p>Flavors</p>
         <input list="flavors "type="text" placeholder="Optional" name="flavor"/>   
@@ -109,7 +91,7 @@
     </form>
     <br />
     <h3>Know what style you'd like to explore?</h3>
->>>>>>> e3ab12628bfa9d47353a8f30a6a71316ccc10938
+
     <form action="styleSearch" method="post">
         <h3>Search by Style</h3>
         <select name="style">
