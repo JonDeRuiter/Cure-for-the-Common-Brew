@@ -11,6 +11,25 @@
     Welcome to Beer City!
 </h1>
 <body>
+    <form action="popularSearch" method="post">
+        <h3>Search by Popular Beers</h3>
+        <select name="popular">
+            <option value="Optional">Optional</option>
+            <option value="Pils">Miller Lite</option>
+            <option value="Stout">Guinness</option>
+            <option value="Belgian">Blue Moon</option>
+            <option value="Lager">Budweiser</option>
+            <option value="Ale">Bells Two Hearted</option>
+            <option value="Cider">Strongbow</option>
+            <option value="Porter">Great Lakes Edmund Fitzgerald</option>
+            <option value="Wheat">Bell's Oberon</option>
+            <option value="Sour">Jolly Pumpkin La Roja </option>
+        </select>
+        <br />
+        <br/>
+        <input type="submit" value="Popular Search" />
+    </form>
+    <br />
     <h3>What sort of beer do you like?</h3>
     <form action="BeerNums" method="post">
         @*<input type="number" min="1" max="15" step=".1" name="ABV" /> <p>1-15</p> @*low 1-5, med 6-9, high 9+ *@
@@ -24,8 +43,6 @@
             <option value="3">More the merrier!</option>
         </select>
         <br /><br />
-
-
         <p>Hoppy or Not</p>
         <select name="IBU">
             <option value="1">Not that much please</option>
@@ -45,21 +62,23 @@
 
         </select>
         <br /><br />
-           
+
         <p>Flavors</p>
-        <input type="text" placeholder="Optional" name="flavor"/>
+        <input type="text" placeholder="Optional" name="flavor" />
 
         <input type="submit" value="Craft Beer Me!" />
     </form>
     <br />
+    <br />
+
     <form action="styleSearch" method="post">
-        <p>Search by Style</p>
+        <h3>Search by Style</h3>
         <select name="style">
             <option value="1">Optional</option>
             <option value="Ale">Pale Ale/IPA</option>
             <option value="Belgian">Belgian</option>
             <option value="Cider">Cider</option>
-            @*<option value="IPA">IPA</option>*@
+            <option value="Lager">Lager</option>
             <option value="Pils">Pilsner</option>
             <option value="Porter">Porter</option>
             <option value="Sour">Sours</option>

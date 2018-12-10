@@ -111,6 +111,26 @@ namespace Craft_Beer_Me.Controllers
             }
             
         }
+        public ActionResult popularSearch(string popular)
+        {
+            if (popular != "1")
+            {
+                double abv = 0;
+                double ibu = 0;
+                double srm = 0;
+                string flavor = popular;
+
+                List<Brewery> breweries = MakeBreweryList(abv, ibu, srm, flavor);
+
+                Session["breweries"] = breweries;
+                return RedirectToAction("Recommended");
+            }
+            else
+            {
+                return RedirectToAction("/Index");
+            }
+
+        }
 
         //Begins the process of creating brewery objects and directs it to either local data or live data
         public List<JObject> GetJson(double abv, double ibu, double srm, string flavor)
@@ -164,7 +184,7 @@ namespace Craft_Beer_Me.Controllers
         {
             List<JObject> localBrews = new List<JObject>();
             
-            string localPath = LocalFilePath(2);
+            string localPath = LocalFilePath(3);
            
             string SchmozPath = localPath + @"\Schmohz JSON.json";
             JObject SchmozJson = GetJSONFromLocal(SchmozPath);
@@ -359,13 +379,13 @@ namespace Craft_Beer_Me.Controllers
             {
                 craftBeer.ABV = (double)beerJson["data"][x]["abv"];
             }
-            else if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["style"]["abvMin"] != null)
-            {
-                craftBeer.ABV = (double)beerJson["data"][x]["style"]["abvMin"];
-            }
             else if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["style"]["abvMax"] != null)
             {
                 craftBeer.ABV = (double)beerJson["data"][x]["style"]["abvMax"];
+            }
+            else if (beerJson["data"][x]["style"] != null && beerJson["data"][x]["style"]["abvMin"] != null)
+            {
+                craftBeer.ABV = (double)beerJson["data"][x]["style"]["abvMin"];
 
             }
 
