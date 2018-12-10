@@ -111,28 +111,6 @@ namespace Craft_Beer_Me.Controllers
             }
             
         }
-<<<<<<< HEAD
-        public ActionResult popularSearch(string popular)
-        {
-            if (popular != "1")
-            {
-                double abv = 0;
-                double ibu = 0;
-                double srm = 0;
-                string flavor = popular;
-
-                List<Brewery> breweries = MakeBreweryList(abv, ibu, srm, flavor);
-
-                Session["breweries"] = breweries;
-                return RedirectToAction("Recommended");
-            }
-            else
-            {
-                return RedirectToAction("/Index");
-            }
-
-=======
-        
 
         public ActionResult FlightExplorer(int flighty)
         {
@@ -153,7 +131,6 @@ namespace Craft_Beer_Me.Controllers
                 return View();
             }
             
->>>>>>> e3ab12628bfa9d47353a8f30a6a71316ccc10938
         }
 
         //Begins the process of creating brewery objects and directs it to either local data or live data
@@ -269,7 +246,7 @@ namespace Craft_Beer_Me.Controllers
         {
             List<JObject> localBrews = new List<JObject>();
             
-            string localPath = LocalFilePath(3);
+            string localPath = LocalFilePath(2);
            
             string SchmozPath = localPath + @"\Schmohz JSON.json";
             JObject SchmozJson = GetJSONFromLocal(SchmozPath);
