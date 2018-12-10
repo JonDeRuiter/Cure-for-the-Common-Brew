@@ -13,10 +13,6 @@
 <body>
     <h3>What sort of beer do you like?</h3>
     <form action="BeerNums" method="post">
-        @*<input type="number" min="1" max="15" step=".1" name="ABV" /> <p>1-15</p> @*low 1-5, med 6-9, high 9+ *@
-        @*<input type="text" placeholder="IBU" name="IBU" /> <p>1-100</p> @*low = under 30, med = 31 - 60, high 60+ *@
-        @*<input type="text" placeholder="SRM" name="SRM"/> <p>1-40</p> @*low = 1 - 10, med 11 -21, high 21+*@
-
         <p>Alcohol Content</p>
         <select name="ABV">
             <option value="1">Let's keep it light</option>
@@ -24,8 +20,6 @@
             <option value="3">More the merrier!</option>
         </select>
         <br /><br />
-
-
         <p>Hoppy or Not</p>
         <select name="IBU">
             <option value="1">Not that much please</option>
@@ -33,22 +27,17 @@
             <option value="3">The hoppier the better</option>
         </select>
         <br /><br />
-
         <p>Color</p>
-
         <select name="SRM">
             <option id="p1" value="1">Light</option>
             <option id="p2" value="2">Medium Light</option>
             <option id="p3" value="3">Medium</option>
             <option id="p4" value="4">Medium Dark</option>
             <option id="p5" value="5">Dark</option>
-
         </select>
-        <br /><br />
-           
+        <br /><br />           
         <p>Flavors</p>
         <input type="text" placeholder="Optional" name="flavor"/>
-
         <input type="submit" value="Craft Beer Me!" />
     </form>
     <br />
@@ -60,7 +49,6 @@
             <option value="Belgian">Belgian</option>
             <option value="Cider">Cider</option>
             <option value="Lager">Lager</option>
-            @*<option value="IPA">IPA</option>*@
             <option value="Pils">Pilsner</option>
             <option value="Porter">Porter</option>
             <option value="Sour">Sours</option>
@@ -70,6 +58,5 @@
         <br />
         <input type="submit" value="Style Search" />
     </form>
-    @*<button>Just Get me Something Good</button>*@
 </body>
 <footer></footer>
