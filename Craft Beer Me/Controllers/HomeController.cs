@@ -224,7 +224,7 @@ namespace Craft_Beer_Me.Controllers
                     break;
             }
 
-            string localPath = LocalFilePath(2) + jPath;
+            string localPath = LocalFilePath(1) + jPath;
             justOne = GetJSONFromLocal(localPath);
 
 
@@ -246,11 +246,8 @@ namespace Craft_Beer_Me.Controllers
         {
             List<JObject> localBrews = new List<JObject>();
             
-<<<<<<< HEAD
             string localPath = LocalFilePath(1);
-=======
-            string localPath = LocalFilePath(2);
->>>>>>> 93595ee595503c19ee7f3ef037aa177026073059
+
            
             string SchmozPath = localPath + @"\Schmohz JSON.json";
             JObject SchmozJson = GetJSONFromLocal(SchmozPath);
