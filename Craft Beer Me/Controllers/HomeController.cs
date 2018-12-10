@@ -111,6 +111,7 @@ namespace Craft_Beer_Me.Controllers
             }
             
         }
+<<<<<<< HEAD
         public ActionResult popularSearch(string popular)
         {
             if (popular != "1")
@@ -130,6 +131,29 @@ namespace Craft_Beer_Me.Controllers
                 return RedirectToAction("/Index");
             }
 
+=======
+        
+
+        public ActionResult FlightExplorer(int flighty)
+        {
+            if (flighty == 10)
+            {
+                Brewery brewery = db.Breweries.Find(flighty);
+                List<Beer> empty = new List<Beer>();
+                brewery.Menu = empty;
+                Session["breweries"] = brewery;
+                Session["Cider"] = "Sadly, we were not able to populate a flight for you because they only have hard cider. I'm sure it's great, but we're all disappointed.";
+                return View();
+            }
+            else
+            {
+                Brewery brewery = db.Breweries.Find(flighty);
+                brewery.Menu = FillaMenu(flighty);
+                Session["breweries"] = brewery;
+                return View();
+            }
+            
+>>>>>>> e3ab12628bfa9d47353a8f30a6a71316ccc10938
         }
 
         //Begins the process of creating brewery objects and directs it to either local data or live data
@@ -167,6 +191,67 @@ namespace Craft_Beer_Me.Controllers
             }
             
             return jObjects;
+        }
+
+        //Overload of GetJson to access a single brewery by db index only set to local JSON at the moment
+        public JObject GetJson(int x)
+        {
+            JObject justOne = new JObject();
+            string jPath = "";
+
+            switch (x)
+            {
+                case 1:
+                    jPath = @"\Schmohz JSON.json";
+                    break;
+                case 2:
+                    jPath = @"\Jolly Pumpkin JSON.json";
+                    break;
+                case 3:
+                    jPath = @"\Atwater JSON.json";
+                    break;
+                case 4:
+                    jPath = @"\New Holland JSON.json";
+                    break;
+                case 5:
+                    jPath = @"\Brewery Vivant JSON.json";
+                    break;
+                case 6:
+                    jPath = @"\Elk Brewing JSON.json";
+                    break;
+                case 7:
+                    jPath = @"\Founders JSON.json";
+                    break;
+                case 8:
+                    jPath = @"\Harmony JSON.json";
+                    break;
+                case 9:
+                    jPath = @"\Hideout JSON.json";
+                    break;
+                case 10:
+                    jPath = @"\Peoples Cider JSON.json";
+                    break;
+                case 11:
+                    jPath = @"\Perrin JSON.json";
+                    break;
+                case 12:
+                    jPath = @"\Rockford Brewing JSON.json";
+                    break;
+                case 13:
+                    jPath = @"\The Mitten JSON.json";
+                    break;
+                case 14:
+                    jPath = @"\hopcat json.json";
+                    break;
+                default:
+                    break;
+            }
+
+            string localPath = LocalFilePath(2) + jPath;
+            justOne = GetJSONFromLocal(localPath);
+
+
+            return justOne;
         }
 
         //Does the stream reading and converting to JSON
@@ -280,7 +365,7 @@ namespace Craft_Beer_Me.Controllers
             }
         }
         
-        // Creates list of breweries that give returns on beer search parameters
+        //Creates list of breweries that give returns on beer search parameters
         public List<Brewery> MakeBreweryList( double abv, double ibu, double srm, string flavor)
         {
             List<Brewery> breweries = new List<Brewery>();
@@ -302,7 +387,61 @@ namespace Craft_Beer_Me.Controllers
             return breweries;
             
         }
+        
+        //overload for FillaMenu that takes one json to make one brewery
+        public List<Beer> FillaMenu(int x)
+        {
+            List<Beer> menu = new List<Beer>();
+            JObject beerJson = GetJson(x);
+            List<Beer> ale = new List<Beer>();
+            List<Beer> pilsner = new List<Beer>();
+            List<Beer> lager = new List<Beer>();
+            List<Beer> belgian = new List<Beer>();
+            List<Beer> porter = new List<Beer>();
+            List<Beer> stout = new List<Beer>();
 
+            Array beerArray = beerJson["data"].ToArray();
+            for (int i = 0; i < beerArray.Length; i++)
+            {
+                //Evaluate here
+                Beer newBeer = new Beer();
+                newBeer = MakeABeer(beerJson, i);
+                if (LimitBeer(newBeer, "ale"))
+                {
+                   ale.Add(newBeer);
+                }
+                else if (LimitBeer(newBeer, "pils"))
+                {
+                    pilsner.Add(newBeer);
+                }
+                else if (LimitBeer(newBeer, "lager"))
+                {
+                    lager.Add(newBeer);
+                }
+                else if (LimitBeer(newBeer, "Belgian"))
+                {
+                    belgian.Add(newBeer);
+                }
+                else if (LimitBeer(newBeer, "Porter"))
+                {
+                    porter.Add(newBeer);
+                }
+                else if (LimitBeer(newBeer, "Stout"))
+                {
+                    stout.Add(newBeer);
+                }                
+            }
+            menu = RandyHandleThis(ale, pilsner, lager, belgian, porter, stout);
+            if (menu != null)
+            {
+
+
+            }
+            
+            return menu;
+
+        }
+        
         //makes a menu of beer objects that conform to search parameters
         public List<Beer> FillaMenu(int x, double abv, double ibu, double srm, string flavor)
         {
@@ -668,7 +807,53 @@ namespace Craft_Beer_Me.Controllers
             }
             return false;
         }
+        
+        //allows the flight explorer to have an element of randomization
+        public List<Beer> RandyHandleThis(List<Beer> ale, List<Beer> pilsner, List<Beer> lager, List<Beer> belgian, List<Beer> porter, List<Beer> stout)
+        {
+            List<Beer> final = new List<Beer>();
 
+            ale = RandoSort(ale);
+            pilsner = RandoSort(pilsner);
+            lager = RandoSort(lager);
+            belgian = RandoSort(belgian);
+            porter = RandoSort(porter);
+            stout = RandoSort(stout);
+
+            //Any() searches for matching elements, in this case 'are there any elements in the list?'
+            if (ale.Any())
+            {
+                final.Add(ale[0]);
+            }
+
+            if (pilsner.Any())
+            {
+                final.Add(pilsner[0]);
+            }
+
+            if (lager.Any())
+            {
+                final.Add(lager[0]);
+            }
+
+            if (belgian.Any())
+            {
+                final.Add(belgian[0]);
+            }
+
+            if (porter.Any())
+            {
+                final.Add(porter[0]);
+            }
+
+            if (stout.Any())
+            {
+                final.Add(stout[0]);
+            }
+            
+            return final;
+        }
+        
         //randomly sorts the beer list so that the top six results are not the same every time
         public static List<Beer> RandoSort(List<Beer> beers)
         {
