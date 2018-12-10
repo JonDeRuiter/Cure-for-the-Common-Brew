@@ -246,7 +246,9 @@ namespace Craft_Beer_Me.Controllers
         {
             List<JObject> localBrews = new List<JObject>();
             
+
             string localPath = LocalFilePath(1);
+
            
             string SchmozPath = localPath + @"\Schmohz JSON.json";
             JObject SchmozJson = GetJSONFromLocal(SchmozPath);
