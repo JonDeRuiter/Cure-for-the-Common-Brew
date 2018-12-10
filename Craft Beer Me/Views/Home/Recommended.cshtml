@@ -1,5 +1,4 @@
-﻿@*@model IEnumerable<Craft_Beer_Me.Models.Beer>*@
-@model IEnumerable <Craft_Beer_Me.Models.Brewery>
+﻿@model IEnumerable <Craft_Beer_Me.Models.Brewery>
 
 <title>We Recommend: </title>
 <header>
@@ -17,7 +16,7 @@
         }
 
         .BeerColor{
-            color: goldenrod
+            color: burlywood
         }
 
         .tourbar {
@@ -25,7 +24,9 @@
             background-color: white;
             position: fixed;
             bottom: 0;
-            width: 100%;
+            left: 0;
+            height: 95%;
+            width: 160px;
             border: medium;
             border-style:solid;
         }
@@ -86,43 +87,41 @@
                             <img src="@brewery.PictureUrl" alt="No Picture" width="100" />
                         }
                     </td>
-                    <td class="BeerColor">
-                        <p title="@beer.Description">@beer.CategoryName</p> 
+                    <td >
+                        @beer.BeerName
                     </td>
                     <td>
                         @beer.ABV%
                     </td>
-                    <td>
+                    <td class="BeerColor">
 
-                        @beer.CategoryName
+                        <p title="@beer.Description">@beer.CategoryName</p> 
                     </td>
                 </tr>
                 counter++;
             }
-
         </table>
         <br /><br />
-
     }
  </body>
 
 <footer class="tourbar">
     <p>Which awesome Brewery do you want to visit?</p>
     <form action="googleTour" target="_blank" >
-        <input type="checkbox" name="Atwater" />Atwater Brewery
-        <input type="checkbox" name="Vivant" />Brewery Vivant
-        <input type="checkbox" name="Elk" />Elk Brewery
-        <input type="checkbox" name="Founders" />Founders Brewing
-        <input type="checkbox" name="Harmony" />Harmony Brewery
-        <input type="checkbox" name="Hideout" />Hideout Brewery
-        <input type="checkbox" name="Hopcat" />Hopcat Brewery
+        <input type="checkbox" name="Atwater" />Atwater Brewery <br />
+        <input type="checkbox" name="Vivant" />Brewery Vivant<br />
+        <input type="checkbox" name="Elk" />Elk Brewery<br />
+        <input type="checkbox" name="Founders" />Founders Brewing<br />
+        <input type="checkbox" name="Harmony" />Harmony Brewery<br />
+        <input type="checkbox" name="Hideout" />Hideout Brewery<br />
+        <input type="checkbox" name="Hopcat" />Hopcat Brewery<br />
         <input type="checkbox" name="Jolly" />Jolly Pumpkin Brewery<br />
-        <input type="checkbox" name="Holland" />New Holland Brewery
-        <input type="checkbox" name="Peoples" />Peoples Cider
-        <input type="checkbox" name="Perrin" /> Perrin Brewery
-        <input type="checkbox" name="Rockford" />Rockford Brewery
-        <input type="checkbox" name="Schmohz" />Schmohz Brewery
-        <input type="checkbox" name="Mitten" />The Mitten Brewery
+        <input type="checkbox" name="Holland" />New Holland Brewery<br />
+        <input type="checkbox" name="Peoples" />Peoples Cider<br />
+        <input type="checkbox" name="Perrin" /> Perrin Brewery<br />
+        <input type="checkbox" name="Rockford" />Rockford Brewery<br />
+        <input type="checkbox" name="Schmohz" />Schmohz Brewery<br />
+        <input type="checkbox" name="Mitten" />The Mitten Brewery<br />
         <button type="submit">I'm ready for my Tour!</button>
     </form>
 </footer>

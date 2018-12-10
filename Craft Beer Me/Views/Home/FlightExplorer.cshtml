@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Craft_Beer_Me.Models.Brewery>
+
+<header>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 2px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        .BeerColor {
+            color: burlywood
+        }
+
+        .tourbar {
+            overflow: hidden;
+            background-color: white;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 95%;
+            width: 160px;
+            border: medium;
+            border-style: solid;
+        }
+
+            .tourbar a {
+                float: left;
+                display: block;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration-color: black;
+                font-size: 17px;
+            }
+
+                .tourbar a:hover {
+                    background: #dddddd;
+                    color: white;
+                }
+    </style>
+
+</header>
+
+<h2>Here's your Beer Flight!</h2>
+<h4>@Session["Cider"]</h4>
+@{var brewery = (Craft_Beer_Me.Models.Brewery)Session["breweries"];}
+
+<body>
+
+    <table>
+
+        <tr>
+            <th>
+                <img src="@brewery.PictureUrl" alt="No Picture" width="150" />
+            </th>
+            <th>
+                <a href="@brewery.Url">@brewery.Name</a>
+            </th>
+            <th>
+                ABV
+            </th>
+            <th>
+                Style Name
+            </th>
+
+        </tr>
+        @foreach (var beer in brewery.Menu)
+        {
+
+            <tr>
+                <td>
+                    @if (@beer.Picture != null)
+                    {
+                        <img src="@beer.Picture" alt="No Picture" width="50" />
+                    }
+                    else
+                    {
+                        <img src="@brewery.PictureUrl" alt="No Picture" width="100" />
+                    }
+                </td>
+                <td>
+                    @beer.BeerName
+                </td>
+                <td>
+                    @beer.ABV%
+                </td>
+                <td class="BeerColor">
+
+                    <p title="@beer.Description">@beer.CategoryName</p>
+                </td>
+            </tr>
+
+        }
+    </table>
+    @{ if (brewery.Menu.Count() == 0)
+        {
+            <iframe src="https://giphy.com/embed/39gIrKpwKes3C" width="480" height="207" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/disappointed-sad-good-39gIrKpwKes3C">via GIPHY</a></p>
+        }}
+</body>

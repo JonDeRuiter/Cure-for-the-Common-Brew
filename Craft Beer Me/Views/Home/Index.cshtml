@@ -1,7 +1,7 @@
 ﻿<header></header>
 <title>Craft Beer Me</title>
 <style>
-    #p1 {background-color:rgb(255, 187, 51);}
+    #p1 {background-color: rgb(255, 187, 51);}
     #p2 {background-color: rgb(255, 107, 1);}
     #p3 {background-color: rgb(162, 48, 0);}
     #p4 {background-color: rgb(108, 13, 0);}
@@ -12,11 +12,38 @@
 </h1>
 <body>
     <h3>What sort of beer do you like?</h3>
-    <form action="BeerNums" method="post">
-        @*<input type="number" min="1" max="15" step=".1" name="ABV" /> <p>1-15</p> @*low 1-5, med 6-9, high 9+ *@
-        @*<input type="text" placeholder="IBU" name="IBU" /> <p>1-100</p> @*low = under 30, med = 31 - 60, high 60+ *@
-        @*<input type="text" placeholder="SRM" name="SRM"/> <p>1-40</p> @*low = 1 - 10, med 11 -21, high 21+*@
+    <form>
+        <select>
+            <option>Bud/Coors/Miller Lite</option>
+            <option></option>
+        </select>
+        <input type="submit" value="What's like this?" />
+    </form>
 
+    <h3>Have a Brewery in mind but don't know what style you'll like?</h3>
+    <form method="post" action="FlightExplorer">
+        @*These values equate to where breweries are in the db*@
+        <select name="flighty">
+            <option value="3">Atwater Brewery</option>
+            <option value="5">Brewery Vivant</option>
+            <option value="6">Elk Brewing</option>
+            <option value="7">Founders Brewing</option>
+            <option value="8">Harmony Brewing</option>
+            <option value="9">Hideout Brewery</option>
+            <option value="14">Hopcat Brewery</option>
+            <option value="2">Jolly Pumpkin</option>
+            <option value="4">New Holland Brewery: Knickerbocker</option>
+            <option value="10">Peoples Cider</option>
+            <option value="11">Perrin Brewery</option>
+            <option value="12">Rockford Brewing</option>
+            <option value="1">Schmohz Brewing</option>
+            <option value="13">The Mitten Brewery</option>
+        </select>
+        <input type="submit" value="Explore a Variety of Styles" />
+        <br />
+        <h3>Want a little more control over a specific quality of your beer?</h3>
+    </form>
+    <form action="BeerNums" method="post">
         <p>Alcohol Content</p>
         <select name="ABV">
             <option value="1">Let's keep it light</option>
@@ -24,8 +51,6 @@
             <option value="3">More the merrier!</option>
         </select>
         <br /><br />
-
-
         <p>Hoppy or Not</p>
         <select name="IBU">
             <option value="1">Not that much please</option>
@@ -33,25 +58,26 @@
             <option value="3">The hoppier the better</option>
         </select>
         <br /><br />
-
         <p>Color</p>
-
         <select name="SRM">
             <option id="p1" value="1">Light</option>
             <option id="p2" value="2">Medium Light</option>
             <option id="p3" value="3">Medium</option>
             <option id="p4" value="4">Medium Dark</option>
             <option id="p5" value="5">Dark</option>
-
         </select>
-        <br /><br />
-           
+        <br /><br />           
         <p>Flavors</p>
-        <input type="text" placeholder="Optional" name="flavor"/>
-
+        <input list="flavors "type="text" placeholder="Optional" name="flavor"/>   
+        <datalist id="flavors">
+            <option value="fruity">
+            <option value="caramel">
+            <option value="coffee">
+        </datalist>
         <input type="submit" value="Craft Beer Me!" />
     </form>
     <br />
+    <h3>Know what style you'd like to explore?</h3>
     <form action="styleSearch" method="post">
         <p>Search by Style</p>
         <select name="style">
@@ -59,16 +85,15 @@
             <option value="Ale">Pale Ale/IPA</option>
             <option value="Belgian">Belgian</option>
             <option value="Cider">Cider</option>
-            @*<option value="IPA">IPA</option>*@
+            <option value="Lager">Lager</option>
             <option value="Pils">Pilsner</option>
             <option value="Porter">Porter</option>
             <option value="Sour">Sours</option>
             <option value="Stout">Stout</option>
             <option value="Wheat">Wheat</option>
         </select>
-        <br />
+        
         <input type="submit" value="Style Search" />
     </form>
-    @*<button>Just Get me Something Good</button>*@
 </body>
 <footer></footer>
