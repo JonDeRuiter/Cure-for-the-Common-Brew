@@ -1,7 +1,7 @@
 ﻿<header></header>
 <title>Craft Beer Me</title>
 <style>
-    #p1 {background-color:rgb(255, 187, 51);}
+    #p1 {background-color: rgb(255, 187, 51);}
     #p2 {background-color: rgb(255, 107, 1);}
     #p3 {background-color: rgb(162, 48, 0);}
     #p4 {background-color: rgb(108, 13, 0);}
@@ -12,6 +12,37 @@
 </h1>
 <body>
     <h3>What sort of beer do you like?</h3>
+    <form>
+        <select>
+            <option>Bud/Coors/Miller Lite</option>
+            <option></option>
+        </select>
+        <input type="submit" value="What's like this?" />
+    </form>
+
+    <h3>Have a Brewery in mind but don't know what style you'll like?</h3>
+    <form method="post" action="FlightExplorer">
+        @*These values equate to where breweries are in the db*@
+        <select name="flighty">
+            <option value="3">Atwater Brewery</option>
+            <option value="5">Brewery Vivant</option>
+            <option value="6">Elk Brewing</option>
+            <option value="7">Founders Brewing</option>
+            <option value="8">Harmony Brewing</option>
+            <option value="9">Hideout Brewery</option>
+            <option value="14">Hopcat Brewery</option>
+            <option value="2">Jolly Pumpkin</option>
+            <option value="4">New Holland Brewery: Knickerbocker</option>
+            <option value="10">Peoples Cider</option>
+            <option value="11">Perrin Brewery</option>
+            <option value="12">Rockford Brewing</option>
+            <option value="1">Schmohz Brewing</option>
+            <option value="13">The Mitten Brewery</option>
+        </select>
+        <input type="submit" value="Explore a Variety of Styles" />
+        <br />
+        <h3>Want a little more control over a specific quality of your beer?</h3>
+    </form>
     <form action="BeerNums" method="post">
         <p>Alcohol Content</p>
         <select name="ABV">
@@ -37,10 +68,16 @@
         </select>
         <br /><br />           
         <p>Flavors</p>
-        <input type="text" placeholder="Optional" name="flavor"/>
+        <input list="flavors "type="text" placeholder="Optional" name="flavor"/>   
+        <datalist id="flavors">
+            <option value="fruity">
+            <option value="caramel">
+            <option value="coffee">
+        </datalist>
         <input type="submit" value="Craft Beer Me!" />
     </form>
     <br />
+    <h3>Know what style you'd like to explore?</h3>
     <form action="styleSearch" method="post">
         <p>Search by Style</p>
         <select name="style">
@@ -55,7 +92,7 @@
             <option value="Stout">Stout</option>
             <option value="Wheat">Wheat</option>
         </select>
-        <br />
+        
         <input type="submit" value="Style Search" />
     </form>
 </body>
