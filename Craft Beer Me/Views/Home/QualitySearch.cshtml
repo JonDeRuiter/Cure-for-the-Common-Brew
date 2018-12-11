@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>QualitySearch</title>
+</head>
+<body>
+    <h3>Want a little more control over a specific quality of your beer?</h3>
+    <form action="BeerNums" method="post" class="box">
+        <p>Alcohol Content</p>
+        <select name="ABV" class="accentOne">
+            <option value="1">Let's keep it light</option>
+            <option value="2">A happy medium</option>
+            <option value="3">More the merrier!</option>
+        </select>
+        <br /><br />
+        <p>Hoppy or Not</p>
+        <select name="IBU" class="accentOne">
+            <option value="1">Not that much please</option>
+            <option value="2">Somewhere in the middle</option>
+            <option value="3">The hoppier the better</option>
+        </select>
+        <br /><br />
+        <p>Color</p>
+        <select name="SRM" class="accentOne">
+            <option id="p1" value="1">Light</option>
+            <option id="p2" value="2">Medium Light</option>
+            <option id="p3" value="3">Medium</option>
+            <option id="p4" value="4">Medium Dark</option>
+            <option id="p5" value="5">Dark</option>
+        </select>
+        <br /><br />
+        <p>Flavors</p>
+        <input class="accentOne" list="flavors" type="text" placeholder="Optional" name="flavor" />
+        <datalist id="flavors">
+            <option value="Fruit">
+            <option value="Caramel">
+            <option value="Coffee">
+            <option value="Malt">
+            <option value="Citrus">
+            <option value="Chocolate">
+            <option value="Sweet">
+        </datalist>
+        <input class="accentOne" type="submit" value="Craft Beer Me!" />
+    </form>
+</body>
+</html>

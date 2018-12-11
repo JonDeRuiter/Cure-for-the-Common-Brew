@@ -11,7 +11,6 @@ namespace Craft_Beer_Me.Models
 
         public int ID { get; set; }
         public List<Beer> Menu { get; set; }
-
         public string Url { get; set; }
         public string PictureUrl { get; set; }
         public string Name { get; set; }
@@ -27,10 +26,7 @@ namespace Craft_Beer_Me.Models
             this.Url = Url;
             this.PictureUrl = PictureUrl;
             this.Name = Name;
-            
-
-        }
-        
+        }        
     }
 
     public class BreweryContext : DbContext
