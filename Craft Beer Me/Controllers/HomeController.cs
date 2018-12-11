@@ -43,8 +43,6 @@ namespace Craft_Beer_Me.Controllers
             return View();
         }
 
-        //test view for multiple different tests.
-
         //right now its google maps
 
         public ActionResult googleTour(string Atwater, string Vivant, string Elk, string Founders, string Harmony, string Hideout, string Hopcat, string Jolly, string Holland, string Peoples, string Perrin, string Rockford, string Schmohz, string Mitten)
@@ -59,6 +57,7 @@ namespace Craft_Beer_Me.Controllers
             
         }
 
+        //the "error" page
         public ActionResult results()
         {
             return View();
@@ -344,6 +343,7 @@ namespace Craft_Beer_Me.Controllers
         }
         
         //Creates list of breweries that give returns on beer search parameters
+        //uses Database to pull the brewery objects
         public List<Brewery> MakeBreweryList( double abv, double ibu, double srm, string flavor)
         {
             List<Brewery> breweries = new List<Brewery>();
@@ -472,6 +472,7 @@ namespace Craft_Beer_Me.Controllers
             }
             
         //fills the menu with valid beers based on user parameters
+        //parses through the json.
         public Beer MakeABeer(JObject beerJson, int x)
         {
             Beer craftBeer = new Beer();
