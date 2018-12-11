@@ -200,6 +200,9 @@
     <Content Include="Views\Breweries\Edit.cshtml" />
     <Content Include="Views\Breweries\Index.cshtml" />
     <Content Include="Views\Home\FlightExplorer.cshtml" />
+    <Content Include="Views\Home\SearchByStyle.cshtml" />
+    <Content Include="Views\Home\QualitySearch.cshtml" />
+    <Content Include="Views\Home\PopularSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
