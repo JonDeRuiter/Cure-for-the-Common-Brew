@@ -203,6 +203,7 @@
     <Content Include="Views\Home\SearchByStyle.cshtml" />
     <Content Include="Views\Home\QualitySearch.cshtml" />
     <Content Include="Views\Home\PopularSearch.cshtml" />
+    <Content Include="Views\Home\Flight.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
