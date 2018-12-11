@@ -57,6 +57,10 @@ namespace Craft_Beer_Me.Controllers
         {
             return View();
         }
+        public ActionResult Flight()
+        {
+            return View();
+        }
         
         //google maps redirect
         public ActionResult googleTour(string Atwater, string Vivant, string Elk, string Founders, string Harmony, string Hideout, string Hopcat, string Jolly, string Holland, string Peoples, string Perrin, string Rockford, string Schmohz, string Mitten)
@@ -260,7 +264,7 @@ namespace Craft_Beer_Me.Controllers
             List<JObject> localBrews = new List<JObject>();
             
 
-            string localPath = LocalFilePath(1);
+            string localPath = LocalFilePath(2);
 
            
             string SchmozPath = localPath + @"\Schmohz JSON.json";
