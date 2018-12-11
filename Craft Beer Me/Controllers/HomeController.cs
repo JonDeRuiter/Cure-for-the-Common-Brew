@@ -43,10 +43,27 @@ namespace Craft_Beer_Me.Controllers
             return View();
         }
 
+
         //right now its google maps
 
-        public ActionResult googleTour(string Atwater, string Vivant, string Elk, string Founders, string Harmony, string Hideout, string Hopcat, string Jolly, string Holland, string Peoples, string Perrin, string Rockford, string Schmohz, string Mitten)
+        public ActionResult QualitySearch()
+        {
+            return View();
+        }
 
+        public ActionResult SearchByStyle()
+        {
+            return View();
+        }
+
+
+        public ActionResult PopularSearch()
+        {
+            return View();
+        }
+        
+        //google maps redirect
+        public ActionResult googleTour(string Atwater, string Vivant, string Elk, string Founders, string Harmony, string Hideout, string Hopcat, string Jolly, string Holland, string Peoples, string Perrin, string Rockford, string Schmohz, string Mitten)
         {
 
             string breweries = SelfGuidedTour(Atwater, Vivant, Elk, Founders, Harmony, Hideout, Hopcat, Jolly, Holland, Peoples, Perrin, Rockford, Schmohz, Mitten);
@@ -57,7 +74,9 @@ namespace Craft_Beer_Me.Controllers
             
         }
 
+
         //the "error" page
+
         public ActionResult results()
         {
             return View();
@@ -113,6 +132,7 @@ namespace Craft_Beer_Me.Controllers
 
         public ActionResult FlightExplorer(int flighty)
         {
+            Session["Cider"] = null;
             if (flighty == 10)
             {
                 Brewery brewery = db.Breweries.Find(flighty);
@@ -343,8 +363,10 @@ namespace Craft_Beer_Me.Controllers
         }
         
         //Creates list of breweries that give returns on beer search parameters
+
         //uses Database to pull the brewery objects
         public List<Brewery> MakeBreweryList( double abv, double ibu, double srm, string flavor)
+
         {
             List<Brewery> breweries = new List<Brewery>();
             Brewery GrandCircus = new Brewery();
@@ -358,12 +380,9 @@ namespace Craft_Beer_Me.Controllers
                 if (GrandCircus.Menu.Count > 0)
                 {
                     breweries.Add(GrandCircus);
-                }
-              
+                }              
             }
-
-            return breweries;
-            
+            return breweries;            
         }
         
         //overload for FillaMenu that takes one json to make one brewery
@@ -476,10 +495,7 @@ namespace Craft_Beer_Me.Controllers
         public Beer MakeABeer(JObject beerJson, int x)
         {
             Beer craftBeer = new Beer();
-
-            //Note: Not all JSON beers have the category 'Available' hmmm...
-
-
+            
             craftBeer.BeerName = beerJson["data"][x]["name"].ToString();
 
             //Description
@@ -506,7 +522,6 @@ namespace Craft_Beer_Me.Controllers
                 craftBeer.ABV = (double)beerJson["data"][x]["style"]["abvMin"];
 
             }
-
             else
             {
                 craftBeer.ABV = 0;
