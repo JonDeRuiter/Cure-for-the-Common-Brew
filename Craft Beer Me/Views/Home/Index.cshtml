@@ -6,6 +6,7 @@
     #p3 {background-color: rgb(162, 48, 0);}
     #p4 {background-color: rgb(108, 13, 0);}
     #p5 {background-color: rgb(71, 5, 9);}
+
     .Maincolor {
         background-color: #895e4f;
         font-family: 'proxima-nova', sans-serif;
@@ -21,10 +22,12 @@
         border-color: #241e20;
         background-color: #953f0b;
     }
+
 </style>
 <h1>
     Welcome to Grand Rapids!
 </h1>
+
 <h4>Beer City 2014</h4>
 
 <body class="Maincolor">
@@ -51,10 +54,10 @@
     <form action="SearchByStyle"><input type="submit" value="Search for Beer By Style"/></form>
     <form action="QualitySearch"><input type="submit" value="Search for Beer by Quality"/></form>
 
-    <h3>Have a Brewery in mind but don't know what style you'll like?</h3>
+    @*<h3>Have a Brewery in mind but don't know what style you'll like?</h3>
     <form method="post" action="FlightExplorer" class="box">
         @*These values equate to where breweries are in the db*@
-        <select name="flighty" class="accentOne">
+        @*<select name="flighty" class="accentOne">
             <option value="3">Atwater Brewery</option>
             <option value="5">Brewery Vivant</option>
             <option value="6">Elk Brewing</option>
@@ -73,7 +76,7 @@
         <input class="accentOne" type="submit" value="Explore a Variety of Styles" />
         <br />
         <br />
-    </form>
+    </form>*@
     @*<h3>Know what style you'd like to explore?</h3>
     <form action="styleSearch" method="post" class="box">
         <h3>Search by Style</h3>
@@ -130,7 +133,7 @@
         </datalist>
         <input class="accentOne" type="submit" value="Craft Beer Me!" />
     </form>*@
-    <br />
+    @*<br />
     <h3>Know what style you'd like to explore?</h3>
 
     <form action="styleSearch" method="post">
@@ -149,6 +152,6 @@
         </select>
         
         <input type="submit" value="Style Search" />
-    </form>
+    </form>*@
 </body>
 <footer></footer>
