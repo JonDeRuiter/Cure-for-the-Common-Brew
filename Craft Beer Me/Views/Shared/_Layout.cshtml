@@ -1,33 +1,91 @@
 ﻿<!DOCTYPE html>
+<style>
+    .bar{
+        left: 0;
+        width: 480px;
+        height: 100%;
+                
+    }
+    .sidebar {
+        overflow: hidden;
+        position: absolute;
+        float: left;
+        bottom: 0;
+        left: 0;
+        height: 95%;
+        width: 480px;
+        background-color: black;
+    }
+    .sidebar a {
+        float: left;
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration-color: black;
+        font-size: 17px;
+    }
+
+    .sidebar a:hover {
+        background: #dddddd;
+        color: black;
+    }
+    .beerpic{
+        position:absolute;
+        left: 80px;
+        top: 360px;
+    }
+    .logo{
+        position:absolute;
+        color:white;
+        left: 40px;
+        font-family:'Berlin Sans FB';
+        font-size: 60px;
+    }
+    .logo2 {
+        position: absolute;
+        color: white;
+        top: 120px;
+        left: 90px;
+        font-family: 'Berlin Sans FB';
+        font-size: 30px;
+    }
+</style>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Craft Beer Me</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Craft Beer Me", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Craft Beer Me", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
             </div>
         </div>
+    <div class="sidebar">
+        <h1 class="logo">Craft Beer Me  </h1>
+        <p class="logo2">Finding the Craft Beer <br />that's right for you!</p>
+        <img class="beerpic" src="~/Content/BeerHand.jpg" width="320px"/>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" >
         @RenderBody()
         <hr />
         <footer>

@@ -14,44 +14,26 @@
             padding: 8px;
         }
 
-        .BeerColor {
-            color: burlywood
+        .Mainbody {
+            padding-left: 12em;
+            font-family:;
+            font-size: 18px;
+            color: black;
+            /*text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
+        }
+        .button1 {
+            border-radius: 8px;
+            border: hidden;
         }
 
-        .tourbar {
-            overflow: hidden;
-            background-color: white;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            height: 95%;
-            width: 160px;
-            border: medium;
-            border-style: solid;
-        }
-
-            .tourbar a {
-                float: left;
-                display: block;
-                color: #f2f2f2;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration-color: black;
-                font-size: 17px;
-            }
-
-                .tourbar a:hover {
-                    background: #dddddd;
-                    color: white;
-                }
+        
     </style>
 </header>
 
 <h2>Here's your Beer Flight!</h2>
 <h4>@Session["Cider"]</h4>
 @{var brewery = (Craft_Beer_Me.Models.Brewery)Session["breweries"];}
-
-<body>
+<body class="Mainbody">
 
     <table>
 

@@ -204,6 +204,8 @@
     <Content Include="Views\Home\QualitySearch.cshtml" />
     <Content Include="Views\Home\PopularSearch.cshtml" />
     <Content Include="Views\Home\Flight.cshtml" />
+    <Content Include="Views\Home\StepTwo.cshtml" />
+    <Content Include="Views\Home\StepThree.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

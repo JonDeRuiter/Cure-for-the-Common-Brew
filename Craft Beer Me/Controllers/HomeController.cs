@@ -43,8 +43,15 @@ namespace Craft_Beer_Me.Controllers
             return View();
         }
 
+        public ActionResult StepTwo()
+        {
+            return View();
+        }
 
-        //right now its google maps
+        public ActionResult StepThree()
+        {
+            return View();
+        }
 
         public ActionResult QualitySearch()
         {
@@ -78,9 +85,7 @@ namespace Craft_Beer_Me.Controllers
             
         }
 
-
         //the "error" page
-
         public ActionResult results()
         {
             return View();
@@ -89,8 +94,6 @@ namespace Craft_Beer_Me.Controllers
         //the view where we show the list of breweries with the list of beers also has links to 
         public ActionResult Recommended()
         {
-
-          
             return View();
             
         }
@@ -247,7 +250,7 @@ namespace Craft_Beer_Me.Controllers
                     break;
             }
 
-            string localPath = LocalFilePath(1) + jPath;
+            string localPath = LocalFilePath(2) + jPath;
             justOne = GetJSONFromLocal(localPath);
 
 
