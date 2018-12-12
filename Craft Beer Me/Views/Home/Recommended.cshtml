@@ -3,7 +3,7 @@
 <title>We Recommend: </title>
 <header>
     <style>
-                table {
+        table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 100%;
@@ -119,32 +119,27 @@
             }
         </table>
         <br /><br />
-                    }
+     }
  </body>
 
 <footer class="tourbar">
     <p>Which awesome breweries do you want to visit?</p>
-    <form action="googleTour" target="_blank" >
-        @{List<Craft_Beer_Me.Models.Brewery> breweries = new List<Craft_Beer_Me.Models.Brewery>(); }
-        @foreach (var brewery in (List<Craft_Beer_Me.Models.Brewery>)Session["breweries"])
-        {
-            breweries.Add(brewery);
-        }
-      
-        <input type="checkbox" name="Atwater" />Atwater Brewery <br />
-        <input type="checkbox" name="Vivant" />Brewery Vivant<br />
-        <input type="checkbox" name="Elk" />Elk Brewery<br />
-        <input type="checkbox" name="Founders" />Founders Brewing<br />
-        <input type="checkbox" name="Harmony" />Harmony Brewery<br />
-        <input type="checkbox" name="Hideout" />Hideout Brewery<br />
-        <input type="checkbox" name="Hopcat" />Hopcat Brewery<br />
-        <input type="checkbox" name="Jolly" />Jolly Pumpkin Brewery<br />
-        <input type="checkbox" name="Holland" />New Holland Brewery<br />
-        <input type="checkbox" name="Peoples" />Peoples Cider<br />
-        <input type="checkbox" name="Perrin" /> Perrin Brewery<br />
-        <input type="checkbox" name="Rockford" />Rockford Brewery<br />
-        <input type="checkbox" name="Schmohz" />Schmohz Brewery<br />
-        <input type="checkbox" name="Mitten" />The Mitten Brewery<br />
-        <button class="button1" type="submit">I'm ready for my Tour!</button>
-    </form>
+
+    <form action="googleTour" target="_blank">
+          <input type="checkbox" name="Atwater" />Atwater Brewery <br />
+          <input type="checkbox" name="Vivant" />Brewery Vivant<br />
+          <input type="checkbox" name="Elk" />Elk Brewery<br />
+          <input type="checkbox" name="Founders" />Founders Brewing<br />
+          <input type="checkbox" name="Harmony" />Harmony Brewery<br />
+          <input type="checkbox" name="Hideout" />Hideout Brewery<br />
+          <input type="checkbox" name="Hopcat" />Hopcat Brewery<br />
+          <input type="checkbox" name="Jolly" />Jolly Pumpkin Brewery<br />
+          <input type="checkbox" name="Holland" />New Holland Brewery<br />
+          <input type="checkbox" name="Peoples" />Peoples Cider<br />
+          <input type="checkbox" name="Perrin" /> Perrin Brewery<br />
+          <input type="checkbox" name="Rockford" />Rockford Brewery<br />
+          <input type="checkbox" name="Schmohz" />Schmohz Brewery<br />
+          <input type="checkbox" name="Mitten" />The Mitten Brewery<br />
+          <button class="button1" type="submit">I'm ready for my Tour!</button>
+            </form>
 </footer>

@@ -93,6 +93,24 @@ namespace Craft_Beer_Me.Controllers
             return View();
         }
 
+        public ActionResult KnownBrews()
+        {
+            return View();
+        }
+
+        //This is the start of finding a users tastes
+        public ActionResult PicBrews(int brews)
+        {
+            //creates and returns this Brewery's object with all beers. 
+            Brewery brewery = db.Breweries.Find(brews);
+            brewery.Menu = FillaMenu(brews, 1);
+            //Displays beers and allows user to select 2-4 that they enjoy from the brewery
+            //With a table & checkbox? with a search bar and suggested list?
+            Session["barMenu"] = brewery;
+            return View();
+        }
+
+        //This action takes each quality from user input and finds the appropriate beers
         public ActionResult BeerNums(string ABV, string IBU, string SRM, string flavor)
         {
 
@@ -266,7 +284,7 @@ namespace Craft_Beer_Me.Controllers
         {
             List<JObject> localBrews = new List<JObject>();
 
-            string localPath = LocalFilePath(1);
+            string localPath = LocalFilePath(2);
 
             string SchmozPath = localPath + @"\Schmohz JSON.json";
             JObject SchmozJson = GetJSONFromLocal(SchmozPath);
@@ -437,6 +455,23 @@ namespace Craft_Beer_Me.Controllers
 
             }
 
+            return menu;
+        }
+
+        //This overload for FillaMenu takes an extra int to seperate the methods, returns ALL beer from a brewery
+        public List<Beer> FillaMenu(int x, int y)
+        {
+            List<Beer> menu = new List<Beer>();
+            JObject beerJson = GetJson(x);
+
+            Array beerArray = beerJson["data"].ToArray();
+            for (int i = 0; i < beerArray.Length; i++)
+            {
+                //Evaluate here
+                Beer newBeer = new Beer();
+                newBeer = MakeABeer(beerJson, i);
+                menu.Add(newBeer);
+            }
             return menu;
         }
 

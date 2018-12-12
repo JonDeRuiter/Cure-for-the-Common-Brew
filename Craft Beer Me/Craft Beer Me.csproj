@@ -206,6 +206,8 @@
     <Content Include="Views\Home\Flight.cshtml" />
     <Content Include="Views\Home\StepTwo.cshtml" />
     <Content Include="Views\Home\StepThree.cshtml" />
+    <Content Include="Views\Home\KnownBrews.cshtml" />
+    <Content Include="Views\Home\PicBrews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
