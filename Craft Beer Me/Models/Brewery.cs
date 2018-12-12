@@ -8,7 +8,6 @@ namespace Craft_Beer_Me.Models
 {
     public class Brewery
     {
-
         public int ID { get; set; }
         public List<Beer> Menu { get; set; }
         public string Url { get; set; }
@@ -20,6 +19,7 @@ namespace Craft_Beer_Me.Models
         {
 
         }
+
         public Brewery(List<Beer> Menu, string Url, string PictureUrl, string Name, string BreweryId)
         {
             this.Menu = Menu;

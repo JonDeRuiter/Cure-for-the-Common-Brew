@@ -1,11 +1,43 @@
 ﻿<!DOCTYPE html>
+<style>
+    .Mainbody {
+        background-color: white;
+        padding-left: 12em;
+        font-family:;
+        font-size: 18px;
+        color: black;
+        /*text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
+    }
+    #p1 {
+        background-color: rgb(255, 187, 51);
+    }
 
+    #p2 {
+        background-color: rgb(255, 107, 1);
+    }
+
+    #p3 {
+        background-color: rgb(162, 48, 0);
+    }
+
+    #p4 {
+        background-color: rgb(108, 13, 0);
+    }
+
+    #p5 {
+        background-color: rgb(71, 5, 9);
+    }
+    .button1 {
+        border-radius: 8px;
+        border: hidden;
+    }
+</style>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>QualitySearch</title>
 </head>
-<body>
+<body class="Mainbody">
     <h3>Want a little more control over a specific quality of your beer?</h3>
     <form action="BeerNums" method="post" class="box">
         <p>Alcohol Content</p>
@@ -42,7 +74,7 @@
             <option value="Chocolate">
             <option value="Sweet">
         </datalist>
-        <input class="accentOne" type="submit" value="Craft Beer Me!" />
+        <input class="button1" type="submit" value="Craft Beer Me!" />
     </form>
 </body>
 </html>

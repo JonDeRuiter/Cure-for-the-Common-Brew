@@ -1,11 +1,40 @@
 ﻿<!DOCTYPE html>
-
+<style>
+    .Mainbody {
+        background-color: white;
+        padding-left: 12em;
+        font-family:;
+        font-size: 18px;
+        color: black;
+        /*text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
+    }
+    .button1 {
+        border-radius: 8px;
+        border: hidden;
+    }
+</style>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>StyleSearch</title>
 </head>
-<body>
+<body class="Mainbody">
+    <form action="styleSearch" method="post" class="box">
+        <h3>Search by Popular Beers</h3>
+        <select name="style" class="accentOne">
+            <option value="1">Common Brews</option>
+            <option value="Pils">Miller Lite</option>
+            <option value="Stout">Guinness</option>
+            <option value="Belgian">Blue Moon</option>
+            <option value="Lager">Budweiser</option>
+            <option value="Ale">Bells Two Hearted</option>
+            <option value="Cider">Strongbow</option>
+            <option value="Porter">Great Lakes Edmund Fitzgerald</option>
+            <option value="Wheat">Bell's Oberon</option>
+            <option value="Sour">Jolly Pumpkin La Roja </option>
+        </select>
+        <input class="button1" type="submit" value="Which Craft Beer is like this?" />
+    </form>
     <h3>Know what style you'd like to explore?</h3>
     <form action="styleSearch" method="post" class="box">
         <h3>Search by Style</h3>
@@ -21,7 +50,7 @@
             <option value="Stout">Stout</option>
             <option value="Wheat">Wheat</option>
         </select>
-        <input type="submit" value="Style Search" class="accentOne" />
+        <input type="submit" value="Style Search" class="button1" />
     </form>
 </body>
 </html>

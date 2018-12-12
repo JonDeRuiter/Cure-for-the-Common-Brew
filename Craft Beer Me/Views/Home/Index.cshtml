@@ -1,145 +1,170 @@
-﻿<header></header>
-<title>Craft Beer Me</title>
-<style>
+﻿<style>
     #p1 {background-color: rgb(255, 187, 51);}
+
     #p2 {background-color: rgb(255, 107, 1);}
+
     #p3 {background-color: rgb(162, 48, 0);}
+
     #p4 {background-color: rgb(108, 13, 0);}
+
     #p5 {background-color: rgb(71, 5, 9);}
 
-    /*.Maincolor {
-
-        background-color: #895e4f;
-        font-family: 'proxima-nova', sans-serif;
+    .Mainbody {
+        padding-left: 12em;
+        font-family:;
         font-size: 18px;
         color: black;
         /*text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
     }
+    .spacer {
+        padding-left: 18em;
+    }
+    .button1 {
+        border-radius: 8px;
+        border:hidden;
+    }
     .accentOne {
         background-color: #e5bb67;
     }
+    
     .box {
         border: solid;
         border-color: #241e20;
         background-color: #953f0b;
-
-    }*/
+    }
 </style>
-<h1>
-    Welcome to Grand Rapids!
-</h1>
 
+<header></header>
+<title>Craft Beer Me</title>
+<h1>
+    Grand Rapids Craft Beer!
+</h1>
 <h4>Beer City 2014</h4>
 
-<body class="Maincolor">
-   <p>We have several ways to find new craft beer for you to try!</p> <br />
+<body class="Mainbody">
+    <br />
+    <p>Wikipedia: "The definition is not entirely consistent but typically applies to relatively small, independently-owned commercial breweries that employ traditional brewing methods and emphasize flavor and quality."</p>
+    <p>Flavor and quality are two hallmarks of Grand Rapids Craft Brewers!</p><br /><br />
+    <p>Are you ready to start your Craft Beer Journey?</p>
+    <p> Frist off, we need to know a few things!</p><br />
+    <p>Do you know which Brewery you want to visit?</p>
+    <div class="spacer">
+        <form action="Flight">
+            <input class="button1" type="submit" value="Yes" />
+        </form><br />
+        <form action="StepTwo">
+            <input class="button1" type="submit" value="No" />
+        </form>
+    </div>
+    @*<h2>We have several ways to find new craft beer for you to try!</h2> <br />
+
     <p>If you know a popular beer this is the search for you: </p>
-    <form action="PopularSearch"><input type="submit" value="Search By Popular Beer"/></form> <br />
+    <form action="PopularSearch"><input class="button1" type="submit" value="Search By Popular Beer" /></form> <br />
     <p>If you know the style you'd like to search by, use this search: </p>
-    <form action="SearchByStyle"><input type="submit" value="Search for Beer By Style"/></form> <br />
+    <form action="SearchByStyle"><input type="submit" value="Search for Beer By Style" /></form> <br />
     <p>If you want to have direct control over qualities of your beer like Alcohol Content, Bitterness/Hoppiness, Color, and even flavors. Choose this option: </p>
-    <form action="QualitySearch"><input type="submit" value="Search for Beer by Quality"/></form> <br />
+    <form action="QualitySearch"><input type="submit" value="Search for Beer by Quality" /></form> <br />
     <p>If you're going to a brewery and you want to try many different styles at that brewery, click this button: </p>
-    <form action="Flight"><input type="submit" value="Search for Beer by Brewery"/></form>
+    <form action="Flight"><input type="submit" value="Search for Beer by Brewery" /></form>*@
 
     @*<h3>Have a Brewery in mind but don't know what style you'll like?</h3>
-    <form method="post" action="FlightExplorer" class="box">
-        These values equate to where breweries are in the db
-        <select name="flighty" class="accentOne">
-            <option value="3">Atwater Brewery</option>
-            <option value="5">Brewery Vivant</option>
-            <option value="6">Elk Brewing</option>
-            <option value="7">Founders Brewing</option>
-            <option value="8">Harmony Brewing</option>
-            <option value="9">Hideout Brewery</option>
-            <option value="14">Hopcat Brewery</option>
-            <option value="2">Jolly Pumpkin</option>
-            <option value="4">New Holland Brewery: Knickerbocker</option>
-            <option value="10">Peoples Cider</option>
-            <option value="11">Perrin Brewery</option>
-            <option value="12">Rockford Brewing</option>
-            <option value="1">Schmohz Brewing</option>
-            <option value="13">The Mitten Brewery</option>
-        </select>
-        <input class="accentOne" type="submit" value="Explore a Variety of Styles" />
-        <br />
-        <br />
-    </form>*@
+        <form method="post" action="FlightExplorer" class="box">
+            These values equate to where breweries are in the db
+            <select name="flighty" class="accentOne">
+                <option value="3">Atwater Brewery</option>
+                <option value="5">Brewery Vivant</option>
+                <option value="6">Elk Brewing</option>
+                <option value="7">Founders Brewing</option>
+                <option value="8">Harmony Brewing</option>
+                <option value="9">Hideout Brewery</option>
+                <option value="14">Hopcat Brewery</option>
+                <option value="2">Jolly Pumpkin</option>
+                <option value="4">New Holland Brewery: Knickerbocker</option>
+                <option value="10">Peoples Cider</option>
+                <option value="11">Perrin Brewery</option>
+                <option value="12">Rockford Brewing</option>
+                <option value="1">Schmohz Brewing</option>
+                <option value="13">The Mitten Brewery</option>
+            </select>
+            <input class="accentOne" type="submit" value="Explore a Variety of Styles" />
+            <br />
+            <br />
+        </form>*@
     @*<h3>Know what style you'd like to explore?</h3>
-    <form action="styleSearch" method="post" class="box">
-        <h3>Search by Style</h3>
-        <select name="style" class="accentOne">
-            <option value="1">Beer Style</option>
-            <option value="Ale">Pale Ale/IPA</option>
-            <option value="Belgian">Belgian</option>
-            <option value="Cider">Cider</option>
-            <option value="Lager">Lager</option>
-            <option value="Pils">Pilsner</option>
-            <option value="Porter">Porter</option>
-            <option value="Sour">Sours</option>
-            <option value="Stout">Stout</option>
-            <option value="Wheat">Wheat</option>
-        </select>
+        <form action="styleSearch" method="post" class="box">
+            <h3>Search by Style</h3>
+            <select name="style" class="accentOne">
+                <option value="1">Beer Style</option>
+                <option value="Ale">Pale Ale/IPA</option>
+                <option value="Belgian">Belgian</option>
+                <option value="Cider">Cider</option>
+                <option value="Lager">Lager</option>
+                <option value="Pils">Pilsner</option>
+                <option value="Porter">Porter</option>
+                <option value="Sour">Sours</option>
+                <option value="Stout">Stout</option>
+                <option value="Wheat">Wheat</option>
+            </select>
 
-        <input type="submit" value="Style Search" class="accentOne" />
-    </form>*@
+            <input type="submit" value="Style Search" class="accentOne" />
+        </form>*@
     @*<h3>Want a little more control over a specific quality of your beer?</h3>
-    <form action="BeerNums" method="post" class="box">
-        <p>Alcohol Content</p>
-        <select name="ABV" class="accentOne">
-            <option value="1">Let's keep it light</option>
-            <option value="2">A happy medium</option>
-            <option value="3">More the merrier!</option>
-        </select>
-        <br /><br />
-        <p>Hoppy or Not</p>
-        <select name="IBU" class="accentOne">
-            <option value="1">Not that much please</option>
-            <option value="2">Somewhere in the middle</option>
-            <option value="3">The hoppier the better</option>
-        </select>
-        <br /><br />
-        <p>Color</p>
-        <select name="SRM" class="accentOne">
-            <option id="p1" value="1">Light</option>
-            <option id="p2" value="2">Medium Light</option>
-            <option id="p3" value="3">Medium</option>
-            <option id="p4" value="4">Medium Dark</option>
-            <option id="p5" value="5">Dark</option>
-        </select>
-        <br /><br />
-        <p>Flavors</p>
-        <input class="accentOne" list="flavors" type="text" placeholder="Optional" name="flavor" />
-        <datalist id="flavors">
-            <option value="Fruit">
-            <option value="Caramel">
-            <option value="Coffee">
-            <option value="Malt">
-            <option value="Citrus">
-            <option value="Chocolate">
-            <option value="Sweet">
-        </datalist>
-        <input class="accentOne" type="submit" value="Craft Beer Me!" />
-    </form>*@
+        <form action="BeerNums" method="post" class="box">
+            <p>Alcohol Content</p>
+            <select name="ABV" class="accentOne">
+                <option value="1">Let's keep it light</option>
+                <option value="2">A happy medium</option>
+                <option value="3">More the merrier!</option>
+            </select>
+            <br /><br />
+            <p>Hoppy or Not</p>
+            <select name="IBU" class="accentOne">
+                <option value="1">Not that much please</option>
+                <option value="2">Somewhere in the middle</option>
+                <option value="3">The hoppier the better</option>
+            </select>
+            <br /><br />
+            <p>Color</p>
+            <select name="SRM" class="accentOne">
+                <option id="p1" value="1">Light</option>
+                <option id="p2" value="2">Medium Light</option>
+                <option id="p3" value="3">Medium</option>
+                <option id="p4" value="4">Medium Dark</option>
+                <option id="p5" value="5">Dark</option>
+            </select>
+            <br /><br />
+            <p>Flavors</p>
+            <input class="accentOne" list="flavors" type="text" placeholder="Optional" name="flavor" />
+            <datalist id="flavors">
+                <option value="Fruit">
+                <option value="Caramel">
+                <option value="Coffee">
+                <option value="Malt">
+                <option value="Citrus">
+                <option value="Chocolate">
+                <option value="Sweet">
+            </datalist>
+            <input class="accentOne" type="submit" value="Craft Beer Me!" />
+        </form>*@
     @*<br />
-    <h3>Know what style you'd like to explore?</h3>
+        <h3>Know what style you'd like to explore?</h3>
 
-    <form action="styleSearch" method="post">
-        <h3>Search by Style</h3>
-        <select name="style">
-            <option value="1">Optional</option>
-            <option value="Ale">Pale Ale/IPA</option>
-            <option value="Belgian">Belgian</option>
-            <option value="Cider">Cider</option>
-            <option value="Lager">Lager</option>
-            <option value="Pils">Pilsner</option>
-            <option value="Porter">Porter</option>
-            <option value="Sour">Sours</option>
-            <option value="Stout">Stout</option>
-            <option value="Wheat">Wheat</option>
-        </select>
-        
-        <input type="submit" value="Style Search" />
-    </form>*@
+        <form action="styleSearch" method="post">
+            <h3>Search by Style</h3>
+            <select name="style">
+                <option value="1">Optional</option>
+                <option value="Ale">Pale Ale/IPA</option>
+                <option value="Belgian">Belgian</option>
+                <option value="Cider">Cider</option>
+                <option value="Lager">Lager</option>
+                <option value="Pils">Pilsner</option>
+                <option value="Porter">Porter</option>
+                <option value="Sour">Sours</option>
+                <option value="Stout">Stout</option>
+                <option value="Wheat">Wheat</option>
+            </select>
+
+            <input type="submit" value="Style Search" />
+        </form>*@
 </body>
 <footer></footer>

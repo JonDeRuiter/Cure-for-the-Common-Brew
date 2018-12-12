@@ -1,11 +1,24 @@
 ﻿<!DOCTYPE html>
-
+<style>
+    .Mainbody {
+        background-color: white;
+        padding-left: 12em;
+        font-family:;
+        font-size: 18px;
+        color: black;
+        /*text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
+    }
+    .button1 {
+        border-radius: 8px;
+        border: hidden;
+    }
+</style>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Flight</title>
 </head>
-<body>
+<body class="Mainbody">
     <h3>Have a Brewery in mind but don't know what style you'll like?</h3>
     <form method="post" action="FlightExplorer" class="box">
         @*These values equate to where breweries are in the db*@
@@ -25,7 +38,7 @@
             <option value="1">Schmohz Brewing</option>
             <option value="13">The Mitten Brewery</option>
         </select>
-        <input class="accentOne" type="submit" value="Explore a Variety of Styles" />
+        <input class="button1" type="submit" value="Explore a Variety of Styles" />
         <br />
         <br />
     </form>
