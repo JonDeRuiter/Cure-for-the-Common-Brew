@@ -23,22 +23,18 @@ namespace Craft_Beer_Me.Controllers
 
             if (currentUrl.Contains("/index"))
             {
-                return View(); ;
+                return View();
             }
             return RedirectToAction("/index");
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
@@ -73,9 +69,12 @@ namespace Craft_Beer_Me.Controllers
         }
 
         //google maps redirect
-        public ActionResult googleTour(string Atwater, string Vivant, string Elk, string Founders, string Harmony, string Hideout, string Hopcat, string Jolly, string Holland, string Peoples, string Perrin, string Rockford, string Schmohz, string Mitten)
+        public ActionResult googleTour(string Atwater, string Vivant, string Elk, string Founders, 
+            string Harmony, string Hideout, string Hopcat, string Jolly, string Holland, string Peoples, 
+            string Perrin, string Rockford, string Schmohz, string Mitten)
         {
-            string breweries = SelfGuidedTour(Atwater, Vivant, Elk, Founders, Harmony, Hideout, Hopcat, Jolly, Holland, Peoples, Perrin, Rockford, Schmohz, Mitten);
+            string breweries = SelfGuidedTour(Atwater, Vivant, Elk, Founders, Harmony, 
+                Hideout, Hopcat, Jolly, Holland, Peoples, Perrin, Rockford, Schmohz, Mitten);
 
             string mapsGoogle = "https://www.google.com/maps/dir/my+location/" + breweries;
 
@@ -94,6 +93,24 @@ namespace Craft_Beer_Me.Controllers
             return View();
         }
 
+        public ActionResult KnownBrews()
+        {
+            return View();
+        }
+
+        //This is the start of finding a users tastes
+        public ActionResult PicBrews(int brews)
+        {
+            //creates and returns this Brewery's object with all beers. 
+            Brewery brewery = db.Breweries.Find(brews);
+            brewery.Menu = FillaMenu(brews, 1);
+            //Displays beers and allows user to select 2-4 that they enjoy from the brewery
+            //With a table & checkbox? with a search bar and suggested list?
+            Session["barMenu"] = brewery;
+            return View();
+        }
+
+        //This action takes each quality from user input and finds the appropriate beers
         public ActionResult BeerNums(string ABV, string IBU, string SRM, string flavor)
         {
 
@@ -142,7 +159,8 @@ namespace Craft_Beer_Me.Controllers
                 List<Beer> empty = new List<Beer>();
                 brewery.Menu = empty;
                 Session["breweries"] = brewery;
-                Session["Cider"] = "Sadly, we were not able to populate a flight for you because they only have hard cider. I'm sure it's great, but we're all disappointed.";
+                Session["Cider"] = "Sadly, we were not able to populate a flight for you because they only have hard cider." +
+                    " I'm sure it's great, but we're all disappointed.";
                 return View();
             }
             else
@@ -171,8 +189,6 @@ namespace Craft_Beer_Me.Controllers
             else
             {
                 //test url
-
-
                 foreach (Brewery b in db.Breweries)
                 {
                     string urlString = "https://api.brewerydb.com/v2/" + "brewery/" + b.BreweryID + "/beers?key=";
@@ -246,7 +262,7 @@ namespace Craft_Beer_Me.Controllers
                     break;
             }
 
-            string localPath = LocalFilePath(2) + jPath;
+            string localPath = LocalFilePath(1) + jPath;
             justOne = GetJSONFromLocal(localPath);
 
 
@@ -268,7 +284,7 @@ namespace Craft_Beer_Me.Controllers
         {
             List<JObject> localBrews = new List<JObject>();
 
-            string localPath = LocalFilePath(1);
+            string localPath = LocalFilePath(2);
 
             string SchmozPath = localPath + @"\Schmohz JSON.json";
             JObject SchmozJson = GetJSONFromLocal(SchmozPath);
@@ -439,6 +455,23 @@ namespace Craft_Beer_Me.Controllers
 
             }
 
+            return menu;
+        }
+
+        //This overload for FillaMenu takes an extra int to seperate the methods, returns ALL beer from a brewery
+        public List<Beer> FillaMenu(int x, int y)
+        {
+            List<Beer> menu = new List<Beer>();
+            JObject beerJson = GetJson(x);
+
+            Array beerArray = beerJson["data"].ToArray();
+            for (int i = 0; i < beerArray.Length; i++)
+            {
+                //Evaluate here
+                Beer newBeer = new Beer();
+                newBeer = MakeABeer(beerJson, i);
+                menu.Add(newBeer);
+            }
             return menu;
         }
 
