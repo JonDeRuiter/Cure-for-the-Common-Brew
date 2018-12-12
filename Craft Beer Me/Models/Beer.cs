@@ -20,11 +20,9 @@ namespace Craft_Beer_Me.Models
         public string Food_Pair {get; set;}
         public bool Available {get; set;}
            
-
         public Beer()
         {
 
         }
-
     }
 }
