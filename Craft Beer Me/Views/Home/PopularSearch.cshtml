@@ -5,13 +5,21 @@
         border-radius: 8px;
         border: hidden;
     }
+    .Mainbody {
+        padding-left: 420px;
+        font-family:;
+        font-size: 18px;
+        color: black;
+        /*text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
+    }
 </style>
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>StyleSearch</title>
 </head>
-<body>
+<body class="Mainbody">
     <form action="styleSearch" method="post" class="box">
         <h3>Search by Popular Beers</h3>
         <select name="style" class="accentOne">
@@ -26,7 +34,7 @@
             <option value="Wheat">Bell's Oberon</option>
             <option value="Sour">Jolly Pumpkin La Roja </option>
         </select>
-        <input class="button1" type="submit" value="Which Craft Beer is like this?" />
+        <input class="button1 btn-lg" type="submit" value="Which Craft Beer is like this?" />
     </form>
 </body>
 </html>

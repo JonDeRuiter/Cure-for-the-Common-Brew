@@ -2,8 +2,7 @@
 <!DOCTYPE html>
 <style>
     .Mainbody {
-        background-color: white;
-        padding-left: 12em;
+        padding-left: 420px;
         font-family:;
         font-size: 18px;
         color: black;
@@ -22,14 +21,12 @@
     <meta name="viewport" content="width=device-width" />
     <title></title>
 </head>
-<body class="Mainbody">
-    <p>Do you have have a kind of beer you like?</p>
+<body class="Mainbody" style="padding-top: 10%">
+    <h2>Do you have a kind of beer you like?</h2>
     <div class="spacer">
-        <form action="SearchByStyle">
-            <input class="button1" type="submit" value="Yes" />
-        </form><br />
-        <form action="QualitySearch">
-            <input class="button1" type="submit" value="No" />
+        <form>
+            <input formaction="SearchByStyle" class="button1 btn-lg" type="submit" value="Yes" />        
+            <input formaction="QualitySearch" class="button1 btn-lg" type="submit" value="No" />
         </form>
     </div>
 </body>

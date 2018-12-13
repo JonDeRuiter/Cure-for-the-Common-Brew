@@ -15,24 +15,23 @@
         }
 
         .Mainbody {
-            padding-left: 12em;
+            padding-left: 420px;
             font-family:;
             font-size: 18px;
             color: black;
             /*text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
         }
+
         .button1 {
             border-radius: 8px;
             border: hidden;
         }
-
-        
     </style>
 </header>
-
-<h2>Here's your Beer Flight!</h2>
-<h4>@Session["Cider"]</h4>
 @{var brewery = (Craft_Beer_Me.Models.Brewery)Session["breweries"];}
+
+<h2>Here's a variety of options at @brewery.Name!</h2>
+<h4>@Session["Cider"]</h4>
 <body class="Mainbody">
 
     <table>
@@ -83,6 +82,6 @@
     @{ if (brewery.Menu.Count() == 0)
         {
             <iframe src="https://giphy.com/embed/39gIrKpwKes3C" width="480" height="207" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/disappointed-sad-good-39gIrKpwKes3C">via GIPHY</a></p>
-            
+
         }}
 </body>

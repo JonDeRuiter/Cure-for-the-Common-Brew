@@ -1,13 +1,11 @@
 ﻿<style>
     .Mainbody {
-        background-color: white;
-        padding-left: 12em;
+        padding-left: 420px;
         font-family:;
         font-size: 18px;
         color: black;
         /*text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
     }
-
     .button1 {
         border-radius: 8px;
         border: hidden;
@@ -39,7 +37,7 @@
                     <option value="@beer.BeerName" />
                 }
             </datalist>
-            <input list="beers" type="text" placeholder="Optional" name="beer3" />
+            @*<input list="beers" type="text" placeholder="Optional" name="beer3" />
             <datalist id="beers">
                 @foreach (var beer in brewery.Menu)
                 {
@@ -52,9 +50,9 @@
                 {
                     <option value="@beer.BeerName" />
                 }
-            </datalist>
+            </datalist>*@
             <p>I've Enjoyed these Beers. </p>
-            <input type="submit" value="Tell me what else I might like."/>
+            <input class="btn-lg button1" type="submit" value="Tell me what else I might like."/>
         </form>
     </div>
 </body>

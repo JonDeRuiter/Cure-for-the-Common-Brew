@@ -615,9 +615,6 @@ namespace Craft_Beer_Me.Controllers
                 craftBeer.Picture = null;
             }
 
-            //db.Beers.Add(craftBeer);
-            //db.SaveChanges();
-
             return craftBeer;
         }
 
@@ -683,25 +680,25 @@ namespace Craft_Beer_Me.Controllers
                     }
                     break;
                 case 2:
-                    if (beer.SRM <= 8 && beer.IBU >= 16)
+                    if (beer.SRM >= 8 && beer.SRM <= 16)
                     {
                         counter++;
                     }
                     break;
                 case 3:
-                    if (beer.SRM >= 16 && beer.IBU >= 24)
+                    if (beer.SRM >= 16 && beer.SRM <= 24)
                     {
                         counter++;
                     }
                     break;
                 case 4:
-                    if (beer.SRM >= 24 && beer.IBU >= 32)
+                    if (beer.SRM >= 24 && beer.SRM <= 32)
                     {
                         counter++;
                     }
                     break;
                 case 5:
-                    if (beer.SRM >= 32 && beer.IBU >= 40)
+                    if (beer.SRM >= 32 && beer.SRM <= 40)
                     {
                         counter++;
                     }
@@ -789,25 +786,25 @@ namespace Craft_Beer_Me.Controllers
                     }
                     break;
                 case 2:
-                    if (beer.SRM <= 8 && beer.IBU >= 16)
+                    if (beer.SRM >= 8 && beer.SRM <= 16)
                     {
                         counter++;
                     }
                     break;
                 case 3:
-                    if (beer.SRM >= 16 && beer.IBU >= 24)
+                    if (beer.SRM >= 16 && beer.SRM <= 24)
                     {
                         counter++;
                     }
                     break;
                 case 4:
-                    if (beer.SRM >= 24 && beer.IBU >= 32)
+                    if (beer.SRM >= 24 && beer.SRM <= 32)
                     {
                         counter++;
                     }
                     break;
                 case 5:
-                    if (beer.SRM >= 32 && beer.IBU >= 40)
+                    if (beer.SRM >= 32 && beer.SRM >= 40)
                     {
                         counter++;
                     }
@@ -835,9 +832,155 @@ namespace Craft_Beer_Me.Controllers
             }
             return false;
         }
+        
+        //looks to see if IBU for two beers falls into the same ibu category (these categories match the LimitBeer method) and returns a score int
+        public int IbuStyle(Beer beer1, Beer beer2)
+        {
+            int score = 0;
+            int beer1cat = 0;
+            int beer2cat = 9;
 
-        //allows the flight explorer to have an element of randomization
-        public List<Beer> RandyHandleThis(List<Beer> ale, List<Beer> pilsner, List<Beer> lager, List<Beer> belgian, List<Beer> porter, List<Beer> stout)
+            if (beer1.IBU <= 30 && beer1.IBU > 0)
+            {
+                beer1cat = 1;
+            }
+            else if (beer1.IBU <= 60 && beer1.IBU >= 30)
+            {
+                beer1cat = 2;
+            }
+            else if (beer1.IBU >= 60)
+            {
+                beer1cat = 3;
+            }
+
+            if (beer2.IBU <= 30 && beer2.IBU > 0)
+            {
+                beer2cat = 1;
+            }
+            else if (beer2.IBU <= 60 && beer2.IBU >= 30)
+            {
+                beer2cat = 2;
+            }
+            else if (beer2.IBU >= 60)
+            {
+                beer2cat = 3;
+            }
+
+            if (beer1cat == beer2cat)
+            {
+                score++;
+            }
+
+            return score;
+        }
+
+        //looks to see if SRM for two beers falls into the same srm category (these categories match the LimitBeer method) and returns a score int
+        public int SrmStyle(Beer beer1, Beer beer2)
+        {
+            int score = 0;
+            int beer1cat = 0;
+            int beer2cat = 9;
+
+
+            if (beer1.SRM <= 8 && beer1.SRM > 1)
+            {
+                beer1cat = 1;
+            }
+
+            else if (beer1.SRM >= 8 && beer1.SRM <= 16)
+            {
+                beer1cat = 2;
+            }
+
+            else if (beer1.SRM >= 16 && beer1.SRM <= 24)
+            {
+                beer1cat = 3;
+            }
+
+            else if (beer1.SRM >= 24 && beer1.SRM <= 32)
+            {
+                beer1cat = 4;
+            }
+
+            else if (beer1.SRM >= 32 && beer1.SRM <= 40)
+            {
+                beer1cat = 5;
+            }
+
+
+            if (beer2.SRM <= 8 && beer2.SRM > 1)
+            {
+                beer2cat = 1;
+            }
+
+            else if (beer2.SRM >= 8 && beer2.SRM <= 16)
+            {
+                beer2cat = 2;
+            }
+
+            else if (beer2.SRM >= 16 && beer2.SRM <= 24)
+            {
+                beer2cat = 3;
+            }
+
+            else if (beer2.SRM >= 24 && beer2.SRM <= 32)
+            {
+                beer2cat = 4;
+            }
+
+            else if (beer2.SRM >= 32 && beer2.SRM <= 40)
+            {
+                beer2cat = 5;
+            }
+
+            if (beer1cat == beer2cat)
+            {
+                score++;
+            }
+
+            return score;
+        }
+        
+        //looks to see if abv for two beers falls into the same abv category (these categories match the LimitBeer method) and returns a score int
+        public int abvStyle(Beer beer1, Beer beer2)
+        {
+            int score = 0;
+            int b1cat = 0;
+            int b2cat = 9;
+            if (beer1.ABV >= 1 && beer1.ABV <= 5.1)
+            {
+                b1cat = 1;
+            }
+            else if (beer1.ABV >= 5.1 && beer1.ABV <= 9.1)
+            {
+                b1cat = 2;
+            }
+            else if (beer1.ABV >= 9.1)
+            {
+                b1cat = 3;
+            }
+
+            if (beer2.ABV >= 1 && beer2.ABV <= 5.1)
+            {
+                b2cat = 1;
+            }
+            else if (beer2.ABV >= 5.1 && beer2.ABV <= 9.1)
+            {
+                b2cat = 2;
+            }
+            else if (beer2.ABV >= 9.1)
+            {
+                b2cat = 3;
+            }
+            if (b1cat == b2cat)
+            {
+                score++;
+            }
+            return score;
+        }
+
+         //allows the flight explorer to have an element of randomization
+         public List<Beer> RandyHandleThis(List<Beer> ale, List<Beer> pilsner, List<Beer> lager, List<Beer> belgian, List<Beer> porter, List<Beer> stout)
         {
             List<Beer> final = new List<Beer>();
 

@@ -2,8 +2,7 @@
 <!DOCTYPE html>
 <style>
     .Mainbody {
-        background-color: white;
-        padding-left: 12em;
+        padding-left: 420px;
         font-family:;
         font-size: 18px;
         color: black;
@@ -22,15 +21,17 @@
     <meta name="viewport" content="width=device-width" />
     <title></title>
 </head>
-<body class="Mainbody">
-    <p>Do you have specific tastes?</p>
+<body class="Mainbody" style="padding-top: 10%">
+    <h2>Would you like to search by specific qualities?</h2>
     <div class="spacer">
-        <form action="QualitySearch">
-            <input class="button1" type="submit" value="Yes" />
-        </form><br />
-        <form action="StepThree">
-            <input class="button1" type="submit" value="No" />
+        <form>
+            <input formaction="QualitySearch" class="button1 btn-lg" type="submit" value="Yes" />
+            <input formaction="StepThree" class="button1 btn-lg" type="submit" value="No" />
         </form>
+        <br />
+        <br />
+        <br />
+        <br />
     </div>
 </body>
 </html>

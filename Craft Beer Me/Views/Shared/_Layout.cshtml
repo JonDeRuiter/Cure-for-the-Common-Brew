@@ -8,14 +8,15 @@
     }
     .sidebar {
         overflow: hidden;
-        position: absolute;
         float: left;
+        position: fixed;
         bottom: 0;
         left: 0;
         height: 95%;
         width: 480px;
         background-color: black;
     }
+
     .sidebar a {
         float: left;
         display: block;
@@ -26,10 +27,10 @@
         font-size: 17px;
     }
 
-    .sidebar a:hover {
-        background: #dddddd;
-        color: black;
-    }
+        .sidebar a:hover {
+            background: #dddddd;
+            color: black;
+        }
     .beerpic{
         position:absolute;
         left: 80px;
@@ -47,7 +48,7 @@
         color: white;
         top: 120px;
         left: 90px;
-        font-family: 'Berlin Sans FB';
+        font-family: 'Berlin Sans FB Demi', 'Berlin Sans FB';
         font-size: 30px;
     }
 </style>
@@ -74,16 +75,16 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
 
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        @*<li>@Html.ActionLink("About", "About", "Home")</li>*@
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     </ul>
                 </div>
             </div>
         </div>
     <div class="sidebar">
-        <h1 class="logo">Craft Beer Me  </h1>
+        <h1 class="logo">Craft Beer Me</h1>
         <p class="logo2">Finding the Craft Beer <br />that's right for you!</p>
-        <img class="beerpic" src="~/Content/BeerHand.jpg" width="320px"/>
+        <img class="beerpic" src="~/Content/BeerHand.jpg" width="320"/>
     </div>
     <div class="container body-content" >
         @RenderBody()
