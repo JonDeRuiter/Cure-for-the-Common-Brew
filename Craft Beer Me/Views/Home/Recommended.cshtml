@@ -81,10 +81,10 @@
             </tr>
             @foreach (var beer in brewery.Menu)
             {
-                //if (counter == 3)
-                //{
-                //    break;
-                //}
+                if (counter == 3)
+                {
+                    break;
+                }
                 <tr>
                     <td>
                         @if (@beer.Picture != null)
@@ -120,7 +120,9 @@
  </body>
 
 <footer class="tourbar">
+
     <p>Plan the Tour:</p>
+
     <form action="googleTour" target="_blank">
         <input type="checkbox" name="Atwater" />Atwater Brewery <br />
         <input type="checkbox" name="Vivant" />Brewery Vivant<br />
