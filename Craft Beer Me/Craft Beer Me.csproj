@@ -138,6 +138,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Beer.cs" />
+    <Compile Include="Models\BeerComparison.cs" />
     <Compile Include="Models\Brewery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -208,6 +209,7 @@
     <Content Include="Views\Home\StepThree.cshtml" />
     <Content Include="Views\Home\KnownBrews.cshtml" />
     <Content Include="Views\Home\PicBrews.cshtml" />
+    <Content Include="Views\Home\IbuAbvSrmResults.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
