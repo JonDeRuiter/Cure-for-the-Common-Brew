@@ -14,6 +14,7 @@ namespace Craft_Beer_Me.Controllers
     public class HomeController : Controller
     {
         private BreweryContext db = new BreweryContext();
+        BeerComparison BeerComparisons = new BeerComparison();
 
         public ActionResult Index()
         {
@@ -69,11 +70,11 @@ namespace Craft_Beer_Me.Controllers
         }
 
         //google maps redirect
-        public ActionResult googleTour(string Atwater, string Vivant, string Elk, string Founders, 
-            string Harmony, string Hideout, string Hopcat, string Jolly, string Holland, string Peoples, 
+        public ActionResult googleTour(string Atwater, string Vivant, string Elk, string Founders,
+            string Harmony, string Hideout, string Hopcat, string Jolly, string Holland, string Peoples,
             string Perrin, string Rockford, string Schmohz, string Mitten)
         {
-            string breweries = SelfGuidedTour(Atwater, Vivant, Elk, Founders, Harmony, 
+            string breweries = SelfGuidedTour(Atwater, Vivant, Elk, Founders, Harmony,
                 Hideout, Hopcat, Jolly, Holland, Peoples, Perrin, Rockford, Schmohz, Mitten);
 
             string mapsGoogle = "https://www.google.com/maps/dir/my+location/" + breweries;
@@ -110,6 +111,93 @@ namespace Craft_Beer_Me.Controllers
             return View();
         }
 
+        public ActionResult IbuAbvSrmResults(Beer beer1, Beer beer2)
+        {
+            
+           abvStyle(beer1, beer2);
+           IbuStyle(beer1, beer2);
+           SrmStyle(beer1, beer2);
+            
+           List<string> topScores = scoreSorter();
+            ViewBag.Pref = FindBeerPreference(topScores);
+           return View();
+        }
+
+        public string FindBeerPreference(List<string> topScores)
+        {
+            if (topScores[0] == "ABV")
+            {
+                if (BeerComparisons.ABVCat == 1)
+                {
+                    return "";
+                }
+                else if (BeerComparisons.ABVCat == 2)
+                {
+                    return "";
+                }
+                else if (BeerComparisons.ABVCat == 3)
+                {
+                    return "You seem to like beers with very high alcohol content./nThat is an ABV about 9%.";
+                }
+            }
+            return "";
+        }
+
+        public List<string> scoreSorter()
+        {
+            List<string> topScores = new List<string>();
+            if (BeerComparisons.ABVScore > BeerComparisons.IBUScore && BeerComparisons.ABVScore > BeerComparisons.SRMScore)
+            {
+                topScores.Add("ABV");
+                if (BeerComparisons.IBUScore > BeerComparisons.SRMScore)
+                {
+                    topScores.Add("IBU");
+                    topScores.Add("SRM");
+                }
+                else
+                {
+                    topScores.Add("SRM");
+                    topScores.Add("IBU");
+                }
+            }
+            else if (BeerComparisons.IBUScore > BeerComparisons.ABVScore && BeerComparisons.IBUScore > BeerComparisons.SRMScore)
+            {
+                topScores.Add("IBU");
+                if (BeerComparisons.ABVScore > BeerComparisons.SRMScore)
+                {
+                    topScores.Add("ABV");
+                    topScores.Add("SRM");
+                }
+                else
+                {
+                    topScores.Add("SRM");
+                    topScores.Add("ABV");
+                }
+            }
+            else if (BeerComparisons.SRMScore > BeerComparisons.ABVScore && BeerComparisons.SRMScore > BeerComparisons.IBUScore)
+            {
+                topScores.Add("SRM");
+                if (BeerComparisons.ABVScore > BeerComparisons.IBUScore)
+                {
+                    topScores.Add("ABV");
+                    topScores.Add("IBU");
+                }
+                else
+                {
+                    topScores.Add("IBU");
+                    topScores.Add("ABV");
+
+                }
+            }
+            else
+            {
+                topScores.Add("Equal");
+                topScores.Add("Equal");
+                topScores.Add("Equal");
+
+            }
+            return topScores;
+        }
         //This action takes each quality from user input and finds the appropriate beers
         public ActionResult BeerNums(string ABV, string IBU, string SRM, string flavor)
         {
@@ -172,6 +260,8 @@ namespace Craft_Beer_Me.Controllers
             }
 
         }
+
+
 
         //Begins the process of creating brewery objects and directs it to either local data or live data
         public List<JObject> GetJson(double abv, double ibu, double srm, string flavor)
@@ -284,7 +374,7 @@ namespace Craft_Beer_Me.Controllers
         {
             List<JObject> localBrews = new List<JObject>();
 
-            string localPath = LocalFilePath(2);
+            string localPath = LocalFilePath(1);
 
             string SchmozPath = localPath + @"\Schmohz JSON.json";
             JObject SchmozJson = GetJSONFromLocal(SchmozPath);
@@ -681,25 +771,25 @@ namespace Craft_Beer_Me.Controllers
                     }
                     break;
                 case 2:
-                    if (beer.SRM <= 8 && beer.IBU >= 16)
+                    if (beer.SRM >= 8 && beer.SRM <= 16)
                     {
                         counter++;
                     }
                     break;
                 case 3:
-                    if (beer.SRM >= 16 && beer.IBU >= 24)
+                    if (beer.SRM >= 16 && beer.SRM <= 24)
                     {
                         counter++;
                     }
                     break;
                 case 4:
-                    if (beer.SRM >= 24 && beer.IBU >= 32)
+                    if (beer.SRM >= 24 && beer.SRM <= 32)
                     {
                         counter++;
                     }
                     break;
                 case 5:
-                    if (beer.SRM >= 32 && beer.IBU >= 40)
+                    if (beer.SRM >= 32 && beer.SRM <= 40)
                     {
                         counter++;
                     }
@@ -787,25 +877,25 @@ namespace Craft_Beer_Me.Controllers
                     }
                     break;
                 case 2:
-                    if (beer.SRM <= 8 && beer.IBU >= 16)
+                    if (beer.SRM >= 8 && beer.SRM <= 16)
                     {
                         counter++;
                     }
                     break;
                 case 3:
-                    if (beer.SRM >= 16 && beer.IBU >= 24)
+                    if (beer.SRM >= 16 && beer.SRM <= 24)
                     {
                         counter++;
                     }
                     break;
                 case 4:
-                    if (beer.SRM >= 24 && beer.IBU >= 32)
+                    if (beer.SRM >= 24 && beer.SRM <= 32)
                     {
                         counter++;
                     }
                     break;
                 case 5:
-                    if (beer.SRM >= 32 && beer.IBU >= 40)
+                    if (beer.SRM >= 32 && beer.SRM <= 40)
                     {
                         counter++;
                     }
@@ -832,6 +922,151 @@ namespace Craft_Beer_Me.Controllers
                 return true;
             }
             return false;
+        }
+
+        public void abvStyle(Beer beer1, Beer beer2)
+        {
+            
+            int score = 0;
+            int b1cat = 0;
+            int b2cat = 9;
+            if (beer1.ABV >= 1 && beer1.ABV <= 5.1)
+            {
+                b1cat = 1;
+            }
+            else if (beer1.ABV >= 5.1 && beer1.ABV <= 9.1)
+            {
+                b1cat = 2;
+            }
+            else if (beer1.ABV >= 9.1)
+            {
+                b1cat = 3;
+            }
+
+            if (beer2.ABV >= 1 && beer2.ABV <= 5.1)
+            {
+                b2cat = 1;
+            }
+            else if (beer2.ABV >= 5.1 && beer2.ABV <= 9.1)
+            {
+                b2cat = 2;
+            }
+            else if (beer2.ABV >= 9.1)
+            {
+                b2cat = 3;
+            }
+            if (b1cat == b2cat)
+            {
+                score++;
+            }
+            BeerComparisons.ABVScore = score;
+            BeerComparisons.ABVCat = (b1cat + b2cat)/2;
+            
+        }
+
+            //looks to see if IBU for two beers falls into the same ibu category (these categories match the LimitBeer method) and returns a score int
+            public void IbuStyle(Beer beer1, Beer beer2)
+        {
+            
+            int score = 0;
+            int beer1cat = 0;
+            int beer2cat = 9;
+
+            if (beer1.IBU <= 30 && beer1.IBU > 0)
+            {
+                beer1cat = 1;
+            }
+            else if (beer1.IBU <= 60 && beer1.IBU >= 30)
+            {
+                beer1cat = 2;
+            }
+            else if (beer1.IBU >= 60)
+            {
+                beer1cat = 3;
+            }
+
+            if (beer2.IBU <= 30 && beer2.IBU > 0)
+            {
+                beer2cat = 1;
+            }
+            else if (beer2.IBU <= 60 && beer2.IBU >= 30)
+            {
+                beer2cat = 2;
+            }
+            else if (beer2.IBU >= 60)
+            {
+                beer2cat = 3;
+            }
+
+            if (beer1cat == beer2cat)
+            {
+                score++;
+            }
+
+            BeerComparisons.IBUScore = score;
+            BeerComparisons.IBUCat = (beer1cat + beer2cat) / 2;
+           
+        }
+
+        //looks to see if SRM for two beers falls into the same srm category (these categories match the LimitBeer method) and returns a score int
+        public void SrmStyle(Beer beer1, Beer beer2)
+        {
+            
+            int score = 0;
+            int beer1cat = 0;
+            int beer2cat = 9;
+
+            if (beer1.SRM <= 8 && beer1.SRM > 1)
+            {
+                beer1cat = 1;
+            }
+            else if (beer1.SRM >= 8 && beer1.SRM <= 16)
+            {
+                beer1cat = 2;
+            }
+            else if (beer1.SRM >= 16 && beer1.SRM <= 24)
+            {
+                beer1cat = 3;
+            }
+            else if (beer1.SRM >= 24 && beer1.SRM <= 32)
+            {
+                beer1cat = 4;
+            }
+            else if (beer1.SRM >= 32 && beer1.SRM <= 40)
+            {
+                beer1cat = 5;
+            }
+
+
+            if (beer2.SRM <= 8 && beer2.SRM > 1)
+            {
+                beer2cat = 1;
+            }
+            else if (beer2.SRM >= 8 && beer2.SRM <= 16)
+            {
+                beer2cat = 2;
+            }
+            else if (beer2.SRM >= 16 && beer2.SRM <= 24)
+            {
+                beer2cat = 3;
+            }
+            else if (beer2.SRM >= 24 && beer2.SRM <= 32)
+            {
+                beer2cat = 4;
+            }
+            else if (beer2.SRM >= 32 && beer2.SRM <= 40)
+            {
+                beer2cat = 5;
+            }
+
+            if (beer1cat == beer2cat)
+            {
+                score++;
+            }
+
+            BeerComparisons.SRMScore = score;
+            BeerComparisons.SRMCat = (beer1cat + beer2cat) / 2;
+            
         }
 
         //allows the flight explorer to have an element of randomization
